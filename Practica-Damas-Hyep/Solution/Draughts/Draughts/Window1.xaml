@@ -1,0 +1,9 @@
+﻿<Window x:Class="Draughts.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Window1" Height="300" Width="300">
+    <Grid>
+        <Button Height="22" Margin="58,0,0,54" Name="button1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="76">Pirri</Button>
+        <Image Margin="35,31,41,98" Name="image1" Stretch="Fill" />
+    </Grid>
+</Window>
