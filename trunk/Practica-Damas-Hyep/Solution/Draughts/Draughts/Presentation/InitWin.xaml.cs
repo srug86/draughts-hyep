@@ -16,9 +16,9 @@ namespace Draughts.Presentation
     /// <summary>
     /// Lógica de interacción para Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class InitWin : Window
     {
-        public Window1()
+        public InitWin()
         {
             InitializeComponent();
         }

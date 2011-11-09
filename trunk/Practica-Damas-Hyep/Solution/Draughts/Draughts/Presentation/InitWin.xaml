@@ -1,8 +1,629 @@
-﻿<Window x:Class="Draughts.Presentation.Window1"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Window1" Height="300" Width="300">
-    <Grid>
-        
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="Draughts.Presentation.InitWin"
+	Title="Damas"
+	Width="640" Height="480" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Opacity="1">
+    <Window.Resources>
+        <Color x:Key="Color1">#FF000000</Color>
+    </Window.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="#FF000000">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.68*"/>
+            <ColumnDefinition Width="0.016*"/>
+            <ColumnDefinition Width="0.304*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle RenderTransformOrigin="0.5,0.5" Margin="8,74.5,212,224.5" Stroke="#FF000000" Opacity="0.8">
+            <Rectangle.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF847A7A" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FEADA3A3" Offset="0.045"/>
+                    <GradientStop Color="#FEE4C8C8" Offset="0.705"/>
+                    <GradientStop Color="#FEBBA5A5" Offset="0.223"/>
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <SkewTransform AngleX="14" AngleY="-1"/>
+                    <RotateTransform Angle="24"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Opacity="0.8" RenderTransformOrigin="0.5,0.5" Margin="172,0,48,-46.5" VerticalAlignment="Bottom" Height="181" Stroke="#FF000000">
+            <Rectangle.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF847A7A" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FEADA3A3" Offset="0.045"/>
+                    <GradientStop Color="#FEE4C8C8" Offset="0.705"/>
+                    <GradientStop Color="#FEBBA5A5" Offset="0.223"/>
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <SkewTransform AngleX="14" AngleY="-1"/>
+                    <RotateTransform Angle="24"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Opacity="0.8" RenderTransformOrigin="0.5,0.5" Margin="-195,-24.5,-9.7,0" VerticalAlignment="Top" Height="181" Stroke="#FF000000" Grid.Column="1">
+            <Rectangle.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF847A7A" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FEADA3A3" Offset="0.045"/>
+                    <GradientStop Color="#FEE4C8C8" Offset="0.705"/>
+                    <GradientStop Color="#FEBBA5A5" Offset="0.223"/>
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <SkewTransform AngleX="14" AngleY="-1"/>
+                    <RotateTransform Angle="24"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Opacity="0.8" RenderTransformOrigin="0.5,0.5" Margin="-31,0,21,55.5" Stroke="#FF000000" VerticalAlignment="Bottom" Height="181" Grid.Column="1" Grid.ColumnSpan="2">
+            <Rectangle.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF847A7A" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FEADA3A3" Offset="0.045"/>
+                    <GradientStop Color="#FEE4C8C8" Offset="0.705"/>
+                    <GradientStop Color="#FEBBA5A5" Offset="0.223"/>
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <SkewTransform AngleX="14" AngleY="-1"/>
+                    <RotateTransform Angle="24"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Opacity="0.8" RenderTransformOrigin="0.5,0.5" Margin="42,-108.5,178,0" VerticalAlignment="Top" Height="181" Stroke="#FF000000" Fill="#FF000000">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <SkewTransform AngleX="14" AngleY="-1"/>
+                    <RotateTransform Angle="24"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Opacity="0.8" RenderTransformOrigin="0.5,0.5" Margin="-25,0,0,39.5" Stroke="#FF000000" Fill="#FF000000" HorizontalAlignment="Left" Width="215" VerticalAlignment="Bottom" Height="181">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <SkewTransform AngleX="14" AngleY="-1"/>
+                    <RotateTransform Angle="24"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Opacity="0.8" RenderTransformOrigin="0.5,0.5" Margin="206,159.5,14,139.5" Stroke="#FF000000" Fill="#FF000000">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <SkewTransform AngleX="14" AngleY="-1"/>
+                    <RotateTransform Angle="24"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Opacity="0.8" RenderTransformOrigin="0.5,0.5" Margin="-64,0,54,-127.5" VerticalAlignment="Bottom" Height="181" Stroke="#FF000000" Fill="#FF000000" Grid.Column="1" Grid.ColumnSpan="2">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <SkewTransform AngleX="14" AngleY="-1"/>
+                    <RotateTransform Angle="24"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Opacity="0.8" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Margin="0,0,-145,-211.5" Width="215" Stroke="#FF000000" Height="181" VerticalAlignment="Bottom" Grid.Column="2">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <SkewTransform AngleX="14" AngleY="-1"/>
+                    <RotateTransform Angle="24"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF847A7A" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FEADA3A3" Offset="0.045"/>
+                    <GradientStop Color="#FEE4C8C8" Offset="0.705"/>
+                    <GradientStop Color="#FEBBA5A5" Offset="0.223"/>
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Opacity="0.8" RenderTransformOrigin="0.5,0.5" Margin="24.7,-123.5,-45,0" Stroke="#FF000000" Height="181" VerticalAlignment="Top" Grid.Column="2">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <SkewTransform AngleX="14" AngleY="-1"/>
+                    <RotateTransform Angle="24"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF847A7A" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FEADA3A3" Offset="0.045"/>
+                    <GradientStop Color="#FEE4C8C8" Offset="0.705"/>
+                    <GradientStop Color="#FEBBA5A5" Offset="0.223"/>
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="-159,-192.5,0,0" VerticalAlignment="Top" Width="215" Height="181" Stroke="#FF000000" Opacity="0.8">
+            <Rectangle.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF847A7A" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FEADA3A3" Offset="0.045"/>
+                    <GradientStop Color="#FEE4C8C8" Offset="0.705"/>
+                    <GradientStop Color="#FEBBA5A5" Offset="0.223"/>
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <SkewTransform AngleX="14" AngleY="-1"/>
+                    <RotateTransform Angle="24"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="-223,174.5,0,124.5" Width="215" Stroke="#FF000000" Opacity="0.8">
+            <Rectangle.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF847A7A" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FEADA3A3" Offset="0.045"/>
+                    <GradientStop Color="#FEE4C8C8" Offset="0.705"/>
+                    <GradientStop Color="#FEBBA5A5" Offset="0.223"/>
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <SkewTransform AngleX="14" AngleY="-1"/>
+                    <RotateTransform Angle="24"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle RenderTransformOrigin="0.5,0.5" Margin="-57,0,0,-144.5" Stroke="#FF000000" Opacity="0.8" HorizontalAlignment="Left" Width="215" Height="181" VerticalAlignment="Bottom">
+            <Rectangle.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF847A7A" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FEADA3A3" Offset="0.045"/>
+                    <GradientStop Color="#FEE4C8C8" Offset="0.705"/>
+                    <GradientStop Color="#FEBBA5A5" Offset="0.223"/>
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <SkewTransform AngleX="14" AngleY="-1"/>
+                    <RotateTransform Angle="24"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Grid HorizontalAlignment="Left" Margin="-11,0,0,61.5" Width="195" VerticalAlignment="Bottom" Height="148">
+            <Ellipse RenderTransformOrigin="0.5,0.5" Margin="0,15,3,0" Stroke="#FF000000">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF000000" Offset="0.964"/>
+                        <GradientStop Color="#FFFF0000" Offset="0.513"/>
+                        <GradientStop Color="#FF9E0000" Offset="0.897"/>
+                        <GradientStop Color="#FF4B0000" Offset="0.701"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleX="5" AngleY="0"/>
+                        <RotateTransform Angle="13"/>
+                        <TranslateTransform X="0" Y="0"/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+            <Ellipse RenderTransformOrigin="0.5,0.5" Margin="3,0,0,15" Stroke="#FF000000">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleX="5" AngleY="0"/>
+                        <RotateTransform Angle="13"/>
+                        <TranslateTransform X="0" Y="0"/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF000000" Offset="0.362"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.884"/>
+                        <GradientStop Color="#FF000000" Offset="0.996"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.188"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.094"/>
+                        <GradientStop Color="#FF6C0D0D" Offset="0.491"/>
+                        <GradientStop Color="#FFAA1414" Offset="0.804"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+        <Grid Margin="0,174.5,22,157.5" HorizontalAlignment="Right" Width="195">
+            <Ellipse RenderTransformOrigin="0.5,0.5" Margin="0,15,3,0" Stroke="#FF000000">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF000000" Offset="0.964"/>
+                        <GradientStop Color="#FFFF0000" Offset="0.513"/>
+                        <GradientStop Color="#FF9E0000" Offset="0.897"/>
+                        <GradientStop Color="#FF4B0000" Offset="0.701"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleX="5" AngleY="0"/>
+                        <RotateTransform Angle="13"/>
+                        <TranslateTransform X="0" Y="0"/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+            <Ellipse RenderTransformOrigin="0.5,0.5" Margin="3,0,0,15" Stroke="#FF000000">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleX="5" AngleY="0"/>
+                        <RotateTransform Angle="13"/>
+                        <TranslateTransform X="0" Y="0"/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF000000" Offset="0.362"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.884"/>
+                        <GradientStop Color="#FF000000" Offset="0.996"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.188"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.094"/>
+                        <GradientStop Color="#FF6C0D0D" Offset="0.491"/>
+                        <GradientStop Color="#FFAA1414" Offset="0.804"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+        <Grid Margin="-53,0,63,-104.5" VerticalAlignment="Bottom" Height="148" Grid.Column="1" Grid.ColumnSpan="2">
+            <Ellipse RenderTransformOrigin="0.5,0.5" Margin="0,15,3,0" Stroke="#FF000000">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF000000" Offset="0.964"/>
+                        <GradientStop Color="#FFFF0000" Offset="0.513"/>
+                        <GradientStop Color="#FF9E0000" Offset="0.897"/>
+                        <GradientStop Color="#FF4B0000" Offset="0.701"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleX="5" AngleY="0"/>
+                        <RotateTransform Angle="13"/>
+                        <TranslateTransform X="0" Y="0"/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+            <Ellipse RenderTransformOrigin="0.5,0.5" Margin="3,0,0,15" Stroke="#FF000000">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleX="5" AngleY="0"/>
+                        <RotateTransform Angle="13"/>
+                        <TranslateTransform X="0" Y="0"/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF000000" Offset="0.362"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.884"/>
+                        <GradientStop Color="#FF000000" Offset="0.996"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.188"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.094"/>
+                        <GradientStop Color="#FF6C0D0D" Offset="0.491"/>
+                        <GradientStop Color="#FFAA1414" Offset="0.804"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+        <Grid Margin="56,-85.5,184,0" VerticalAlignment="Top" Height="148">
+            <Ellipse RenderTransformOrigin="0.5,0.5" Margin="0,15,3,0" Stroke="#FF000000">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF000000" Offset="0.964"/>
+                        <GradientStop Color="#FFFF0000" Offset="0.513"/>
+                        <GradientStop Color="#FF9E0000" Offset="0.897"/>
+                        <GradientStop Color="#FF4B0000" Offset="0.701"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleX="5" AngleY="0"/>
+                        <RotateTransform Angle="13"/>
+                        <TranslateTransform X="0" Y="0"/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+            <Ellipse RenderTransformOrigin="0.5,0.5" Margin="3,0,0,15" Stroke="#FF000000">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleX="5" AngleY="0"/>
+                        <RotateTransform Angle="13"/>
+                        <TranslateTransform X="0" Y="0"/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF000000" Offset="0.362"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.884"/>
+                        <GradientStop Color="#FF000000" Offset="0.996"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.188"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.094"/>
+                        <GradientStop Color="#FF6C0D0D" Offset="0.491"/>
+                        <GradientStop Color="#FFAA1414" Offset="0.804"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Margin="-184,4.5,0,0" Width="195" VerticalAlignment="Top" Height="148">
+            <Ellipse RenderTransformOrigin="0.5,0.5" Margin="0,15,3,0" Stroke="#FF000000">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF000000" Offset="0.964"/>
+                        <GradientStop Color="#FFFF0000" Offset="0.513"/>
+                        <GradientStop Color="#FF9E0000" Offset="0.897"/>
+                        <GradientStop Color="#FF4B0000" Offset="0.701"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleX="5" AngleY="0"/>
+                        <RotateTransform Angle="13"/>
+                        <TranslateTransform X="0" Y="0"/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+            <Ellipse RenderTransformOrigin="0.5,0.5" Margin="3,0,0,15" Stroke="#FF000000">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleX="5" AngleY="0"/>
+                        <RotateTransform Angle="13"/>
+                        <TranslateTransform X="0" Y="0"/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF000000" Offset="0.362"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.884"/>
+                        <GradientStop Color="#FF000000" Offset="0.996"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.188"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.094"/>
+                        <GradientStop Color="#FF6C0D0D" Offset="0.491"/>
+                        <GradientStop Color="#FFAA1414" Offset="0.804"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+        <Rectangle Opacity="0.8" RenderTransformOrigin="0.5,0.5" Margin="2,60.5,-12,238.5" Stroke="#FF000000" Fill="#FF000000" Grid.Column="1" Grid.ColumnSpan="2">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <SkewTransform AngleX="14" AngleY="-1"/>
+                    <RotateTransform Angle="24"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Grid Margin="2.7,74.5,-3,0" VerticalAlignment="Top" Height="148" Grid.Column="2">
+            <Ellipse RenderTransformOrigin="0.5,0.5" Margin="0,15,3,0" Stroke="#FF000000">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF000000" Offset="0.964"/>
+                        <GradientStop Color="#FFFF0000" Offset="0.513"/>
+                        <GradientStop Color="#FF9E0000" Offset="0.897"/>
+                        <GradientStop Color="#FF4B0000" Offset="0.701"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleX="5" AngleY="0"/>
+                        <RotateTransform Angle="13"/>
+                        <TranslateTransform X="0" Y="0"/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+            <Ellipse RenderTransformOrigin="0.5,0.5" Margin="3,0,0,15" Stroke="#FF000000">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleX="5" AngleY="0"/>
+                        <RotateTransform Angle="13"/>
+                        <TranslateTransform X="0" Y="0"/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF000000" Offset="0.362"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.884"/>
+                        <GradientStop Color="#FF000000" Offset="0.996"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.188"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.094"/>
+                        <GradientStop Color="#FF6C0D0D" Offset="0.491"/>
+                        <GradientStop Color="#FFAA1414" Offset="0.804"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+        <Rectangle Opacity="0.8" RenderTransformOrigin="0.5,0.5" Margin="0,0,-177,-28.5" VerticalAlignment="Bottom" Height="181" Stroke="#FF000000" Fill="#FF000000" HorizontalAlignment="Right" Width="215" Grid.Column="2">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <SkewTransform AngleX="14" AngleY="-1"/>
+                    <RotateTransform Angle="24"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Grid Margin="0,0,-169.5,-13" VerticalAlignment="Bottom" Height="148" HorizontalAlignment="Right" Width="195" Grid.Column="2">
+            <Ellipse RenderTransformOrigin="0.5,0.5" Margin="0,15,3,0" Stroke="#FF000000">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF000000" Offset="0.964"/>
+                        <GradientStop Color="#FFFF0000" Offset="0.513"/>
+                        <GradientStop Color="#FF9E0000" Offset="0.897"/>
+                        <GradientStop Color="#FF4B0000" Offset="0.701"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleX="5" AngleY="0"/>
+                        <RotateTransform Angle="13"/>
+                        <TranslateTransform X="0" Y="0"/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+            <Ellipse RenderTransformOrigin="0.5,0.5" Margin="3,0,0,15" Stroke="#FF000000">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleX="5" AngleY="0"/>
+                        <RotateTransform Angle="13"/>
+                        <TranslateTransform X="0" Y="0"/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF000000" Offset="0.362"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.884"/>
+                        <GradientStop Color="#FF000000" Offset="0.996"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.188"/>
+                        <GradientStop Color="#FFF21E1E" Offset="0.094"/>
+                        <GradientStop Color="#FF6C0D0D" Offset="0.491"/>
+                        <GradientStop Color="#FFAA1414" Offset="0.804"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+        <Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Nightclub BTN" FontSize="24" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" HorizontalAlignment="Right" Margin="0,-16,-30,0" Content="x" Panel.ZIndex="0" IsCancel="False" VerticalAlignment="Top" Height="50" x:Name="btnExit" Width="50" Grid.Column="2">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.75" ScaleY="0.8"/>
+                    <SkewTransform AngleX="22" AngleY="2"/>
+                    <RotateTransform Angle="23"/>
+                    <TranslateTransform X="-29" Y="43"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Button.BitmapEffectInput>
+                <BitmapEffectInput/>
+            </Button.BitmapEffectInput>
+            <Button.BitmapEffect>
+                <OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
+            </Button.BitmapEffect>
+        </Button>
+        <Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Nightclub BTN" FontSize="24" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" HorizontalAlignment="Right" Margin="0,-34,10.5,0" Content="?" Panel.ZIndex="0" IsCancel="False" VerticalAlignment="Top" Height="50" x:Name="btnAbout" Width="50" Grid.Column="2">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.75" ScaleY="0.8"/>
+                    <SkewTransform AngleX="22" AngleY="2"/>
+                    <RotateTransform Angle="23"/>
+                    <TranslateTransform X="-29" Y="43"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Button.BitmapEffectInput>
+                <BitmapEffectInput/>
+            </Button.BitmapEffectInput>
+            <Button.BitmapEffect>
+                <OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
+            </Button.BitmapEffect>
+        </Button>
+        <Label Margin="-1,186.5,20,175" Content="Damas" FontSize="120" RenderTransformOrigin="0.5,0.5" FontFamily="Shadowed Serif" FontWeight="Bold" Opacity="0.5" Foreground="#FF000000" Background="{x:Null}" BorderBrush="{x:Null}" ClipToBounds="False" Grid.ColumnSpan="3">
+            <Label.BitmapEffect>
+                <DropShadowBitmapEffect/>
+            </Label.BitmapEffect>
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <SkewTransform AngleX="13" AngleY="0"/>
+                    <RotateTransform Angle="23"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Nightclub BTN" FontSize="24" FontStretch="Condensed" FontStyle="Italic" FontWeight="ExtraBold" Cursor="Hand" HorizontalAlignment="Stretch" Margin="208,173,-38.7,0" Content="Iniciar partida" Panel.ZIndex="0" IsCancel="False" VerticalAlignment="Top" Height="50" x:Name="btnStart" Grid.ColumnSpan="2">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.75" ScaleY="0.8"/>
+                    <SkewTransform AngleX="-10" AngleY="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform X="-29" Y="43"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Button.BitmapEffectInput>
+                <BitmapEffectInput/>
+            </Button.BitmapEffectInput>
+            <Button.BitmapEffect>
+                <OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
+            </Button.BitmapEffect>
+        </Button>
+        <Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Nightclub BTN" FontSize="24" FontStretch="Condensed" FontStyle="Italic" FontWeight="ExtraBold" Cursor="Hand" HorizontalAlignment="Stretch" Margin="183.5,0,-14.2,130.5" Content="Jugar en red" Panel.ZIndex="0" IsCancel="False" VerticalAlignment="Bottom" Height="50" x:Name="btnNet" Grid.ColumnSpan="2">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.75" ScaleY="0.8"/>
+                    <SkewTransform AngleX="13" AngleY="0"/>
+                    <RotateTransform Angle="23"/>
+                    <TranslateTransform X="-29" Y="43"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Button.BitmapEffectInput>
+                <BitmapEffectInput/>
+            </Button.BitmapEffectInput>
+            <Button.BitmapEffect>
+                <OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
+            </Button.BitmapEffect>
+        </Button>
+        <Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Nightclub BTN" FontSize="24" FontStretch="Condensed" FontStyle="Italic" FontWeight="ExtraBold" Cursor="Hand" Margin="-208.5,65.5,-57.2,0" VerticalAlignment="Top" Height="50" Content="Añadir usuario" Panel.ZIndex="0" IsCancel="False" x:Name="btnAdd" Grid.Column="1">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.75" ScaleY="0.8"/>
+                    <SkewTransform AngleX="13" AngleY="0"/>
+                    <RotateTransform Angle="23"/>
+                    <TranslateTransform X="-29" Y="43"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Button.BitmapEffectInput>
+                <BitmapEffectInput/>
+            </Button.BitmapEffectInput>
+            <Button.BitmapEffect>
+                <OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
+            </Button.BitmapEffect>
+        </Button>
     </Grid>
 </Window>
