@@ -57,6 +57,16 @@
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
+    <Resource Include="Presentation\Anand%28IND%29.jpg" />
+    <Resource Include="Presentation\Fischer%28USA%29.jpg" />
+    <Resource Include="Presentation\Karpov%28URRS%29.jpg" />
+    <Resource Include="Presentation\Kasimdzhanov%28UZB%29.jpg" />
+    <Resource Include="Presentation\Kasparov%28RUS%29.jpg" />
+    <Resource Include="Presentation\Khalifman%28RUS%29.jpg" />
+    <Resource Include="Presentation\Kramnik%28RUS%29.jpg" />
+    <Resource Include="Presentation\Ponomariov%28UCR%29.jpg" />
+    <Resource Include="Presentation\Spassky%28URRS%29.jpg" />
+    <Resource Include="Presentation\Topalov%28BUL%29.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -88,8 +98,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+      <DependentUpon>App.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -128,8 +138,8 @@
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -150,4 +160,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Import Project="SubsetFont.targets" />
 </Project>
