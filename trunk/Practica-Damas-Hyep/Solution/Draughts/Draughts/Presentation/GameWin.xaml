@@ -962,7 +962,7 @@
     	</Grid>
     	<Rectangle Margin="14,8,228,8" Stroke="#FF000000" Fill="#FFD8D8D8" Opacity="0.7" Width="550" Height="550"/>
     	<Rectangle Fill="#FFD8D8D8" Opacity="0.7" Margin="0,8,11,8" Width="194.86" Stroke="#FF000000" HorizontalAlignment="Right"/>
-    	<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Nightclub BTN" FontSize="24" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" HorizontalAlignment="Right" Margin="0,-6,-16,0" Content="x" Panel.ZIndex="0" IsCancel="False" VerticalAlignment="Top" Height="50" x:Name="btnExit" Width="50">
+    	<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="36" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" HorizontalAlignment="Right" Margin="0,-6,-16,0" Content="x" Panel.ZIndex="0" IsCancel="False" VerticalAlignment="Top" Height="50" x:Name="btnExit" Width="50">
     		<Button.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform ScaleX="0.6855767280510161" ScaleY="0.86282779414206678"/>
@@ -978,7 +978,7 @@
     			<OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
     		</Button.BitmapEffect>
     	</Button>
-    	<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Nightclub BTN" FontSize="24" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" HorizontalAlignment="Right" Margin="0,-24,24.5,0" Content="?" Panel.ZIndex="0" IsCancel="False" VerticalAlignment="Top" Height="50" x:Name="btnAbout" Width="50">
+    	<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="36" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" HorizontalAlignment="Right" Margin="0,-24,24.5,0" Content="?" Panel.ZIndex="0" IsCancel="False" VerticalAlignment="Top" Height="50" x:Name="btnAbout" Width="50">
     		<Button.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform ScaleX="0.6855767280510161" ScaleY="0.86282779414206678"/>
