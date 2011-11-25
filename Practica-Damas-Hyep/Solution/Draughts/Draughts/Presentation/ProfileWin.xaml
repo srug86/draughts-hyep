@@ -1264,7 +1264,7 @@
 		</Grid>
     	<Grid Margin="8,8,8,8"/>
     	<UniformGrid Margin="20,8,20,8" Rows="1" Columns="2" Background="#FFDBD4D4" Opacity="0.9">
-    		<TextBox Width="Auto" Height="Auto" Text="Nuevo usuario" TextWrapping="Wrap" VerticalAlignment="Center" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="56" FontWeight="Bold" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Background="{x:Null}">
+    		<TextBox Width="Auto" Height="Auto" Text="Añadir usuario" TextWrapping="Wrap" VerticalAlignment="Center" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="56" FontWeight="Bold" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Background="{x:Null}">
     			<TextBox.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1285,7 +1285,7 @@
     			</TextBox.RenderTransform>
     		</TextBox>
     	</UniformGrid>
-    	<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="1" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="36" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" HorizontalAlignment="Right" Margin="0,-4,-14,0" Content="x" Panel.ZIndex="0" IsCancel="False" VerticalAlignment="Top" Height="50" x:Name="btnExit" Width="50" d:LayoutOverrides="GridBox">
+    	<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="1" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="36" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" HorizontalAlignment="Right" Margin="0,-4,-14,0" Content="X" Panel.ZIndex="0" IsCancel="False" VerticalAlignment="Top" Height="50" x:Name="btnExit" Width="50" d:LayoutOverrides="GridBox">
     		<Button.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform ScaleX="0.75" ScaleY="0.8"/>
