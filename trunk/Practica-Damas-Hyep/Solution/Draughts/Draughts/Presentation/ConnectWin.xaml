@@ -968,23 +968,11 @@
 				</Grid>
 			</Grid>
 		</Grid>
-		<Grid Margin="8,6,8,8">
-			<Button Margin="8,8,8,8" Content="Atrás" FontFamily="Tempus Sans ITC" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
-				<Button.RenderTransform>
-					<TransformGroup>
-						<ScaleTransform ScaleX="1.5" ScaleY="1"/>
-						<SkewTransform AngleX="0" AngleY="0"/>
-						<RotateTransform Angle="-8"/>
-						<TranslateTransform X="10" Y="-10"/>
-					</TransformGroup>
-				</Button.RenderTransform>
-			</Button>
-		</Grid>
 		<Grid Margin="8,6,8,8" Grid.Column="1">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="0.20*"/>
-				<RowDefinition Height="0.30*"/>
-				<RowDefinition Height="0.50*"/>
+				<RowDefinition Height="0.20*"/>
+				<RowDefinition Height="0.60*"/>
 			</Grid.RowDefinitions>
 			<Rectangle Opacity="0.9" RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Fill="#FFE8E4E4" Stroke="#FF000000" StrokeThickness="0">
 				<Rectangle.RenderTransform>
@@ -1018,6 +1006,110 @@
 					</TextBox.RenderTransform>
 				</TextBox>
 			</UniformGrid>
+			<Grid Margin="8,8,21.5,8" Grid.Row="1" Background="#FFE5E5E5" Opacity="0.9">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="0.50*"/>
+					<RowDefinition Height="0.50*"/>
+				</Grid.RowDefinitions>
+				<Grid Margin="0,0,0,0">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="0.32*"/>
+						<ColumnDefinition Width="0.38*"/>
+						<ColumnDefinition Width="0.3*"/>
+					</Grid.ColumnDefinitions>
+					<TextBox Margin="8,8,8,8" Grid.Column="1" Text="4000" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" HorizontalAlignment="Stretch" FontFamily="Courier New"/>
+					<Label Margin="8,8,8,8" Content="Puerto:" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+						<Label.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1" ScaleY="1"/>
+								<SkewTransform AngleX="0" AngleY="0"/>
+								<RotateTransform Angle="-5"/>
+								<TranslateTransform X="0" Y="-2"/>
+							</TransformGroup>
+						</Label.RenderTransform>
+					</Label>
+					<Button OpacityMask="{x:Null}" Grid.Column="2" ClipToBounds="False" Opacity="0.8" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="20" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" Margin="1,1,1,1" Content="Crear partida" Panel.ZIndex="0" IsCancel="False" x:Name="btnCreate" HorizontalAlignment="Left" Width="Auto">
+						<Button.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1" ScaleY="1"/>
+								<SkewTransform AngleX="0" AngleY="0"/>
+								<RotateTransform Angle="8"/>
+								<TranslateTransform X="10" Y="0"/>
+							</TransformGroup>
+						</Button.RenderTransform>
+						<Button.BitmapEffectInput>
+							<BitmapEffectInput/>
+						</Button.BitmapEffectInput>
+						<Button.BitmapEffect>
+							<OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
+						</Button.BitmapEffect>
+					</Button>
+				</Grid>
+				<Grid Margin="0,0,0,0" Grid.Row="1">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="0.32*"/>
+						<ColumnDefinition Width="0.38*"/>
+						<ColumnDefinition Width="0.3*"/>
+					</Grid.ColumnDefinitions>
+					<TextBox Margin="8,8,8,8" Grid.Column="1" Text="localhost" TextWrapping="Wrap" FontSize="16" VerticalAlignment="Center" FontFamily="Courier New"/>
+					<Label Margin="8,8,8,8" Content="Dirección IP:" VerticalAlignment="Center" FontFamily="Tempus Sans ITC" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
+						<Label.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1.2" ScaleY="1.3"/>
+								<SkewTransform AngleX="0" AngleY="0"/>
+								<RotateTransform Angle="-5"/>
+								<TranslateTransform X="18" Y="0"/>
+							</TransformGroup>
+						</Label.RenderTransform>
+					</Label>
+					<Button OpacityMask="{x:Null}" Grid.Column="2" ClipToBounds="False" Opacity="0.8" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="12" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" Margin="0,0,20.359,2" Content="Unirme a partida" Panel.ZIndex="0" IsCancel="False" x:Name="btnJoin" Width="Auto" d:LayoutOverrides="Width">
+						<Button.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1.2" ScaleY="1"/>
+								<SkewTransform AngleX="0" AngleY="0"/>
+								<RotateTransform Angle="8"/>
+								<TranslateTransform X="10" Y="10"/>
+							</TransformGroup>
+						</Button.RenderTransform>
+						<Button.BitmapEffectInput>
+							<BitmapEffectInput/>
+						</Button.BitmapEffectInput>
+						<Button.BitmapEffect>
+							<OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
+						</Button.BitmapEffect>
+					</Button>
+				</Grid>
+			</Grid>
+			<Grid Margin="8,8,8,8" Grid.Row="2" Background="#FFE5E5E5" Opacity="0.9">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="0.80*"/>
+					<RowDefinition Height="0.20*"/>
+				</Grid.RowDefinitions>
+				<Grid Margin="8,8,8,8" Grid.Row="1">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.80*"/>
+					<ColumnDefinition Width="0.20*"/>
+				</Grid.ColumnDefinitions>
+					<TextBox Margin="8,8,8,8" Text="" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Center" FontFamily="Tempus Sans ITC" FontWeight="Bold"/>
+					<Button OpacityMask="{x:Null}" Grid.Column="1" ClipToBounds="False" Opacity="0.8" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="16" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" Margin="0,0,0,2.04" Content="Enviar" Panel.ZIndex="0" IsCancel="False" x:Name="btnSend" Width="Auto" d:LayoutOverrides="Width" HorizontalAlignment="Left">
+						<Button.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1.8" ScaleY="0.8"/>
+								<SkewTransform AngleX="0" AngleY="0"/>
+								<RotateTransform Angle="8"/>
+								<TranslateTransform X="25" Y="5"/>
+							</TransformGroup>
+						</Button.RenderTransform>
+						<Button.BitmapEffectInput>
+							<BitmapEffectInput/>
+						</Button.BitmapEffectInput>
+						<Button.BitmapEffect>
+							<OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
+						</Button.BitmapEffect>
+					</Button>
+				</Grid>
+				<FlowDocumentPageViewer Margin="8,8,8,8" Background="#00B4AAAA"/>
+			</Grid>
 		</Grid>
 		<Grid Margin="8,6,8,8" Grid.Column="2">
 			<Grid.RowDefinitions>
@@ -1028,7 +1120,7 @@
 				<RowDefinition Height="0.15*"/>
 			</Grid.RowDefinitions>
 			<Rectangle Margin="8,8,8,8" Fill="#FFE8E4E4" Stroke="#FF000000" Grid.RowSpan="5" Opacity="0.9" StrokeThickness="0"/>
-			<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Text="Kasparov" TextWrapping="Wrap">
+			<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Text="Jugador 1" TextWrapping="Wrap" Background="{x:Null}">
 				<TextBox.RenderTransform>
 					<TransformGroup>
 						<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1038,7 +1130,7 @@
 					</TransformGroup>
 				</TextBox.RenderTransform>
 			</TextBox>
-			<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Grid.Row="4" Text="Karpov" TextWrapping="Wrap">
+			<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Grid.Row="4" Text="Jugador 2" TextWrapping="Wrap" Background="{x:Null}">
 				<TextBox.RenderTransform>
 					<TransformGroup>
 						<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1048,7 +1140,7 @@
 					</TransformGroup>
 				</TextBox.RenderTransform>
 			</TextBox>
-			<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="1" Source="Kasparov(RUS).jpg">
+			<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="1" Source="unknow.jpg">
 				<Image.RenderTransform>
 					<TransformGroup>
 						<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1058,7 +1150,7 @@
 					</TransformGroup>
 				</Image.RenderTransform>
 			</Image>
-			<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="3" Source="Karpov(URRS).jpg">
+			<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="3" Source="unknow.jpg">
 				<Image.RenderTransform>
 					<TransformGroup>
 						<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1068,15 +1160,39 @@
 					</TransformGroup>
 				</Image.RenderTransform>
 			</Image>
-			<Button Content="Empezar" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2">
+			<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.8" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="24" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" Margin="18,-9.9,40.657,19.9" Content="Empezar" Panel.ZIndex="0" IsCancel="False" x:Name="btnBegin" Width="Auto" d:LayoutOverrides="Width" Grid.Row="2">
 				<Button.RenderTransform>
 					<TransformGroup>
-						<ScaleTransform ScaleX="1.5" ScaleY="1"/>
+						<ScaleTransform ScaleX="1.2" ScaleY="1"/>
 						<SkewTransform AngleX="0" AngleY="0"/>
 						<RotateTransform Angle="8"/>
-						<TranslateTransform X="10" Y="-10"/>
+						<TranslateTransform X="10" Y="10"/>
 					</TransformGroup>
 				</Button.RenderTransform>
+				<Button.BitmapEffectInput>
+					<BitmapEffectInput/>
+				</Button.BitmapEffectInput>
+				<Button.BitmapEffect>
+					<OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
+				</Button.BitmapEffect>
+			</Button>
+		</Grid>
+		<Grid Margin="8,6,8,8">
+			<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.8" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="24" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" Margin="0,0,-15.248,0" Content="Atrás" Panel.ZIndex="0" IsCancel="False" x:Name="btnBack" Width="Auto" d:LayoutOverrides="Width" VerticalAlignment="Center" Height="46.2">
+				<Button.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleX="1.2" ScaleY="1"/>
+						<SkewTransform AngleX="0" AngleY="0"/>
+						<RotateTransform Angle="-8"/>
+						<TranslateTransform X="0" Y="10"/>
+					</TransformGroup>
+				</Button.RenderTransform>
+				<Button.BitmapEffectInput>
+					<BitmapEffectInput/>
+				</Button.BitmapEffectInput>
+				<Button.BitmapEffect>
+					<OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
+				</Button.BitmapEffect>
 			</Button>
 		</Grid>
 		<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="36" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" Margin="50,-43,10.857,0" Content="X" Panel.ZIndex="0" IsCancel="False" VerticalAlignment="Top" Height="50" x:Name="btnExit">
