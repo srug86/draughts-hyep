@@ -67,6 +67,7 @@
     <Resource Include="Presentation\Ponomariov%28UCR%29.jpg" />
     <Resource Include="Presentation\Spassky%28URRS%29.jpg" />
     <Resource Include="Presentation\Topalov%28BUL%29.jpg" />
+    <Resource Include="Presentation\unknow.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

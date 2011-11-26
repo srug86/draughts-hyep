@@ -1080,6 +1080,16 @@
     					</TransformGroup>
     				</Rectangle.RenderTransform>
     			</Rectangle>
+    			<Image Margin="8,8,8,8" Source="unknow.jpg" RenderTransformOrigin="0.5,0.5">
+    				<Image.RenderTransform>
+    					<TransformGroup>
+    						<ScaleTransform ScaleX="1" ScaleY="1"/>
+    						<SkewTransform AngleX="0" AngleY="0"/>
+    						<RotateTransform Angle="-5"/>
+    						<TranslateTransform X="0" Y="0"/>
+    					</TransformGroup>
+    				</Image.RenderTransform>
+    			</Image>
     			<UniformGrid Margin="8,0,8,8" Grid.Row="1" Rows="1" Columns="2">
     				<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="1" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="36" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" Content="Cancelar" Panel.ZIndex="0" IsCancel="False" x:Name="btnCancel" Width="Auto" Height="Auto">
     					<Button.RenderTransform>
@@ -1114,16 +1124,6 @@
     					</Button.BitmapEffect>
     				</Button>
     			</UniformGrid>
-    			<Image Margin="8,8,8,8" Source="Fischer(USA).jpg" RenderTransformOrigin="0.5,0.5">
-    				<Image.RenderTransform>
-    					<TransformGroup>
-    						<ScaleTransform ScaleX="1" ScaleY="1"/>
-    						<SkewTransform AngleX="0" AngleY="0"/>
-    						<RotateTransform Angle="-5"/>
-    						<TranslateTransform X="0" Y="0"/>
-    					</TransformGroup>
-    				</Image.RenderTransform>
-    			</Image>
 			</Grid>
     		<Grid Margin="8,8,8,8">
     			<Grid.RowDefinitions>
@@ -1250,7 +1250,7 @@
     					</Image.RenderTransform>
     				</Image>
     			</UniformGrid>
-    			<TextBox Margin="8,8,8,8" Text="Bobby Fischer" TextWrapping="Wrap" FontFamily="Tempus Sans ITC" FontSize="36" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderThickness="3,3,3,3" Opacity="0.9">
+    			<TextBox Margin="8,8,8,8" Text="Nombre" TextWrapping="Wrap" FontFamily="Tempus Sans ITC" FontSize="36" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderThickness="3,3,3,3" Opacity="0.9">
     				<TextBox.RenderTransform>
     					<TransformGroup>
     						<ScaleTransform ScaleX="1" ScaleY="1"/>
