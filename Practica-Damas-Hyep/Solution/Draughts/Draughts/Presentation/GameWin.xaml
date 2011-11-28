@@ -1,7 +1,8 @@
-﻿<Window x:Class="Draughts.Presentation.GameWin"
+﻿<Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="GameWin" Height="600" Width="800">
+    x:Class="Draughts.Presentation.GameWin"
+    Title="GameWin" Height="600" Width="800" WindowStyle="None" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
     <Grid>
     	<Rectangle RenderTransformOrigin="0.5,0.5" Margin="145.891,84.509,0,0" Stroke="#FF000000" Opacity="0.8" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215.2" Height="182.223">
     		<Rectangle.Fill>
@@ -962,6 +963,133 @@
     	</Grid>
     	<Rectangle Margin="14,8,228,8" Stroke="#FF000000" Fill="#FFD8D8D8" Opacity="0.7" Width="550" Height="550"/>
     	<Rectangle Fill="#FFD8D8D8" Opacity="0.7" Margin="0,8,11,8" Width="194.86" Stroke="#FF000000" HorizontalAlignment="Right"/>
+    	<UniformGrid Margin="29.6,21.5,242.4,24.5" Width="520" Height="520" Background="#FFFFFFFF" Grid.Row="0" Rows="8" Columns="8">
+    		<Image OpacityMask="#FF000000" Width="65" Height="65" Source="..\white.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\white.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\white.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\white.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\white.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\white.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\white.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\white.png"/>
+    		<Image Width="65" Height="65" Source="..\white.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\white.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\white.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\white.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="empty.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="empty.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="empty.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="empty.png"/>
+    		<Image Width="65" Height="65" Source="empty.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\move.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\move.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="empty.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\onRed.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png"/>
+    		<Image Width="65" Height="65" Source="..\red.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png"/>
+    	</UniformGrid>
+    	<Grid Width="180" HorizontalAlignment="Right" Margin="0,18.5,17.238,11.5">
+    		<Grid.RowDefinitions>
+    			<RowDefinition Height="0.10*"/>
+    			<RowDefinition Height="0.15*"/>
+    			<RowDefinition Height="0.25*"/>
+				<RowDefinition Height="0.10*"/>
+    			<RowDefinition Height="0.25*"/>
+    			<RowDefinition Height="0.15*"/>
+    		</Grid.RowDefinitions>
+    		<Rectangle Margin="8,23.8,8,20.3" Fill="#FFE8E4E4" Stroke="#FF000000" Grid.RowSpan="5" Opacity="0.9" StrokeThickness="0" Grid.Row="1"/>
+    		<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" Grid.Row="1" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Text="Jugador 1" TextWrapping="Wrap" Background="{x:Null}">
+    			<TextBox.RenderTransform>
+    				<TransformGroup>
+    					<ScaleTransform ScaleX="1" ScaleY="1"/>
+    					<SkewTransform AngleX="0" AngleY="0"/>
+    					<RotateTransform Angle="5"/>
+    					<TranslateTransform X="0" Y="15"/>
+    				</TransformGroup>
+    			</TextBox.RenderTransform>
+    		</TextBox>
+    		<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Grid.Row="5" Text="Jugador 2" TextWrapping="Wrap" Background="{x:Null}">
+    			<TextBox.RenderTransform>
+    				<TransformGroup>
+    					<ScaleTransform ScaleX="1" ScaleY="1"/>
+    					<SkewTransform AngleX="0" AngleY="0"/>
+    					<RotateTransform Angle="-5"/>
+    					<TranslateTransform X="0" Y="-15"/>
+    				</TransformGroup>
+    			</TextBox.RenderTransform>
+    		</TextBox>
+    		<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="2" Source="unknow.jpg">
+    			<Image.RenderTransform>
+    				<TransformGroup>
+    					<ScaleTransform ScaleX="1" ScaleY="1"/>
+    					<SkewTransform AngleX="0" AngleY="0"/>
+    					<RotateTransform Angle="10"/>
+    					<TranslateTransform X="0" Y="0"/>
+    				</TransformGroup>
+    			</Image.RenderTransform>
+    		</Image>
+    		<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="4" Source="unknow.jpg">
+    			<Image.RenderTransform>
+    				<TransformGroup>
+    					<ScaleTransform ScaleX="1" ScaleY="1"/>
+    					<SkewTransform AngleX="0" AngleY="0"/>
+    					<RotateTransform Angle="-10"/>
+    					<TranslateTransform X="0" Y="0"/>
+    				</TransformGroup>
+    			</Image.RenderTransform>
+    		</Image>
+    		<Label Margin="8,8,8,8" Content="Juegan rojas" Grid.Row="3" FontFamily="Tempus Sans ITC" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Width="Auto">
+    			<Label.RenderTransform>
+    				<TransformGroup>
+    					<ScaleTransform ScaleX="1" ScaleY="1"/>
+    					<SkewTransform AngleX="0" AngleY="0"/>
+    					<RotateTransform Angle="-5"/>
+    					<TranslateTransform X="0" Y="0"/>
+    				</TransformGroup>
+    			</Label.RenderTransform>
+    		</Label>
+    	</Grid>
     	<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="36" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" HorizontalAlignment="Right" Margin="0,-6,-16,0" Content="X" Panel.ZIndex="0" IsCancel="False" VerticalAlignment="Top" Height="50" x:Name="btnExit" Width="50">
     		<Button.RenderTransform>
     			<TransformGroup>
@@ -994,71 +1122,5 @@
     			<OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
     		</Button.BitmapEffect>
     	</Button>
-    	<UniformGrid Margin="29.6,21.5,242.4,24.5" Width="520" Height="520" Background="#FFFFFFFF" Grid.Row="0" Rows="8" Columns="8">
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FF000000" Stroke="#FF000000" Width="65" Height="65"/>
-    	</UniformGrid>
     </Grid>
 </Window>
