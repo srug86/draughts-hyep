@@ -532,7 +532,7 @@
                 </Ellipse.Fill>
             </Ellipse>
         </Grid>
-        <Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="36" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" HorizontalAlignment="Right" Margin="0,-16,-30,0" Content="X" Panel.ZIndex="0" IsCancel="False" VerticalAlignment="Top" Height="50" x:Name="btnExit" Width="50" Grid.Column="2">
+        <Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="36" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" HorizontalAlignment="Right" Margin="0,-16,-30,0" Content="X" Panel.ZIndex="0" IsCancel="False" VerticalAlignment="Top" Height="50" x:Name="btnExit" Width="50" Grid.Column="2" Click="btnExit_Click">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="0.75" ScaleY="0.8"/>
@@ -609,7 +609,7 @@
                 <OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
             </Button.BitmapEffect>
         </Button>
-        <Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="30" FontStretch="Condensed" FontStyle="Normal" FontWeight="Bold" Cursor="Hand" Margin="-208.5,65.5,-57.2,0" VerticalAlignment="Top" Height="50" Content="Añadir usuario" Panel.ZIndex="0" IsCancel="False" x:Name="btnAdd" Grid.Column="1">
+        <Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="30" FontStretch="Condensed" FontStyle="Normal" FontWeight="Bold" Cursor="Hand" Margin="-208.5,65.5,-57.2,0" VerticalAlignment="Top" Height="50" Content="Añadir usuario" Panel.ZIndex="0" IsCancel="False" x:Name="btnAdd" Grid.Column="1" Click="btnAdd_Click">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="0.75" ScaleY="0.8"/>
