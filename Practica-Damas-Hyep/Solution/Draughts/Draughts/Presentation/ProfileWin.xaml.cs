@@ -18,9 +18,43 @@ namespace Draughts.Presentation
     /// </summary>
     public partial class ProfileWin : Window
     {
-        public ProfileWin()
+        InitWin init;
+
+        public ProfileWin(InitWin init)
         {
+            this.init = init;
             InitializeComponent();
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            init.Visibility = Visibility.Visible;
+            this.Close();
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            init.Visibility = Visibility.Visible;
+            this.Close();
+        }
+
+        private void Image0_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("Anand(IND).jpg"); }
+        private void Image1_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("Fischer(USA).jpg"); }
+        private void Image2_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("Karpov(URRS).jpg"); }
+        private void Image3_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("Kasimdzhanov(UZB).jpg"); }
+        private void Image4_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("Kasparov(RUS).jpg"); }
+        private void Image5_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("Kramnik(RUS).jpg"); }
+        private void Image6_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("Ponomariov(UCR).jpg"); }
+        private void Image7_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("Spassky(URRS).jpg"); }
+        private void Image8_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("Topalov(BUL).jpg"); }
+
+        private void loadImage(string path)
+        {
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(path, UriKind.RelativeOrAbsolute);
+            bitmap.EndInit();
+            imgProfile.Source = bitmap;
         }
     }
 }

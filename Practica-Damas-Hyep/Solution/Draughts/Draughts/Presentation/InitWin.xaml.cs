@@ -22,5 +22,17 @@ namespace Draughts.Presentation
         {
             InitializeComponent();
         }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            ProfileWin profile = new ProfileWin(this);
+            profile.Show();
+            this.Visibility = Visibility.Hidden;
+        }
     }
 }
