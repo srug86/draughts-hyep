@@ -1178,7 +1178,7 @@
 			</Button>
 		</Grid>
 		<Grid Margin="8,6,8,8">
-			<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.8" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="24" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" Margin="0,0,-15.248,0" Content="Atrás" Panel.ZIndex="0" IsCancel="False" x:Name="btnBack" Width="Auto" d:LayoutOverrides="Width" VerticalAlignment="Center" Height="46.2">
+			<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.8" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="24" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" Margin="0,0,-15.248,0" Content="Atrás" Panel.ZIndex="0" IsCancel="False" x:Name="btnBack" Width="Auto" d:LayoutOverrides="Width" VerticalAlignment="Center" Height="46.2" Click="btnBack_Click">
 				<Button.RenderTransform>
 					<TransformGroup>
 						<ScaleTransform ScaleX="1.2" ScaleY="1"/>
@@ -1195,7 +1195,7 @@
 				</Button.BitmapEffect>
 			</Button>
 		</Grid>
-		<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="36" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" Margin="50,-43,10.857,0" Content="X" Panel.ZIndex="0" IsCancel="False" VerticalAlignment="Top" Height="50" x:Name="btnExit">
+		<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="36" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" Margin="50,-43,10.857,0" Content="X" Panel.ZIndex="0" IsCancel="False" VerticalAlignment="Top" Height="50" x:Name="btnExit" Click="btnExit_Click">
 			<Button.RenderTransform>
 				<TransformGroup>
 					<ScaleTransform ScaleX="0.6855767280510161" ScaleY="0.86282779414206678"/>

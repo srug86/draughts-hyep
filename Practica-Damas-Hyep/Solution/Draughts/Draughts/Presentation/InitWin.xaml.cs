@@ -34,5 +34,12 @@ namespace Draughts.Presentation
             profile.Show();
             this.Visibility = Visibility.Hidden;
         }
+
+        private void btnNet_Click(object sender, RoutedEventArgs e)
+        {
+            ConnectWin connect = new ConnectWin(this);
+            connect.Show();
+            this.Visibility = Visibility.Hidden;
+        }
     }
 }

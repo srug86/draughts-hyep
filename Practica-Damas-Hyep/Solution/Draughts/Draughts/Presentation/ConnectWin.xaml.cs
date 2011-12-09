@@ -18,9 +18,24 @@ namespace Draughts.Presentation
     /// </summary>
     public partial class ConnectWin : Window
     {
-        public ConnectWin()
+        InitWin init;
+
+        public ConnectWin(InitWin init)
         {
+            this.init = init;
             InitializeComponent();
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            init.Visibility = Visibility.Visible;
+            this.Close();
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            init.Visibility = Visibility.Visible;
+            this.Close();
         }
     }
 }
