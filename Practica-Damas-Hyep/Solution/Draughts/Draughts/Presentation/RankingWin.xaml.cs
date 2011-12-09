@@ -22,5 +22,11 @@ namespace Draughts.Presentation
         {
             InitializeComponent();
         }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            //init.Visibility = Visibility.Visible;
+            this.Close();
+        }
     }
 }

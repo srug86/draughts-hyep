@@ -18,8 +18,10 @@ namespace Draughts.Presentation
     /// </summary>
     public partial class GameWin : Window
     {
-        public GameWin()
+        InitWin init;
+        public GameWin(InitWin init)
         {
+            this.init = init;
             InitializeComponent();
         }
     }

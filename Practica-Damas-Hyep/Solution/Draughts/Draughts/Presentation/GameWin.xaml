@@ -963,7 +963,7 @@
     	</Grid>
     	<Rectangle Margin="14,8,228,8" Stroke="#FF000000" Fill="#FFD8D8D8" Opacity="0.7" Width="550" Height="550"/>
     	<Rectangle Fill="#FFD8D8D8" Opacity="0.7" Margin="0,8,11,8" Width="194.86" Stroke="#FF000000" HorizontalAlignment="Right"/>
-    	<UniformGrid Margin="29.6,21.5,242.4,24.5" Width="520" Height="520" Background="#FFFFFFFF" Grid.Row="0" Rows="8" Columns="8">
+    	<UniformGrid Margin="29.6,21.5,242.4,24.5" Width="520" Height="520" Background="#FFB0926C" Grid.Row="0" Rows="8" Columns="8">
     		<Image OpacityMask="#FF000000" Width="65" Height="65" Source="..\white.png"/>
     		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
     		<Image Width="65" Height="65" Source="..\white.png"/>
