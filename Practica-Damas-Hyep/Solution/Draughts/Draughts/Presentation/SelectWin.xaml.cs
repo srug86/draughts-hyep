@@ -24,10 +24,6 @@ namespace Draughts.Presentation
         {
             this.init = init;
             InitializeComponent();
-            string file = @"c:\data.xml";
-            DataSet ds = new DataSet("Table");
-            ds.ReadXml(file);
-            //DG1.DataSource = ds.Tables[0].DefaultView;
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
