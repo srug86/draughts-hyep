@@ -41,5 +41,19 @@ namespace Draughts.Presentation
             connect.Show();
             this.Visibility = Visibility.Hidden;
         }
+
+        private void btnStart_Click(object sender, RoutedEventArgs e)
+        {
+            SelectWin select = new SelectWin(this);
+            select.Show();
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private void btnRanking_Click(object sender, RoutedEventArgs e)
+        {
+            RankingWin select = new RankingWin(this);
+            select.Show();
+            this.Visibility = Visibility.Hidden;
+        }
     }
 }

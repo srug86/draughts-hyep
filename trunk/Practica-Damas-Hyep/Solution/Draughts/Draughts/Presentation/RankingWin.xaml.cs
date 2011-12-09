@@ -18,14 +18,23 @@ namespace Draughts.Presentation
     /// </summary>
     public partial class RankingWin : Window
     {
-        public RankingWin()
+        InitWin init;
+
+        public RankingWin(InitWin init)
         {
+            this.init = init;
             InitializeComponent();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            //init.Visibility = Visibility.Visible;
+            init.Visibility = Visibility.Visible;
+            this.Close();
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            init.Visibility = Visibility.Visible;
             this.Close();
         }
     }
