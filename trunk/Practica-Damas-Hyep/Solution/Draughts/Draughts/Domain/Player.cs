@@ -25,23 +25,23 @@ namespace Draughts.Domain
             get { return avatar; }
             set { avatar = value; }
         }
-        private int ganadas;
-        public int Ganadas
+        private int wins;
+        public int Wins
         {
-            get { return ganadas; }
-            set { ganadas = value; }
+            get { return wins; }
+            set { wins = value; }
         }
-        private int empatadas;
-        public int Empatadas
+        private int draws;
+        public int Draws
         {
-            get { return empatadas; }
-            set { empatadas = value; }
+            get { return draws; }
+            set { draws = value; }
         }
-        private int perdidas;
-        public int Perdidas
+        private int loses;
+        public int Loses
         {
-            get { return perdidas; }
-            set { perdidas = value; }
+            get { return loses; }
+            set { loses = value; }
         }
 
         public Player(string name, string pwd, int avatar)
@@ -49,9 +49,9 @@ namespace Draughts.Domain
             this.name = name;
             this.pwd = pwd;
             this.avatar = avatar;
-            this.ganadas = 0;
-            this.empatadas = 0;
-            this.perdidas = 0;
+            this.wins = 0;
+            this.draws = 0;
+            this.loses = 0;
         }
         
     }
