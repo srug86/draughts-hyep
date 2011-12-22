@@ -4,7 +4,7 @@
     x:Class="Draughts.Presentation.SelectWin"
     Title="SelectWin" Height="600" Width="800" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 	<Window.Resources>
-		<XmlDataProvider x:Key="CustomersDS" Source="C:\data.xml"/>
+		<XmlDataProvider x:Key="CustomersDS"/>
 	</Window.Resources>
     <Grid>
         
