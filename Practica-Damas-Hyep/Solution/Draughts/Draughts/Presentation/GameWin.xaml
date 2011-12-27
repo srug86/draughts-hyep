@@ -964,70 +964,70 @@
     	<Rectangle Margin="14,8,228,8" Stroke="#FF000000" Fill="#FFD8D8D8" Opacity="0.7" Width="550" Height="550"/>
     	<Rectangle Fill="#FFD8D8D8" Opacity="0.7" Margin="0,8,11,8" Width="194.86" Stroke="#FF000000" HorizontalAlignment="Right"/>
     	<UniformGrid Margin="29.6,21.5,242.4,24.5" Width="520" Height="520" Background="#FFB0926C" Grid.Row="0" Rows="8" Columns="8">
-    		<Image OpacityMask="#FF000000" Width="65" Height="65" Source="..\white.png"/>
+    		<Image OpacityMask="#FF000000" Width="65" Height="65" Source="..\white.png" MouseUp="Click_8x1" />
     		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png"/>
+    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_8x3" />
     		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png"/>
+    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_8x5" />
     		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png"/>
-    		<Image Width="65" Height="65" Source="..\white.png"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png"/>
+    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_8x7" />
     		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
     		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="empty.png"/>
+    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_7x2" />
     		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="empty.png"/>
+    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_7x4" />
     		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="empty.png"/>
+    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_7x6" />
     		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="empty.png"/>
-    		<Image Width="65" Height="65" Source="empty.png"/>
+    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_7x8" />
+    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_6x1" />
     		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\move.png"/>
+    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_6x3" />
     		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\move.png"/>
+    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_6x5" />
     		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="empty.png"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\onRed.png"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png"/>
-    		<Image Width="65" Height="65" Source="..\red.png"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png"/>
+    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_6x7" />
     		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
     		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png"/>
+    		<Image Width="65" Height="65" Source="empty.png" MouseUp="Click_5x2" />
     		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png"/>
+    		<Image Width="65" Height="65" Source="empty.png" MouseUp="Click_5x4" />
     		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png"/>
+    		<Image Width="65" Height="65" Source="empty.png" MouseUp="Click_5x6" />
     		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png"/>
+    		<Image Width="65" Height="65" Source="empty.png" MouseUp="Click_5x8" />
+    		<Image Width="65" Height="65" Source="empty.png" MouseUp="Click_4x1" />
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="empty.png" MouseUp="Click_4x3" />
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="empty.png" MouseUp="Click_4x5" />
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="empty.png" MouseUp="Click_4x7" />
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_3x2" />
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="/Draughts;component/red.png" MouseUp="Click_3x4" />
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_3x6" />
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_3x8" />
+    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_2x1" />
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_2x3" />
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_2x5" />
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_2x7" />
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_1x2" />
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_1x4" />
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_1x6" />
+    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
+    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_1x8" />
     	</UniformGrid>
     	<Grid Width="180" HorizontalAlignment="Right" Margin="0,18.5,17.238,11.5">
     		<Grid.RowDefinitions>
