@@ -160,6 +160,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Presentation\cpu.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Fonts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
