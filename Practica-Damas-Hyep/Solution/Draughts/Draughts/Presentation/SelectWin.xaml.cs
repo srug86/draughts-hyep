@@ -27,7 +27,7 @@ namespace Draughts.Presentation
             this.init = init;
             InitializeComponent();
             ind = 0;
-            images = new BoundedQueue<String>(9);
+            images = new BoundedQueue<String>(10);
             images.enqueue("Anand(IND).jpg");
             images.enqueue("Fischer(USA).jpg");
             images.enqueue("Karpov(URRS).jpg");
@@ -37,6 +37,7 @@ namespace Draughts.Presentation
             images.enqueue("Ponomariov(UCR).jpg");
             images.enqueue("Spassky(URRS).jpg");
             images.enqueue("Topalov(BUL).jpg");
+            images.enqueue("cpu.png");
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
