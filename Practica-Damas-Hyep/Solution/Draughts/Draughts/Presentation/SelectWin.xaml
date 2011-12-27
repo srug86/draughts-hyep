@@ -1116,8 +1116,8 @@
     	<Grid Opacity="1" Margin="8,114.4,8,8" Background="{x:Null}">
     		<Grid Margin="8,8,8,102" Background="{x:Null}">
     			<Rectangle Opacity="0.895" Fill="#FFDBD4D4" Stroke="#FF000000"/>
-    			<Image HorizontalAlignment="Left" Margin="60,83.6,0,36" Width="214" Source="Karpov(URRS).jpg"/>
-    			<Image HorizontalAlignment="Right" Margin="0,83.6,60,36" Width="214" Source="Kasparov(RUS).jpg"/>
+    			<Image HorizontalAlignment="Left" Margin="60,83.6,0,36" Width="214" Source="Karpov(URRS).jpg" Name="Imagej1" />
+    			<Image HorizontalAlignment="Right" Margin="0,83.6,60,36" Width="214" Source="Kasparov(RUS).jpg" Name="Imagej2" />
     			<Label d:LayoutOverrides="Width, Height" Background="#000E6609" FontFamily="Tempus Sans ITC" FontSize="72" FontWeight="Bold" Foreground="#FF12159B" Margin="334.958,147.6,317.5,84.5" Content="VS"/>
     			<Label FontFamily="Tempus Sans ITC" FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" Margin="60,15.6,0,0" VerticalAlignment="Top" Width="214" Height="56" Content="Jugador 1" Background="#00A91616" Foreground="#FFA91616" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
     			<Label FontFamily="Tempus Sans ITC" FontSize="36" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,15.6,60,0" VerticalAlignment="Top" Width="214" Height="56" Content="Jugador 2" Foreground="#FFB0926C" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
@@ -1155,7 +1155,7 @@
     			<OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
     		</Button.BitmapEffect>
     	</Button>
-    	<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="1" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="24" FontStretch="Condensed" FontStyle="Normal" FontWeight="Bold" Cursor="Hand" HorizontalAlignment="Right" Margin="0,0,20,226" Content="V" Panel.ZIndex="0" IsCancel="False" x:Name="btnNext2" Width="50" Click="btnExit_Click" Background="#FFB0926C" d:LayoutOverrides="GridBox" Foreground="#FFF7F1F1" VerticalAlignment="Bottom" Height="50">
+    	<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="1" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="24" FontStretch="Condensed" FontStyle="Normal" FontWeight="Bold" Cursor="Hand" HorizontalAlignment="Right" Margin="0,0,20,226" Content="V" Panel.ZIndex="0" IsCancel="False" x:Name="btnNext2" Width="50" Click="btnNext2_Click" Background="#FFB0926C" d:LayoutOverrides="GridBox" Foreground="#FFF7F1F1" VerticalAlignment="Bottom" Height="50">
     		<Button.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform ScaleX="0.75" ScaleY="0.8"/>
@@ -1171,7 +1171,7 @@
     			<OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
     		</Button.BitmapEffect>
     	</Button>
-    	<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="1" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="24" FontStretch="Condensed" FontStyle="Normal" FontWeight="Bold" Cursor="Hand" HorizontalAlignment="Right" Margin="0,0,294,224" Content="V" Panel.ZIndex="0" IsCancel="False" x:Name="btnPrev2" Width="50" Click="btnExit_Click" Background="#FFB0926C" Foreground="#FFF7F1F1" VerticalAlignment="Bottom" Height="50" d:LayoutOverrides="GridBox">
+    	<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="1" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="24" FontStretch="Condensed" FontStyle="Normal" FontWeight="Bold" Cursor="Hand" HorizontalAlignment="Right" Margin="0,0,294,224" Content="V" Panel.ZIndex="0" IsCancel="False" x:Name="btnPrev2" Width="50" Click="btnPrev2_Click" Background="#FFB0926C" Foreground="#FFF7F1F1" VerticalAlignment="Bottom" Height="50" d:LayoutOverrides="GridBox">
     		<Button.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform ScaleX="0.75" ScaleY="0.8"/>
@@ -1187,7 +1187,7 @@
     			<OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
     		</Button.BitmapEffect>
     	</Button>
-    	<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="1" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="24" FontStretch="Condensed" FontStyle="Normal" FontWeight="Bold" Cursor="Hand" HorizontalAlignment="Left" Margin="22,0,0,224" Content="V" Panel.ZIndex="0" IsCancel="False" x:Name="btnPrev1" Width="50" Click="btnExit_Click" Background="#FFA91616" Foreground="#FFF7F1F1" d:LayoutOverrides="GridBox" Height="50" VerticalAlignment="Bottom">
+    	<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="1" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="24" FontStretch="Condensed" FontStyle="Normal" FontWeight="Bold" Cursor="Hand" HorizontalAlignment="Left" Margin="22,0,0,224" Content="V" Panel.ZIndex="0" IsCancel="False" x:Name="btnPrev1" Width="50" Click="btnPrev1_Click" Background="#FFA91616" Foreground="#FFF7F1F1" d:LayoutOverrides="GridBox" Height="50" VerticalAlignment="Bottom">
     		<Button.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform ScaleX="0.75" ScaleY="0.8"/>
@@ -1203,7 +1203,7 @@
     			<OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
     		</Button.BitmapEffect>
     	</Button>
-    	<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="1" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="24" FontStretch="Condensed" FontStyle="Normal" FontWeight="Bold" Cursor="Hand" HorizontalAlignment="Left" Margin="296,0,0,224" Content="V" Panel.ZIndex="0" IsCancel="False" x:Name="btnNext2_Copy" Width="50" Click="btnExit_Click" Background="#FFA91616" Foreground="#FFF7F1F1" VerticalAlignment="Bottom" Height="50" d:LayoutOverrides="GridBox">
+    	<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="1" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="24" FontStretch="Condensed" FontStyle="Normal" FontWeight="Bold" Cursor="Hand" HorizontalAlignment="Left" Margin="296,0,0,224" Content="V" Panel.ZIndex="0" IsCancel="False" x:Name="btnNext1" Width="50" Click="btnNext1_Click" Background="#FFA91616" Foreground="#FFF7F1F1" VerticalAlignment="Bottom" Height="50" d:LayoutOverrides="GridBox">
     		<Button.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform ScaleX="0.75" ScaleY="0.8"/>
