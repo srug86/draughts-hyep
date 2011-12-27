@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Draughts.Domain
 {
-    class Player
+    public class Player
     {
         private string name;
         public string Name
@@ -19,8 +19,8 @@ namespace Draughts.Domain
             get { return pwd; }
             set { pwd = value; }
         }
-        private int avatar;
-        public int Avatar
+        private string avatar;
+        public string Avatar
         {
             get { return avatar; }
             set { avatar = value; }
@@ -44,7 +44,7 @@ namespace Draughts.Domain
             set { loses = value; }
         }
 
-        public Player(string name, string pwd, int avatar)
+        public Player(string name, string pwd, string avatar)
         {
             this.name = name;
             this.pwd = pwd;
