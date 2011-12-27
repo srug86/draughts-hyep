@@ -58,6 +58,7 @@ namespace Draughts.Presentation
 
         public T getPrev(int m)
         {
+            if (m <= 0) m = m + 10;
             int i = (m - 1) % que.Length;
             return que[i];
         }

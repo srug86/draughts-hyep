@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
+using Draughts.Domain;
 
 namespace Draughts.Presentation
 {
@@ -19,14 +20,17 @@ namespace Draughts.Presentation
     /// </summary>
     public partial class SelectWin : Window
     {
+        Player p1, p2;
         InitWin init;
         BoundedQueue<String> images;
-        int ind;
+        int ind, ind2;
+        String ruta1, ruta2;
         public SelectWin(InitWin init)
         {
             this.init = init;
             InitializeComponent();
             ind = 0;
+            ind2 = 0;
             images = new BoundedQueue<String>(10);
             images.enqueue("Anand(IND).jpg");
             images.enqueue("Fischer(USA).jpg");
@@ -46,24 +50,18 @@ namespace Draughts.Presentation
             this.Close();
         }
 
-        private void btnBegin_Click(object sender, RoutedEventArgs e)
-        {
-            GameWin game = new GameWin(init);
-            game.Show();
-            this.Close();
-        }
-
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             init.Visibility = Visibility.Visible;
             this.Close();
         }
+
         private void btnNext1_Click(object sender, RoutedEventArgs e)
         {
-            String ruta = images.getNext(ind);
+            ruta1 = images.getNext(ind);
             BitmapImage bi = new BitmapImage();
             bi.BeginInit();
-            bi.UriSource = new Uri(ruta, UriKind.Relative);
+            bi.UriSource = new Uri(ruta1, UriKind.Relative);
             bi.EndInit();
             Imagej1.Source = bi;
             ind++;
@@ -71,10 +69,10 @@ namespace Draughts.Presentation
 
         private void btnPrev1_Click(object sender, RoutedEventArgs e)
         {
-            String ruta = images.getPrev(ind);
+            ruta1 = images.getPrev(ind);
             BitmapImage bi = new BitmapImage();
             bi.BeginInit();
-            bi.UriSource = new Uri(ruta, UriKind.Relative);
+            bi.UriSource = new Uri(ruta1, UriKind.Relative);
             bi.EndInit();
             Imagej1.Source = bi;
             ind--;
@@ -82,25 +80,35 @@ namespace Draughts.Presentation
 
         private void btnPrev2_Click(object sender, RoutedEventArgs e)
         {
-            String ruta = images.getPrev(ind);
+            ruta2 = images.getPrev(ind2);
             BitmapImage bi = new BitmapImage();
             bi.BeginInit();
-            bi.UriSource = new Uri(ruta, UriKind.Relative);
+            bi.UriSource = new Uri(ruta2, UriKind.Relative);
             bi.EndInit();
             Imagej2.Source = bi;
-            ind--;
+            ind2--;
         }
 
         private void btnNext2_Click(object sender, RoutedEventArgs e)
         {
-            String ruta = images.getNext(ind);
+            ruta2 = images.getNext(ind2);
             BitmapImage bi = new BitmapImage();
             bi.BeginInit();
-            bi.UriSource = new Uri(ruta, UriKind.Relative);
+            bi.UriSource = new Uri(ruta2, UriKind.Relative);
             bi.EndInit();
             Imagej2.Source = bi;
-            ind++;
+            ind2++;
         }
+
+        private void btnBegin_Click(object sender, RoutedEventArgs e)
+        {
+            p1 = new Player(TextboxJ1.Text, "", ruta1);
+            p2 = new Player(TextboxJ2.Text, "", ruta2);
+            GameWin game = new GameWin(init, p1, p2);
+            game.Show();
+            this.Close();
+        }
+
 
     }
 }

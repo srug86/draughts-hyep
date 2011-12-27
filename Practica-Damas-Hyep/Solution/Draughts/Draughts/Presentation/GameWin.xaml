@@ -1039,7 +1039,7 @@
     			<RowDefinition Height="0.15*"/>
     		</Grid.RowDefinitions>
     		<Rectangle Margin="8,23.8,8,20.3" Fill="#FFE8E4E4" Stroke="#FF000000" Grid.RowSpan="5" Opacity="0.9" StrokeThickness="0" Grid.Row="1"/>
-    		<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" Grid.Row="1" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Text="Jugador 1" TextWrapping="Wrap" Background="{x:Null}">
+    		<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" Grid.Row="1" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Text="Jugador 1" TextWrapping="Wrap" Background="{x:Null}" Name="textj1">
     			<TextBox.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1049,7 +1049,7 @@
     				</TransformGroup>
     			</TextBox.RenderTransform>
     		</TextBox>
-    		<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Grid.Row="5" Text="Jugador 2" TextWrapping="Wrap" Background="{x:Null}">
+    		<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Grid.Row="5" Text="Jugador 2" TextWrapping="Wrap" Background="{x:Null}" Name="textj2">
     			<TextBox.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1059,7 +1059,7 @@
     				</TransformGroup>
     			</TextBox.RenderTransform>
     		</TextBox>
-    		<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="2" Source="unknow.jpg">
+    		<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="2" Source="unknow.jpg" Name="imgj1">
     			<Image.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1069,7 +1069,7 @@
     				</TransformGroup>
     			</Image.RenderTransform>
     		</Image>
-    		<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="4" Source="unknow.jpg">
+    		<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="4" Source="unknow.jpg" Name="imgj2">
     			<Image.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1090,7 +1090,7 @@
     			</Label.RenderTransform>
     		</Label>
     	</Grid>
-    	<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="36" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" HorizontalAlignment="Right" Margin="0,-6,-16,0" Content="X" Panel.ZIndex="0" IsCancel="False" VerticalAlignment="Top" Height="50" x:Name="btnExit" Width="50">
+    	<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="0.695" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="36" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" HorizontalAlignment="Right" Margin="0,-6,-16,0" Content="X" Panel.ZIndex="0" IsCancel="False" VerticalAlignment="Top" Height="50" x:Name="btnExit" Width="50" Click="btnExit_Click">
     		<Button.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform ScaleX="0.6855767280510161" ScaleY="0.86282779414206678"/>
