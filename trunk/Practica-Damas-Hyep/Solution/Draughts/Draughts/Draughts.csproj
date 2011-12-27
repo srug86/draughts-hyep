@@ -73,7 +73,6 @@
     <Resource Include="Presentation\unknow.jpg" />
     <Resource Include="red.png" />
     <Resource Include="white.png" />
-    <Folder Include="Fonts\" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -129,6 +128,7 @@
     <Compile Include="Presentation\ProfileWin.xaml.cs">
       <DependentUpon>ProfileWin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\QueueBounded.cs" />
     <Compile Include="Presentation\RankingWin.xaml.cs">
       <DependentUpon>RankingWin.xaml</DependentUpon>
     </Compile>
@@ -158,6 +158,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fonts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
