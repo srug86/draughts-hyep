@@ -162,7 +162,7 @@ namespace Draughts.Domain
             if (result == 0)    // Después de un movimiento se eliminan las otras opciones
                 for (int i = 0; i < 8; i++)
                     for (int j = 0; j < 8; j++)
-                        if (this.getTable(i, j) > this.turn * 100)
+                        if (this.getTable(i, j) > 50)
                             this.setTable(i, j, 0);
             return result;
         }
