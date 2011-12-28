@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{3785D361-6AE8-4D6E-A160-715CFD9B660D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -37,6 +37,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -57,10 +58,7 @@
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
-    <Resource Include="move.png" />
-    <Resource Include="onRed.png" />
     <Resource Include="Presentation\Anand%28IND%29.jpg" />
-    <Resource Include="Presentation\empty.png" />
     <Resource Include="Presentation\Fischer%28USA%29.jpg" />
     <Resource Include="Presentation\Karpov%28URRS%29.jpg" />
     <Resource Include="Presentation\Kasimdzhanov%28UZB%29.jpg" />
@@ -71,8 +69,6 @@
     <Resource Include="Presentation\Spassky%28URRS%29.jpg" />
     <Resource Include="Presentation\Topalov%28BUL%29.jpg" />
     <Resource Include="Presentation\unknow.jpg" />
-    <Resource Include="red.png" />
-    <Resource Include="white.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -111,9 +107,11 @@
   <ItemGroup>
     <Compile Include="Communications\DBProxy.cs" />
     <Compile Include="Communications\NetMode.cs" />
+    <Compile Include="Domain\DelegateOfTheBox.cs" />
     <Compile Include="Domain\DBAccess.cs" />
     <Compile Include="Domain\GameActions.cs" />
     <Compile Include="Domain\GameAdmin.cs" />
+    <Compile Include="Domain\Interface.cs" />
     <Compile Include="Domain\Player.cs" />
     <Compile Include="Main\Draughts.cs" />
     <Compile Include="Presentation\ConnectWin.xaml.cs">
@@ -163,7 +161,22 @@
     <Resource Include="Presentation\cpu.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Presentation\box.jpg" />
+    <Resource Include="Presentation\empty.jpg" />
+    <Resource Include="Presentation\move.jpg" />
+    <Resource Include="Presentation\onRed.jpg" />
+    <Resource Include="Presentation\onRedQ.jpg" />
+    <Resource Include="Presentation\onWhite.jpg" />
+    <Resource Include="Presentation\onWhiteQ.jpg" />
+    <Resource Include="Presentation\red.jpg" />
+    <Resource Include="Presentation\redQ.jpg" />
+    <Resource Include="Presentation\white.jpg" />
+    <Resource Include="Presentation\whiteQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Fonts\" />
+    <Folder Include="img\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
