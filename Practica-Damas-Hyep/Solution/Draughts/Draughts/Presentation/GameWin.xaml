@@ -964,71 +964,72 @@
     	<Rectangle Margin="14,8,228,8" Stroke="#FF000000" Fill="#FFD8D8D8" Opacity="0.7" Width="550" Height="550"/>
     	<Rectangle Fill="#FFD8D8D8" Opacity="0.7" Margin="0,8,11,8" Width="194.86" Stroke="#FF000000" HorizontalAlignment="Right"/>
     	<UniformGrid Margin="29.6,21.5,242.4,24.5" Width="520" Height="520" Background="#FFB0926C" Grid.Row="0" Rows="8" Columns="8">
-    		<Image OpacityMask="#FF000000" Width="65" Height="65" Source="..\white.png" MouseUp="Click_8x1" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_8x3" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_8x5" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_8x7" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_7x2" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_7x4" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_7x6" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_7x8" />
-    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_6x1" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_6x3" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_6x5" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\white.png" MouseUp="Click_6x7" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="empty.png" MouseUp="Click_5x2" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="empty.png" MouseUp="Click_5x4" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="empty.png" MouseUp="Click_5x6" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="empty.png" MouseUp="Click_5x8" />
-    		<Image Width="65" Height="65" Source="empty.png" MouseUp="Click_4x1" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="empty.png" MouseUp="Click_4x3" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="empty.png" MouseUp="Click_4x5" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="empty.png" MouseUp="Click_4x7" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_3x2" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="/Draughts;component/red.png" MouseUp="Click_3x4" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_3x6" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_3x8" />
-    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_2x1" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_2x3" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_2x5" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_2x7" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_1x2" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_1x4" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_1x6" />
-    		<Rectangle Fill="#FFFFFFFF" Stroke="#FF000000" Width="65" Height="65"/>
-    		<Image Width="65" Height="65" Source="..\red.png" MouseUp="Click_1x8" />
-    	</UniformGrid>
+    		<Image Width="65" Height="65" Source="white.jpg" MouseUp="Click_8x1" Name="img8x1" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img8x2" />
+    		<Image Width="65" Height="65" Source="white.jpg" MouseUp="Click_8x3" Name="img8x3" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img8x4" />
+    		<Image Width="65" Height="65" Source="white.jpg" MouseUp="Click_8x5" Name="img8x5" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img8x6" />
+    		<Image Width="65" Height="65" Source="white.jpg" MouseUp="Click_8x7" Name="img8x7" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img8x8" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img7x1" />
+    		<Image Width="65" Height="65" Source="white.jpg" MouseUp="Click_7x2" Name="img7x2" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img7x3" />
+    		<Image Width="65" Height="65" Source="white.jpg" MouseUp="Click_7x4" Name="img7x4" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img7x5" />
+    		<Image Width="65" Height="65" Source="white.jpg" MouseUp="Click_7x6" Name="img7x6" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img7x7" />
+    		<Image Width="65" Height="65" Source="white.jpg" MouseUp="Click_7x8" Name="img7x8" />
+    		<Image Width="65" Height="65" Source="white.jpg" MouseUp="Click_6x1" Name="img6x1" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img6x2" />
+    		<Image Width="65" Height="65" Source="white.jpg" MouseUp="Click_6x3" Name="img6x3" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img6x4" />
+    		<Image Width="65" Height="65" Source="white.jpg" MouseUp="Click_6x5" Name="img6x5" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img6x6" />
+    		<Image Width="65" Height="65" Source="white.jpg" MouseUp="Click_6x7" Name="img6x7" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img6x8" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img5x1" />
+    		<Image Width="65" Height="65" Source="empty.jpg" MouseUp="Click_5x2" Name="img5x2" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img5x3" />
+    		<Image Width="65" Height="65" Source="empty.jpg" MouseUp="Click_5x4" Name="img5x4" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img5x5" />
+    		<Image Width="65" Height="65" Source="empty.jpg" MouseUp="Click_5x6" Name="img5x6" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img5x7" />
+    		<Image Width="65" Height="65" Source="empty.jpg" MouseUp="Click_5x8" Name="img5x8" />
+    		<Image Width="65" Height="65" Source="empty.jpg" MouseUp="Click_4x1" Name="img4x1" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img4x2" />
+    		<Image Width="65" Height="65" Source="empty.jpg" MouseUp="Click_4x3" Name="img4x3" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img4x4" />
+    		<Image Width="65" Height="65" Source="empty.jpg" MouseUp="Click_4x5" Name="img4x5" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img4x6" />
+    		<Image Width="65" Height="65" Source="empty.jpg" MouseUp="Click_4x7" Name="img4x7" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img4x8" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img3x1" />
+    		<Image Width="65" Height="65" Source="red.jpg" MouseUp="Click_3x2" Name="img3x2" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img3x3" />
+    		<Image Width="65" Height="65" Source="red.jpg" MouseUp="Click_3x4" Name="img3x4" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img3x5" />
+    		<Image Width="65" Height="65" Source="red.jpg" MouseUp="Click_3x6" Name="img3x6" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img3x7" />
+    		<Image Width="65" Height="65" Source="red.jpg" MouseUp="Click_3x8" Name="img3x8" />
+    		<Image Width="65" Height="65" Source="red.jpg" MouseUp="Click_2x1" Name="img2x1" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img2x2" />
+    		<Image Width="65" Height="65" Source="red.jpg" MouseUp="Click_2x3" Name="img2x3" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img2x4" />
+    		<Image Width="65" Height="65" Source="red.jpg" MouseUp="Click_2x5" Name="img2x5" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img2x6" />
+    		<Image Width="65" Height="65" Source="red.jpg" MouseUp="Click_2x7" Name="img2x7" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img1x1" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img2x8" />
+    		<Image Width="65" Height="65" Source="red.jpg" MouseUp="Click_1x2" Name="img1x2" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img1x3" />
+    		<Image Width="65" Height="65" Source="red.jpg" MouseUp="Click_1x4" Name="img1x4" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img1x5" />
+    		<Image Width="65" Height="65" Source="red.jpg" MouseUp="Click_1x6" Name="img1x6" />
+    		<Image Width="65" Height="65" Source="box.jpg" MouseUp="Click_4x7" x:Name="img1x7" />
+    		<Image Width="65" Height="65" Source="red.jpg" MouseUp="Click_1x8" Name="img1x8" />
+            <Image Height="150" Name="image1" Stretch="Fill" Width="200" />
+        </UniformGrid>
     	<Grid Width="180" HorizontalAlignment="Right" Margin="0,18.5,17.238,11.5">
     		<Grid.RowDefinitions>
     			<RowDefinition Height="0.10*"/>
@@ -1039,7 +1040,7 @@
     			<RowDefinition Height="0.15*"/>
     		</Grid.RowDefinitions>
     		<Rectangle Margin="8,23.8,8,20.3" Fill="#FFE8E4E4" Stroke="#FF000000" Grid.RowSpan="5" Opacity="0.9" StrokeThickness="0" Grid.Row="1"/>
-    		<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" Grid.Row="1" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Text="Jugador 1" TextWrapping="Wrap" Background="{x:Null}" Name="textj1">
+    		<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" Grid.Row="1" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Text="Jugador 1" TextWrapping="Wrap" Background="{x:Null}" Name="textPl1">
     			<TextBox.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1049,7 +1050,7 @@
     				</TransformGroup>
     			</TextBox.RenderTransform>
     		</TextBox>
-    		<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Grid.Row="5" Text="Jugador 2" TextWrapping="Wrap" Background="{x:Null}" Name="textj2">
+    		<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Grid.Row="5" Text="Jugador 2" TextWrapping="Wrap" Background="{x:Null}" Name="textPl2">
     			<TextBox.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1059,7 +1060,7 @@
     				</TransformGroup>
     			</TextBox.RenderTransform>
     		</TextBox>
-    		<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="2" Source="unknow.jpg" Name="imgj1">
+    		<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="2" Source="unknow.jpg" Name="imgPl1">
     			<Image.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1069,7 +1070,7 @@
     				</TransformGroup>
     			</Image.RenderTransform>
     		</Image>
-    		<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="4" Source="unknow.jpg" Name="imgj2">
+    		<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="4" Source="unknow.jpg" Name="imgPl2">
     			<Image.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1079,7 +1080,7 @@
     				</TransformGroup>
     			</Image.RenderTransform>
     		</Image>
-    		<Label Margin="8,8,8,8" Content="Juegan rojas" Grid.Row="3" FontFamily="Tempus Sans ITC" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Width="Auto">
+    		<Label Margin="8,8,8,8" Content="Juegan rojas" Grid.Row="3" FontFamily="Tempus Sans ITC" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Width="Auto" Name="lblMessage">
     			<Label.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform ScaleX="1" ScaleY="1"/>
