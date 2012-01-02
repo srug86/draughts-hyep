@@ -18,7 +18,6 @@ namespace Draughts
 		{
             this.init = init;
 			InitializeComponent();
-			
 			// Insert code required on object creation below this point.
 		}
 
