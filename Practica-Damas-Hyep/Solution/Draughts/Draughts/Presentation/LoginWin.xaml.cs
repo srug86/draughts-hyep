@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using Draughts.Presentation;
+using Draughts.Domain;
 
 namespace Draughts
 {
@@ -29,9 +30,19 @@ namespace Draughts
 
         private void btnAccept_Click(object sender, RoutedEventArgs e)
         {
-            ConnectWin conect = new ConnectWin(init);
-            conect.Show();
-            this.Visibility = Visibility.Hidden;
+            GameActions g = new GameActions(init);
+            bool b = g.loginPlayer(Texboxname.Text, Texboxpwd.Text);
+            if (b == true)
+            {
+                ConnectWin conect = new ConnectWin(init);
+                conect.Show();
+                this.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                Textlogin.Text = "Usuario o contraseña incorrectos...";
+                Textlogin.Foreground = Brushes.Red;
+            }
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

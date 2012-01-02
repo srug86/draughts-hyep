@@ -16,9 +16,8 @@ namespace Draughts.Domain
             get { return pl; }
             set { pl = value; }
         }
-        public GameActions(InitWin init, Player pl)
+        public GameActions(InitWin init)
         {
-            this.pl = pl;
             this.init = init;
         }
         public void insertPlayer(Player p)
@@ -27,6 +26,21 @@ namespace Draughts.Domain
             db.conectar();
             db.insert("INSERT INTO Players(name, pwd, avatar, wins, draws, loses) VALUES('" + p.Name + "','" + p.Pwd + "','" + p.Avatar + "'," + p.Wins + "," + p.Draws + "," + p.Loses + ")");
             db.desconectar();
+        }
+        public bool loginPlayer(String n, String ps)
+        {
+            bool val = false;
+            string pw = "";
+            DBAccess db = new DBAccess("208.11.220.249", "playershyep", "pirri", "123456");
+            db.conectar();
+            MySqlDataReader read = db.select("SELECT name, pwd FROM Players WHERE name = '" + n + "'");
+            if (read.Read())
+            {
+                pw = read.GetString("pwd");
+            }
+            db.desconectar();
+            if (pw.Equals(ps)) val = true;
+            return val;
         }
     }
 }
