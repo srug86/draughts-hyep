@@ -69,6 +69,13 @@
     <Resource Include="Presentation\Spassky%28URRS%29.jpg" />
     <Resource Include="Presentation\Topalov%28BUL%29.jpg" />
     <Resource Include="Presentation\unknow.jpg" />
+    <Page Include="Presentation\LoginWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Presentation\LoginWin.xaml.cs">
+      <DependentUpon>LoginWin.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

@@ -37,8 +37,8 @@ namespace Draughts.Presentation
 
         private void btnNet_Click(object sender, RoutedEventArgs e)
         {
-            ConnectWin connect = new ConnectWin(this);
-            connect.Show();
+            LoginWin login = new LoginWin(this);
+            login.Show();
             this.Visibility = Visibility.Hidden;
         }
 
