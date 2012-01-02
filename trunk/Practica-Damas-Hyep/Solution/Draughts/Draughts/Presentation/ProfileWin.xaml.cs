@@ -10,16 +10,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Draughts.Domain;
 
 namespace Draughts.Presentation
 {
     /// <summary>
     /// Lógica de interacción para ProfileWin.xaml
+    /// Ventana en la cual creamos un objeto de la clase player para poder jugar en red.
     /// </summary>
     public partial class ProfileWin : Window
     {
         InitWin init;
-
+        Player p;
+        String ruta;
         public ProfileWin(InitWin init)
         {
             this.init = init;
@@ -50,11 +53,21 @@ namespace Draughts.Presentation
 
         private void loadImage(string path)
         {
+            ruta = path;
             BitmapImage bitmap = new BitmapImage();
             bitmap.BeginInit();
             bitmap.UriSource = new Uri(path, UriKind.RelativeOrAbsolute);
             bitmap.EndInit();
             imgProfile.Source = bitmap;
+        }
+
+        private void btnAccept_Click(object sender, RoutedEventArgs e)
+        {
+            p = new Player(Tboxuser.Text, Tboxpwd.Text, ruta);
+            GameActions g = new GameActions(init, p);
+            g.insertPlayer(p);
+            init.Visibility = Visibility.Visible;
+            this.Close();
         }
     }
 }

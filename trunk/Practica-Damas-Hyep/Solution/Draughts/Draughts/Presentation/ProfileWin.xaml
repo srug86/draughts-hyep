@@ -1107,7 +1107,7 @@
     						<OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
     					</Button.BitmapEffect>
     				</Button>
-    				<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="1" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="36" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" Content="Aceptar" Panel.ZIndex="0" IsCancel="False" x:Name="btnAccept" Width="Auto" Height="Auto">
+    				<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="1" RenderTransformOrigin="0.5,0.5" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="36" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" Content="Aceptar" Panel.ZIndex="0" IsCancel="False" x:Name="btnAccept" Width="Auto" Height="Auto" Click="btnAccept_Click">
     					<Button.RenderTransform>
     						<TransformGroup>
     							<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1250,7 +1250,7 @@
     					</Image.RenderTransform>
     				</Image>
     			</UniformGrid>
-    			<TextBox Margin="15.137,13.153,-4.998,34.153" Text="Nombre" TextWrapping="Wrap" FontFamily="Tempus Sans ITC" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderThickness="3,3,3,3" Opacity="0.9">
+    			<TextBox Margin="15.137,13.153,-4.998,34.153" Text="Nombre" TextWrapping="Wrap" FontFamily="Tempus Sans ITC" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderThickness="3,3,3,3" Opacity="0.9" Name="Tboxuser">
     				<TextBox.RenderTransform>
     					<TransformGroup>
     						<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1317,7 +1317,7 @@
     			<OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
     		</Button.BitmapEffect>
     	</Button>
-    	<TextBox Margin="40.137,76.753,0,0" Text="Contraseña" TextWrapping="Wrap" FontFamily="Tempus Sans ITC" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderThickness="3,3,3,3" Opacity="0.9" VerticalAlignment="Top" Height="33.32" Grid.Row="1" HorizontalAlignment="Left" Width="349.027">
+    	<TextBox Margin="40.137,76.753,0,0" Text="Contraseña" TextWrapping="Wrap" FontFamily="Tempus Sans ITC" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderThickness="3,3,3,3" Opacity="0.9" VerticalAlignment="Top" Height="33.32" Grid.Row="1" HorizontalAlignment="Left" Width="349.027" Name="Tboxpwd">
     		<TextBox.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform ScaleX="1" ScaleY="1"/>

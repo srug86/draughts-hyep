@@ -5,6 +5,10 @@ using System.Text;
 
 namespace Draughts.Domain
 {
+    /// <summary>
+    /// Clase jugador, la cual tiene los atributos: name (string), pwd (string), avatar (string), wins (int), draws (int) y loses (int).
+    /// Además tiene sus correspondientes métodos de get y set, como los constructores.
+    /// </summary>
     public class Player
     {
         private string name;
