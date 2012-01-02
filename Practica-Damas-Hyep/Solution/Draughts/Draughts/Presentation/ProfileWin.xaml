@@ -1250,7 +1250,7 @@
     					</Image.RenderTransform>
     				</Image>
     			</UniformGrid>
-    			<TextBox Margin="8,8,8,8" Text="Nombre" TextWrapping="Wrap" FontFamily="Tempus Sans ITC" FontSize="36" VerticalAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderThickness="3,3,3,3" Opacity="0.9">
+    			<TextBox Margin="15.137,13.153,-4.998,34.153" Text="Nombre" TextWrapping="Wrap" FontFamily="Tempus Sans ITC" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderThickness="3,3,3,3" Opacity="0.9">
     				<TextBox.RenderTransform>
     					<TransformGroup>
     						<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1317,5 +1317,15 @@
     			<OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
     		</Button.BitmapEffect>
     	</Button>
+    	<TextBox Margin="40.137,76.753,0,0" Text="Contraseña" TextWrapping="Wrap" FontFamily="Tempus Sans ITC" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderThickness="3,3,3,3" Opacity="0.9" VerticalAlignment="Top" Height="33.32" Grid.Row="1" HorizontalAlignment="Left" Width="349.027">
+    		<TextBox.RenderTransform>
+    			<TransformGroup>
+    				<ScaleTransform ScaleX="1" ScaleY="1"/>
+    				<SkewTransform AngleX="0" AngleY="0"/>
+    				<RotateTransform Angle="5"/>
+    				<TranslateTransform X="0" Y="0"/>
+    			</TransformGroup>
+    		</TextBox.RenderTransform>
+    	</TextBox>
     </Grid>
 </Window>
