@@ -9,9 +9,8 @@ namespace Draughts.Domain
     public class GameAdmin : Subject
     {
         public List<Observer> observers = new List<Observer>();
-        private int row;
-        private int column;
-        private int state;
+        private int row, column, state;
+        private int rowSelected, columnSelected;
 
         private Player pl1, pl2;
         public Player Pl1
@@ -50,6 +49,7 @@ namespace Draughts.Domain
 
         private Boolean finish;
         private Boolean selected;
+        private Boolean move;
 
         public GameAdmin(InitWin init, Player pl1, Player pl2)
         {
@@ -58,6 +58,7 @@ namespace Draughts.Domain
             this.turn = 1;
             this.finish = false;
             this.selected = false;
+            this.move = false;
             GameWin game = new GameWin(init, this, this);
             game.Show();
             initTable();
@@ -113,13 +114,15 @@ namespace Draughts.Domain
                 {
                     if (calculateOptions(row, column))
                     {
+                        this.rowSelected = row;
+                        this.columnSelected = column;
                         selected = true;
                     }
                 }
                 else
                 {
-                    selected = false;
                     int result = doPlay(row, column);
+                    selected = false;
                     if (result > -1)   // Jugada válida
                     {
                         if (result != 0)    // Partida finalizada
@@ -150,20 +153,33 @@ namespace Draughts.Domain
             int result = -1;
             if (this.getTable(row, column) == this.turn * 11111)   // Movimiento de una ficha
             {
+                this.setTable(this.rowSelected, this.columnSelected, 0);
                 if (row != 0 && row != 7) this.setTable(row, column, this.turn * 1);
                 else this.setTable(row, column, this.turn * 11);  // La ficha ha coronado
+                this.move = false;
+                for (int i = 0; i < 4; i++)
+                    if (movingPiece(this.rowSelected, this.columnSelected, row, column, i)) break;
                 result = 0;
             }
             else if (this.getTable(row, column) == this.turn * 111111) // Movimiento de la reina
             {
+                this.setTable(this.rowSelected, this.columnSelected, 0);
                 this.setTable(row, column, this.turn * 11);
+                this.move = false;
+                for (int i = 0; i < 4; i++)
+                    if (movingPiece(this.rowSelected, this.columnSelected, row, column, i)) break;
                 result = 0;
             }
             if (result == 0)    // Después de un movimiento se eliminan las otras opciones
                 for (int i = 0; i < 8; i++)
                     for (int j = 0; j < 8; j++)
-                        if (this.getTable(i, j) > 50)
-                            this.setTable(i, j, 0);
+                    {
+                        if (this.getTable(i, j) >= 11111) this.setTable(i, j, 0);
+                        else if (this.getTable(i, j) == 111) this.setTable(i, j, 1);
+                        else if (this.getTable(i, j) == 1111) this.setTable(i, j, 11);
+                        else if (this.getTable(i, j) == 222) this.setTable(i, j, 2);
+                        else if (this.getTable(i, j) == 2222) this.setTable(i, j, 22);
+                    }
             return result;
         }
 
@@ -177,8 +193,10 @@ namespace Draughts.Domain
             }
             else if (this.getTable(row, column) == this.turn * 11)   // Reina
             {
+                int enemy = 0;
+                if (this.turn == 1) enemy = 2; else enemy = 1;
                 this.setTable(row, column, this.turn * 1111);
-                queenOptions(row, column);
+                queenOptions(row, column, enemy, false, -1);
                 return true;
             }
             else return false;
@@ -278,7 +296,7 @@ namespace Draughts.Domain
             }
         }
 
-        private void queenOptions(int row, int column)
+        private void queenOptions(int row, int column, int enemy, Boolean eating, int src)
         {
             for (int dir = 0; dir < 4; dir++)
             {
@@ -288,34 +306,134 @@ namespace Draughts.Domain
                     switch (dir)
                     {
                         case 0:
-                            if (row + i < 8 && column + i < 8)
+                            if (row + i < 8 && column + i < 8 && src != dir)
                             {
                                 if (this.getTable(row + i, column + i) == 0)
                                     this.setTable(row + i, column + i, this.turn * 111111);
+                                else if (this.getTable(row + i, column + i) == this.turn ||
+                                    this.getTable(row + i, column + i) == this.turn * 11)
+                                    stop = true;
+                                else if (this.getTable(row + i, column + i) == enemy * 1 ||
+                                    this.getTable(row + i, column + i) == enemy * 11)
+                                {
+                                    if (row + i + 1 < 8 && column + i + 1 < 8)
+                                    {
+                                        if (this.getTable(row + i + 1, column + i + 1) == 0)
+                                        {
+                                            if (this.getTable(row + i, column + i) == enemy * 1 ||
+                                                this.getTable(row + i, column + i) == enemy * 11)
+                                            {
+                                                if (this.getTable(row + i, column + i) == enemy * 1)
+                                                    this.setTable(row + i, column + i, enemy * 111);
+                                                else this.setTable(row + i, column + i, enemy * 1111);
+                                                this.setTable(row + i + 1, column + i + 1, this.turn * 111111);
+                                                stop = true;
+                                                //queenOptions(row + i + 1, column + i + 1, enemy, true, dir);
+                                            }
+                                        }
+                                        else stop = true;
+                                    }
+                                    else stop = true;
+                                }
                             }
                             else stop = true;
                             break;
                         case 1:
-                            if (row + i < 8 && column - i >= 0)
+                            if (row + i < 8 && column - i >= 0 && src != dir)
                             {
                                 if (this.getTable(row + i, column - i) == 0)
                                     this.setTable(row + i, column - i, this.turn * 111111);
+                                else if (this.getTable(row + i, column - i) == this.turn ||
+                                    this.getTable(row + i, column - i) == this.turn * 11)
+                                    stop = true;
+                                else if (this.getTable(row + i, column - i) == enemy * 1 ||
+                                    this.getTable(row + i, column - i) == enemy * 11)
+                                {
+                                    if (row + i + 1 < 8 && column - i - 1 >= 0)
+                                    {
+                                        if (this.getTable(row + i + 1, column - i - 1) == 0)
+                                        {
+                                            if (this.getTable(row + i, column - i) == enemy * 1 ||
+                                                this.getTable(row + i, column - i) == enemy * 11)
+                                            {
+                                                if (this.getTable(row + i, column - i) == enemy * 1)
+                                                    this.setTable(row + i, column - i, enemy * 111);
+                                                else this.setTable(row + i, column - i, enemy * 1111);
+                                                this.setTable(row + i + 1, column - i - 1, this.turn * 111111);
+                                                stop = true;
+                                                //queenOptions(row + i + 1, column - i - 1, enemy, true, dir);
+                                            }
+                                        }
+                                        else stop = true;
+                                    }
+                                    else stop = true;
+                                }
                             }
                             else stop = true;
                             break;
                         case 2:
-                            if (row - i >= 0 && column + i < 8)
+                            if (row - i >= 0 && column + i < 8 && src != dir)
                             {
                                 if (this.getTable(row - i, column + i) == 0)
                                     this.setTable(row - i, column + i, this.turn * 111111);
+                                else if (this.getTable(row - i, column + i) == this.turn ||
+                                    this.getTable(row - i, column + i) == this.turn * 11)
+                                    stop = true;
+                                else if (this.getTable(row - i, column + i) == enemy * 1 ||
+                                    this.getTable(row - i, column + i) == enemy * 11)
+                                {
+                                    if (row - i - 1 >= 0 && column + i + 1 < 8)
+                                    {
+                                        if (this.getTable(row - i - 1, column + i + 1) == 0)
+                                        {
+                                            if (this.getTable(row - i, column + i) == enemy * 1 ||
+                                                this.getTable(row - i, column + i) == enemy * 11)
+                                            {
+                                                if (this.getTable(row - i, column + i) == enemy * 1)
+                                                    this.setTable(row - i, column + i, enemy * 111);
+                                                else this.setTable(row - i, column + i, enemy * 1111);
+                                                this.setTable(row - i - 1, column + i + 1, this.turn * 111111);
+                                                stop = true;
+                                                //queenOptions(row - i - 1, column + i + 1, enemy, true, dir);
+                                            }
+                                        }
+                                        else stop = true;
+                                    }
+                                    else stop = true;
+                                }
                             }
                             else stop = true;
                             break;
                         case 3:
-                            if (row - i >= 0 && column - i >= 0)
+                            if (row - i >= 0 && column - i >= 0 && src != dir)
                             {
                                 if (this.getTable(row - i, column - i) == 0)
                                     this.setTable(row - i, column - i, this.turn * 111111);
+                                else if (this.getTable(row - i, column - i) == this.turn ||
+                                    this.getTable(row - i, column - i) == this.turn * 11)
+                                    stop = true;
+                                else if (this.getTable(row - i, column - i) == enemy * 1 ||
+                                    this.getTable(row - i, column - i) == enemy * 11)
+                                {
+                                    if (row - i - 1 >= 0 && column - i - 1 >= 0)
+                                    {
+                                        if (this.getTable(row - i - 1, column - i - 1) == 0)
+                                        {
+                                            if (this.getTable(row - i, column - i) == enemy * 1 ||
+                                                this.getTable(row - i, column - i) == enemy * 11)
+                                            {
+                                                if (this.getTable(row - i, column - i) == enemy * 1)
+                                                    this.setTable(row - i, column - i, enemy * 111);
+                                                else this.setTable(row - i, column - i, enemy * 1111);
+                                                this.setTable(row - i - 1, column - i - 1, this.turn * 111111);
+                                                stop = true;
+                                                //queenOptions(row - i - 1, column - i - 1, enemy, true, dir);
+                                            }
+                                        }
+                                        else stop = true;
+                                    }
+                                    else stop = true;
+                                }
                             }
                             else stop = true;
                             break;
@@ -324,16 +442,245 @@ namespace Draughts.Domain
             }
         }
 
-        public void resetOptions()
+        private Boolean movingPiece(int rowSrc, int columnSrc, int rowDst, int columnDst, int dir)
+        {
+            for (
+                int i = dir; i <= 4 && !move; i++)
+            {
+                switch(i)
+                {
+                    case 0:
+                        if (rowSrc + 1 < 8 && columnSrc - 1 >= 0)
+                        {
+                            switch (this.getTable(rowSrc + 1, columnSrc - 1))
+                            {
+                                case 0:
+                                    break;
+                                case 1: case 11: case 2: case 22:
+                                    if (rowSrc + 1 == rowDst && columnSrc - 1 == columnDst)
+                                    {
+                                        this.move = true;
+                                        confirmMove(); // confirmar jugada
+                                    }
+                                    break;
+                                case 111:
+                                    this.table[rowSrc + 1, columnSrc - 1] = 6;
+                                    if (!movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst);
+                                    break;
+                                case 1111:
+                                    this.table[rowSrc + 1, columnSrc - 1] = 7;
+                                    if (!movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst);
+                                    break;
+                                case 222:
+                                    this.table[rowSrc + 1, columnSrc - 1] = 8;
+                                    if (!movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst);
+                                    break;
+                                case 2222:
+                                    this.table[rowSrc + 1, columnSrc - 1] = 9;
+                                    if (!movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst);
+                                    break;
+                                case 11111: case 111111: case 22222: case 222222:
+                                    this.table[rowSrc + 1, columnSrc - 1] = 5;
+                                    if (!movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst);
+                                    break;
+                                default: break;
+                            }
+                        }
+                        break;
+                    case 1:
+                        if (rowSrc + 1 < 8 && columnSrc + 1 < 8)
+                        {
+                            switch (this.getTable(rowSrc + 1, columnSrc + 1))
+                            {
+                                case 0:
+                                    break;
+                                case 1: case 11: case 2: case 22:
+                                    if (rowSrc + 1 == rowDst && columnSrc + 1 == columnDst)
+                                    {
+                                        this.move = true;
+                                        confirmMove(); // confirmar jugada
+                                    }
+                                    break;
+                                case 111:
+                                    this.table[rowSrc + 1, columnSrc + 1] = 6;
+                                    if (!movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst);
+                                    break;
+                                case 1111:
+                                    this.table[rowSrc + 1, columnSrc + 1] = 7;
+                                    if (!movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst);
+                                    break;
+                                case 222:
+                                    this.table[rowSrc + 1, columnSrc + 1] = 8;
+                                    if (!movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst);
+                                    break;
+                                case 2222:
+                                    this.table[rowSrc + 1, columnSrc + 1] = 9;
+                                    if (!movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst);
+                                    break;
+                                case 11111: case 111111: case 22222: case 222222:
+                                    this.table[rowSrc + 1, columnSrc + 1] = 5;
+                                    if (!movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst);
+                                    break;
+                                default: break;
+                            }
+                        }
+                        break;
+                    case 2:
+                        if (rowSrc - 1 >= 0 && columnSrc - 1 >= 0)
+                        {
+                            
+                            switch (this.getTable(rowSrc - 1, columnSrc - 1))
+                            {
+                                case 0:
+                                    break;
+                                case 1: case 11: case 2: case 22:
+                                    if (rowSrc - 1 == rowDst && columnSrc - 1 == columnDst)
+                                    {
+                                        this.move = true;
+                                        confirmMove(); // confirmar jugada
+                                    }
+                                    break;
+                                case 111:
+                                    this.table[rowSrc - 1, columnSrc - 1] = 6;
+                                    if (!movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst);
+                                    break;
+                                case 1111:
+                                    this.table[rowSrc - 1, columnSrc - 1] = 7;
+                                    if (!movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst);
+                                    break;
+                                case 222:
+                                    this.table[rowSrc - 1, columnSrc - 1] = 8;
+                                    if (!movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst);
+                                    break;
+                                case 2222:
+                                    this.table[rowSrc - 1, columnSrc - 1] = 9;
+                                    if (!movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst);
+                                    break;
+                                case 11111: case 111111: case 22222: case 222222:
+                                    this.table[rowSrc - 1, columnSrc - 1] = 5;
+                                    if (!movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst);
+                                    break;
+                                default: break;
+                            }
+                        }
+                        break;
+                    case 3:
+                        if (rowSrc - 1 >= 0 && columnSrc + 1 < 8)
+                        {
+                            switch (this.getTable(rowSrc - 1, columnSrc + 1))
+                            {
+                                case 0:
+                                    break;
+                                case 1: case 11: case 2: case 22:
+                                    if (rowSrc - 1 == rowDst && columnSrc + 1 == columnDst)
+                                    {
+                                        this.move = true;
+                                        confirmMove(); // confirmar jugada
+                                    }
+                                    break;
+                                case 111:
+                                    this.table[rowSrc - 1, columnSrc + 1] = 6;
+                                    if (!movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst);
+                                    break;
+                                case 1111:
+                                    this.table[rowSrc - 1, columnSrc + 1] = 7;
+                                    if (!movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst);
+                                    break;
+                                case 222:
+                                    this.table[rowSrc - 1, columnSrc + 1] = 8;
+                                    if (!movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst);
+                                    break;
+                                case 2222:
+                                    this.table[rowSrc - 1, columnSrc + 1] = 9;
+                                    if (!movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst);
+                                    break;
+                                case 11111: case 111111: case 22222: case 222222:
+                                    this.table[rowSrc - 1, columnSrc + 1] = 5;
+                                    if (!movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
+                                    //movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst);
+                                    break;
+                                default: break;
+                            }
+                        }
+                        break;
+                    case 4:
+                        resetMove(); // resetear tablero
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return move;
+        }
+
+        private Boolean queenWhoEatsOptions(int row, int column, int dir)
+        {
+            return false;
+        }
+
+        private void resetOptions()
         {
             for (int i = 0; i < 8; i++)
                 for (int j = 0; j < 8; j++)
                 {
-                    if (this.getTable(i, j) > 10000) this.setTable(i, j, 0);
+                    if (this.getTable(i, j) >= 11111) this.setTable(i, j, 0);
                     else if (this.getTable(i, j) == 111) this.setTable(i, j, 1);
                     else if (this.getTable(i, j) == 1111) this.setTable(i, j, 11);
                     else if (this.getTable(i, j) == 2 * 111) this.setTable(i, j, 2);
                     else if (this.getTable(i, j) == 2 * 1111) this.setTable(i, j, 22);
+                }
+        }
+
+        private void confirmMove()
+        {
+            for (int i = 0; i < 8; i++)
+                for (int j = 0; j < 8; j++)
+                {
+                    int content = this.getTable(i, j);
+                    if (content == 5 || content == 6 || content == 7 || content == 8 || content == 9)
+                        this.setTable(i, j, 0);
+                }
+        }
+
+        private void resetMove()
+        {
+            for (int i = 0; i < 8; i++)
+                for (int j = 0; j < 8; j++)
+                {
+                    switch (this.getTable(i, j))
+                    {
+                        case 5:
+                            int piece = this.getTable(this.rowSelected, this.columnSelected);
+                            if (piece == 111) this.table[i, j] = 11111;
+                            else if (piece == 1111) this.table[i, j] = 111111;
+                            else if (piece == 222) this.table[i, j] = 22222;
+                            else if (piece == 2222) this.table[i, j] = 222222;
+                            break;
+                        case 6: this.table[i, j] = 111; break;
+                        case 7: this.table[i, j] = 1111; break;
+                        case 8: this.table[i, j] = 222; break;
+                        case 9: this.table[i, j] = 2222; break;
+                        default: break;
+                    }
                 }
         }
     }
