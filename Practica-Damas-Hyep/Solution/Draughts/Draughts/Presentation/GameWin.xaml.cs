@@ -22,7 +22,8 @@ namespace Draughts.Presentation
         private InitWin init;
         private Player pl1, pl2;
         private GameAdmin gameAdmin;
-        private Dictionary<int,string> colorBox;
+        private Dictionary<int, string> colorBox;
+        private Dictionary<int, string> msgTurn;
         private Image [,] table;
 
         public GameWin(InitWin init, Subject subject, GameAdmin gameAdmin)
@@ -60,7 +61,7 @@ namespace Draughts.Presentation
         {
             subject.registerInterest(this);
             // Crea el Dictionary
-            colorBox = new Dictionary<int,string>();
+            colorBox = new Dictionary<int, string>();
             colorBox.Add(0, "empty.jpg");       // Casilla vacía
             colorBox.Add(1, "red.jpg");         // Ficha roja
             colorBox.Add(2, "white.jpg");       // Ficha blanca
@@ -74,6 +75,12 @@ namespace Draughts.Presentation
             colorBox.Add(22222, "move.jpg");    // Posible movimiento ficha blanca
             colorBox.Add(111111, "move.jpg");   // Posible movimiento reina roja
             colorBox.Add(222222, "move.jpg");   // Posible movimeinto reina blanca
+            msgTurn = new Dictionary<int, string>();
+            msgTurn.Add(1, "Juegan rojas");
+            msgTurn.Add(2, "Juegan blancas");
+            msgTurn.Add(11, "¡¡Ganan rojas!!");
+            msgTurn.Add(22, "¡¡Ganan blancas!!");
+            msgTurn.Add(33, "¡¡Hay tablas!!");
         }
 
         // Modifica el contenido de la casilla al recibir una notificación
@@ -84,6 +91,25 @@ namespace Draughts.Presentation
             bi.UriSource = new Uri((String)colorBox[state], UriKind.RelativeOrAbsolute);
             bi.EndInit();
             this.table[row,column].Source = bi;
+        }
+
+        public void notify(int turn)
+        {
+            this.lblMessage.Content = (String)msgTurn[turn];
+            if (turn > 2)
+            {
+                LinearGradientBrush labelBrush = new LinearGradientBrush();
+                if (turn == 22) labelBrush.GradientStops.Add(new GradientStop(Colors.White, 1));
+                else
+                {
+                    LinearGradientBrush labelBrush2 = new LinearGradientBrush();
+                    labelBrush2.GradientStops.Add(new GradientStop(Colors.White, 1));
+                    this.lblMessage.Foreground = labelBrush2;;
+                    if (turn == 11) labelBrush.GradientStops.Add(new GradientStop(Colors.Red, 1));
+                    if (turn == 33) labelBrush.GradientStops.Add(new GradientStop(Colors.Gold, 1));
+                }
+                this.lblMessage.Background = labelBrush;
+            }
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
