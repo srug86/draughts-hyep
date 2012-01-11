@@ -45,5 +45,15 @@ namespace Draughts.Domain
             if (pw.Equals(ps)) val = true;
             return val;
         }
+        public bool existPlayer(String name)
+        {
+            bool var = false;
+            string sentece = "SELECT name, pwd FROM Players WHERE name = '" + name + "'";
+            db.conectar();
+            MySqlDataReader read = db.select(sentece);
+            if ((read.Read()) == false) var = true;
+            db.desconectar();
+            return var;
+        }
     }
 }

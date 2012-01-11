@@ -27,6 +27,7 @@ namespace Draughts.Presentation
         {
             this.init = init;
             InitializeComponent();
+            ruta = "";
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -63,11 +64,27 @@ namespace Draughts.Presentation
 
         private void btnAccept_Click(object sender, RoutedEventArgs e)
         {
-            p = new Player(Tboxuser.Text, Tboxpwd.Text, ruta);
-            GameAdmin g = new GameAdmin(init);
-            g.insertPlayer(p);
-            init.Visibility = Visibility.Visible;
-            this.Close();
+            if ((Tboxuser.Text.Length == 0) || (Tboxpwd.Text.Length == 0) || (ruta.Length == 0))
+            {
+                Textprofile.Text = "El usuario, contraseña y/o imagen no pueden ser vacios.";
+                Textprofile.Foreground = Brushes.Orange;
+            }
+            else
+            {
+                p = new Player(Tboxuser.Text, Tboxpwd.Text, ruta);
+                GameAdmin g = new GameAdmin(init);
+                if (g.existPlayer(p.Name))
+                {
+                    g.insertPlayer(p);
+                    init.Visibility = Visibility.Visible;
+                    this.Close();
+                }
+                else
+                {
+                    Textprofile.Text = "Nombre ya existente en la base de datos.";
+                    Textprofile.Foreground = Brushes.Red;
+                }
+            }
         }
     }
 }

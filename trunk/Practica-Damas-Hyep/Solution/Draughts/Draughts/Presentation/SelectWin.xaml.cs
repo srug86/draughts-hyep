@@ -42,6 +42,19 @@ namespace Draughts.Presentation
             images.enqueue("Spassky(URRS).jpg");
             images.enqueue("Topalov(BUL).jpg");
             images.enqueue("cpu.png");
+            ruta1 = "Anand(IND).jpg";
+            ruta2 = "cpu.png";
+            Imagej1.Source = loadImage(ruta1);
+            Imagej2.Source = loadImage(ruta2);
+        }
+
+        public BitmapImage loadImage(String path)
+        {
+            BitmapImage bi = new BitmapImage();
+            bi.BeginInit();
+            bi.UriSource = new Uri(path, UriKind.Relative);
+            bi.EndInit();
+            return bi;
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -59,44 +72,28 @@ namespace Draughts.Presentation
         private void btnNext1_Click(object sender, RoutedEventArgs e)
         {
             ruta1 = images.getNext(ind);
-            BitmapImage bi = new BitmapImage();
-            bi.BeginInit();
-            bi.UriSource = new Uri(ruta1, UriKind.Relative);
-            bi.EndInit();
-            Imagej1.Source = bi;
+            Imagej1.Source = loadImage(ruta1);
             ind++;
         }
 
         private void btnPrev1_Click(object sender, RoutedEventArgs e)
         {
             ruta1 = images.getPrev(ind);
-            BitmapImage bi = new BitmapImage();
-            bi.BeginInit();
-            bi.UriSource = new Uri(ruta1, UriKind.Relative);
-            bi.EndInit();
-            Imagej1.Source = bi;
+            Imagej1.Source = loadImage(ruta1);
             ind--;
         }
 
         private void btnPrev2_Click(object sender, RoutedEventArgs e)
         {
             ruta2 = images.getPrev(ind2);
-            BitmapImage bi = new BitmapImage();
-            bi.BeginInit();
-            bi.UriSource = new Uri(ruta2, UriKind.Relative);
-            bi.EndInit();
-            Imagej2.Source = bi;
+            Imagej2.Source = loadImage(ruta2);
             ind2--;
         }
 
         private void btnNext2_Click(object sender, RoutedEventArgs e)
         {
             ruta2 = images.getNext(ind2);
-            BitmapImage bi = new BitmapImage();
-            bi.BeginInit();
-            bi.UriSource = new Uri(ruta2, UriKind.Relative);
-            bi.EndInit();
-            Imagej2.Source = bi;
+            Imagej2.Source = loadImage(ruta2);
             ind2++;
         }
 
