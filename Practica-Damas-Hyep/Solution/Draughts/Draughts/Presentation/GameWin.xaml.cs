@@ -34,18 +34,18 @@ namespace Draughts.Presentation
             this.init = init;
             InitializeComponent();
             register(subject);
-            textPl1.Text = pl1.Name;
-            textPl2.Text = pl2.Name;
+            textPl2.Text = pl1.Name;
+            textPl1.Text = pl2.Name;
             BitmapImage bi1 = new BitmapImage();
             bi1.BeginInit();
             bi1.UriSource = new Uri(pl1.Avatar, UriKind.Relative);
             bi1.EndInit();
-            imgPl1.Source = bi1;
+            imgPl2.Source = bi1;
             BitmapImage bi2 = new BitmapImage();
             bi2.BeginInit();
             bi2.UriSource = new Uri(pl2.Avatar, UriKind.Relative);
             bi2.EndInit();
-            imgPl2.Source = bi2;
+            imgPl1.Source = bi2;
             this.table = new Image [8,8] {
             {img1x1, img1x2, img1x3, img1x4, img1x5, img1x6, img1x7, img1x8},
             {img2x1, img2x2, img2x3, img2x4, img2x5, img2x6, img2x7, img2x8},

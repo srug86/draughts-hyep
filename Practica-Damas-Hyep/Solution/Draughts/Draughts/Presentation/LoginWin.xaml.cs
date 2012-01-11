@@ -30,18 +30,26 @@ namespace Draughts
 
         private void btnAccept_Click(object sender, RoutedEventArgs e)
         {
-            GameAdmin g = new GameAdmin(init);
-            bool b = g.loginPlayer(Texboxname.Text, Texboxpwd.Text);
-            if (b == true)
+            if ((Texboxname.Text.Length == 0) || (Texboxpwd.Text.Length == 0))
             {
-                ConnectWin conect = new ConnectWin(init);
-                conect.Show();
-                this.Visibility = Visibility.Hidden;
+                Textlogin.Text = "El usuario y/o la contraseña son vacios.";
+                Textlogin.Foreground = Brushes.Orange;
             }
             else
             {
-                Textlogin.Text = "Usuario o contraseña incorrectos...";
-                Textlogin.Foreground = Brushes.Red;
+                GameAdmin g = new GameAdmin(init);
+                bool b = g.loginPlayer(Texboxname.Text, Texboxpwd.Text);
+                if (b == true)
+                {
+                    ConnectWin conect = new ConnectWin(init);
+                    conect.Show();
+                    this.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    Textlogin.Text = "Usuario o contraseña incorrectos...";
+                    Textlogin.Foreground = Brushes.Red;
+                }
             }
         }
 
