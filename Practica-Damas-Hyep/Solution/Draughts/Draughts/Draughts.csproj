@@ -113,8 +113,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Communications\Client.cs" />
     <Compile Include="Communications\DBProxy.cs" />
     <Compile Include="Communications\NetMode.cs" />
+    <Compile Include="Communications\Server.cs" />
     <Compile Include="Domain\DelegateOfTheBox.cs" />
     <Compile Include="Domain\DelegateOfTheTurn.cs" />
     <Compile Include="Domain\GameAdmin.cs" />
