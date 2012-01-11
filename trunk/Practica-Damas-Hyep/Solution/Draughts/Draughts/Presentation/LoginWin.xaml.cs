@@ -30,7 +30,7 @@ namespace Draughts
 
         private void btnAccept_Click(object sender, RoutedEventArgs e)
         {
-            GameActions g = new GameActions(init);
+            GameAdmin g = new GameAdmin(init);
             bool b = g.loginPlayer(Texboxname.Text, Texboxpwd.Text);
             if (b == true)
             {

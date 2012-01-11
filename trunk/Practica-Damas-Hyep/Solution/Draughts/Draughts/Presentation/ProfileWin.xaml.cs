@@ -64,7 +64,7 @@ namespace Draughts.Presentation
         private void btnAccept_Click(object sender, RoutedEventArgs e)
         {
             p = new Player(Tboxuser.Text, Tboxpwd.Text, ruta);
-            GameActions g = new GameActions(init);
+            GameAdmin g = new GameAdmin(init);
             g.insertPlayer(p);
             init.Visibility = Visibility.Visible;
             this.Close();
