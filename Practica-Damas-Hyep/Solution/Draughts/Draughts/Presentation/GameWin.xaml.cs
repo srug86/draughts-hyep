@@ -21,12 +21,12 @@ namespace Draughts.Presentation
     {
         private InitWin init;
         private Player pl1, pl2;
-        private GameAdmin gameAdmin;
+        private GameActions gameAdmin;
         private Dictionary<int, string> colorBox;
         private Dictionary<int, string> msgTurn;
         private Image [,] table;
 
-        public GameWin(InitWin init, Subject subject, GameAdmin gameAdmin)
+        public GameWin(InitWin init, Subject subject, GameActions gameAdmin)
         {
             this.gameAdmin = gameAdmin;
             this.pl1 = gameAdmin.Pl1;
