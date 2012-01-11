@@ -6,20 +6,32 @@ using MySql.Data.MySqlClient;
 
 namespace Draughts.Communications
 {
-    class DBProxy
+    public sealed class DBProxy
     {
+        static readonly DBProxy instance = new DBProxy();
         const string server = "208.11.220.249";
         const string basedatos = "playershyep";
         const string user = "pirri";
         const string password = "123456";
         MySqlConnection connect;
         MySqlDataReader read;
-        
 
-        public DBProxy()
+        static DBProxy()
         {
-
         }
+
+        DBProxy()
+        {
+        }
+
+        public static DBProxy Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
         public void conectar()
         {
             connect = new MySqlConnection("Server=" + server + ";Uid=" + user +

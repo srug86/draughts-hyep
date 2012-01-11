@@ -21,7 +21,7 @@ namespace Draughts.Domain
         public GameAdmin(InitWin init)
         {
             this.init = init;
-            this.db = new DBProxy();
+            this.db = DBProxy.Instance;
         }
         public void insertPlayer(Player p)
         {
