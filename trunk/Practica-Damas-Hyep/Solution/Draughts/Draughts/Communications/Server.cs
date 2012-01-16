@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.IO;
+using System.Collections;
 
 namespace Draughts.Communications
 {
@@ -15,7 +16,7 @@ namespace Draughts.Communications
         private TcpClient tcpClient = null;   //Socket de comunicación para el cliente
         private Thread threadServer = null; //Hilo para el servidor
         private byte[] dataToSend = null; //Datos a enviar
-        ArrayList conections;   //Colección de conexiones creada
+        //ArrayList conections;   //Colección de conexiones creada
         private String myIP;
         private int port;   //Puerto al que conectarse
 
