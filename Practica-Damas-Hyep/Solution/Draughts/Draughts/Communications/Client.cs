@@ -15,6 +15,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.IO;
 using System.Net;
+using System.Windows.Threading;
 
 namespace Draughts.Communications
 {
@@ -107,19 +108,18 @@ namespace Draughts.Communications
             socket.GetStream().Write(byteArray, 0, byteArray.Length);
         }
 
-        private void writeMsg(String msg)
-        {
-            //Paragraph p = new Paragraph();
-            //p.Inlines.Add(new Run(msg));
-            //fdoc.Blocks.Add(p);
-        }
-
         //Delegado para escribir en la ventana los mensajes recibidos
-        private delegate void RcvMsgFrom(String msg);
+        private delegate String RcvMsgFrom(String msg);
         private void delegateToRcvMsgs(String msg)
         {
             RcvMsgFrom aux = new RcvMsgFrom(this.writeMsg);
-            Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal, aux, msg);
+            Dispatcher.CurrentDispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal, aux, msg);
+        }
+
+        public String writeMsg(String msg)
+        {
+            string[] aux = msg.Split('>');
+            return aux[1];
         }
 
         private void sendOff()

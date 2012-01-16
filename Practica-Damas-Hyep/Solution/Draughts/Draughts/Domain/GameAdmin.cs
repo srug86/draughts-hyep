@@ -5,6 +5,7 @@ using System.Text;
 using Draughts.Presentation;
 using MySql.Data.MySqlClient;
 using Draughts.Communications;
+using System.Data;
 
 namespace Draughts.Domain
 {
@@ -54,6 +55,15 @@ namespace Draughts.Domain
             if ((read.Read()) == false) var = true;
             db.desconectar();
             return var;
+        }
+        public String loadRanking()
+        {
+            string sentence = "SELECT name FROM Players";
+            db.conectar();
+            MySqlDataReader read = db.select(sentence);
+            
+            db.desconectar();
+            return sentence;
         }
     }
 }
