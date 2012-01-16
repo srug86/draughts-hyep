@@ -6,6 +6,7 @@ using Draughts.Presentation;
 using MySql.Data.MySqlClient;
 using Draughts.Communications;
 using System.Data;
+using System.Collections;
 
 namespace Draughts.Domain
 {
@@ -56,14 +57,25 @@ namespace Draughts.Domain
             db.desconectar();
             return var;
         }
-        public String loadRanking()
+        public ArrayList loadRanking()
         {
-            string sentence = "SELECT name FROM Players";
+            ArrayList players = new ArrayList();
+            string sentence = "SELECT * FROM Players ORDER BY wins DESC LIMIT 10 ";
             db.conectar();
             MySqlDataReader read = db.select(sentence);
-            
+            while (read.Read())
+            {
+                Player aux = new Player("", "", "");
+                aux.Name = read.GetString("name");
+                aux.Pwd = read.GetString("pwd");
+                aux.Avatar = read.GetString("avatar");
+                aux.Wins = read.GetInt32("wins");
+                aux.Draws = read.GetInt32("draws");
+                aux.Loses = read.GetInt32("loses");
+                players.Add(aux);
+            }
             db.desconectar();
-            return sentence;
+            return players;
         }
     }
 }

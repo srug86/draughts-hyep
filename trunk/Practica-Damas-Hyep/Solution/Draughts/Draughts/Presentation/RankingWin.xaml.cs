@@ -15,6 +15,7 @@ using System.Data;
 using Draughts.Domain;
 using Draughts.Communications;
 using System.Collections.ObjectModel;
+using System.Collections;
 
 namespace Draughts.Presentation
 {
@@ -31,16 +32,36 @@ namespace Draughts.Presentation
         {
             this.init = init;
             ga = new GameAdmin(init);
-            ga.loadRanking();
-            _RankCollection.Add(new PlayerRank
-            {
-                Pos = "1",
-                Usuario = "Juan Miguel",
-                G = "7",
-                E = "2",
-                P = "1",
-            });
+            ArrayList l = ga.loadRanking();
+            Player p = (Player)l[0];
+            BitmapImage bi = new BitmapImage();
+            bi.BeginInit();
+            bi.UriSource = new Uri(p.Avatar, UriKind.Relative);
+            bi.EndInit();
+            showRanking(_RankCollection,l);
             InitializeComponent();
+            this.textWin.Content = p.Name;
+            this.imgWin.Source = bi;
+        }
+
+        private void showRanking(ObservableCollection<PlayerRank> _RankCollection,ArrayList li)
+        {
+            Player aux = new Player("", "", "");
+            int p = 1;
+            while (li.Count > 0)
+            {
+                aux = (Player)li[0];
+                _RankCollection.Add(new PlayerRank
+                {
+                    Pos = Convert.ToString(p),
+                    Usuario = Convert.ToString(aux.Name),
+                    G = Convert.ToString(aux.Wins),
+                    E = Convert.ToString(aux.Draws),
+                    P = Convert.ToString(aux.Loses),
+                });
+                p = p + 1;
+                li.RemoveAt(0);
+            }
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
