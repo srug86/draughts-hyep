@@ -1119,10 +1119,46 @@
     			<Image HorizontalAlignment="Left" Margin="60,100.992,0,18.608" Width="214" Source="Karpov(URRS).jpg" Name="Imagej1" />
     			<Image HorizontalAlignment="Right" Margin="0,100.992,60,18.608" Width="214" Source="Kasparov(RUS).jpg" Name="Imagej2" />
     			<Label d:LayoutOverrides="Width, Height" Background="#000E6609" FontFamily="Tempus Sans ITC" FontSize="72" FontWeight="Bold" Foreground="#FF12159B" Margin="339.306,182.384,313.152,49.716" Content="VS" Focusable="False" />
-    			<Label FontFamily="Tempus Sans ITC" FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" Margin="60,15.6,0,0" VerticalAlignment="Top" Width="214" Height="56" Content="Rojas" Background="#00A91616" Foreground="#FFA91616" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Focusable="False" />
-    			<Label FontFamily="Tempus Sans ITC" FontSize="36" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,15.6,60,0" VerticalAlignment="Top" Width="214" Height="56" Content="Blancas" Foreground="#FFB0926C" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Focusable="False" />
-    			<TextBox HorizontalAlignment="Left" Margin="45,71.6,0,0" VerticalAlignment="Top" Width="245.5" Height="29.392" Text="" TextWrapping="Wrap" FontSize="20" FontFamily="Tempus Sans ITC" FontWeight="Bold" Opacity="0.95" Name="TextboxJ1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
-    			<TextBox HorizontalAlignment="Right" Margin="0,71.6,45,0" VerticalAlignment="Top" Width="245.5" Height="29.392" Text="" TextWrapping="Wrap" FontSize="20" FontFamily="Tempus Sans ITC" FontWeight="Bold" Opacity="0.945" Name="TextboxJ2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+    			<Label FontFamily="Tempus Sans ITC" FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" Margin="60,15.6,0,0" VerticalAlignment="Top" Width="214" Height="56" Content="Rojas" Background="#00A91616" Foreground="#FFA91616" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Focusable="False">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            <SkewTransform AngleX="0" AngleY="0"/>
+                            <RotateTransform Angle="-5"/>
+                            <TranslateTransform X="0" Y="5"/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Label FontFamily="Tempus Sans ITC" FontSize="36" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,15.6,60,0" VerticalAlignment="Top" Width="214" Height="56" Content="Blancas" Foreground="#FFB0926C" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Focusable="False">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            <SkewTransform AngleX="0" AngleY="0"/>
+                            <RotateTransform Angle="5"/>
+                            <TranslateTransform X="0" Y="-10"/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <TextBox HorizontalAlignment="Left" Margin="45,71.6,0,0" VerticalAlignment="Top" Width="245.5" Height="29.392" Text="" TextWrapping="Wrap" FontSize="20" FontFamily="Tempus Sans ITC" FontWeight="Bold" Opacity="0.95" Name="TextboxJ1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <TextBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            <SkewTransform AngleX="0" AngleY="0"/>
+                            <RotateTransform Angle="-2"/>
+                            <TranslateTransform X="0" Y="0"/>
+                        </TransformGroup>
+                    </TextBox.RenderTransform>
+                </TextBox>
+    			<TextBox HorizontalAlignment="Right" Margin="0,71.6,45,0" VerticalAlignment="Top" Width="245.5" Height="29.392" Text="" TextWrapping="Wrap" FontSize="20" FontFamily="Tempus Sans ITC" FontWeight="Bold" Opacity="0.945" Name="TextboxJ2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <TextBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            <SkewTransform AngleX="0" AngleY="0"/>
+                            <RotateTransform Angle="2"/>
+                            <TranslateTransform X="0" Y="-10"/>
+                        </TransformGroup>
+                    </TextBox.RenderTransform>
+                </TextBox>
     		</Grid>
     	</Grid>
     	<Button OpacityMask="{x:Null}" ClipToBounds="False" Opacity="1" RenderTransformOrigin="0.509,0.527" SnapsToDevicePixels="True" BorderThickness="71,72,33,47" FontFamily="Tempus Sans ITC" FontSize="36" FontStretch="Condensed" FontStyle="Normal" FontWeight="ExtraBold" Cursor="Hand" Content="Empezar" Panel.ZIndex="0" IsCancel="False" x:Name="btnBegin" Margin="0,0,21.443,37.026" VerticalAlignment="Bottom" Height="53.278" HorizontalAlignment="Right" Width="145.139" Click="btnBegin_Click">
