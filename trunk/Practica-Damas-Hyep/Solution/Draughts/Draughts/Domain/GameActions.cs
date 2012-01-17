@@ -5,6 +5,7 @@ using System.Text;
 using Draughts.Presentation;
 using System.Threading;
 using System.Collections;
+using Draughts.Communications;
 
 namespace Draughts.Domain
 {
@@ -61,8 +62,23 @@ namespace Draughts.Domain
         private Boolean selected;
         private Boolean move;
         private Boolean cpuTime;
-        private Boolean netMode;
+        private Boolean netGame;
+
+        public Boolean NetGame
+        {
+            get { return netGame; }
+            set { netGame = value; }
+        }
+        private Boolean enemyMode;
+
+        public Boolean EnemyMode
+        {
+            get { return enemyMode; }
+            set { enemyMode = value; }
+        }
         const int cpuDepth = 1;
+        private GameAdmin gAdmin = GameAdmin.Instance;
+        private NetMode net = NetMode.Instance;
 
         // --- MÉTODO CONSTRUCTOR ---
         public GameActions(InitWin init, Player pl1, Player pl2)
@@ -74,7 +90,8 @@ namespace Draughts.Domain
             this.selected = false;
             this.move = false;
             this.cpuTime = false;
-            this.netMode = false;
+            this.netGame = false;
+            this.enemyMode = false;
             GameWin game = new GameWin(init, this, this);
             game.Show();
             initTable();
@@ -92,11 +109,6 @@ namespace Draughts.Domain
             {2, 0, 2, 0, 2, 0, 2, 0},
             {0, 2, 0, 2, 0, 2, 0, 2},
             {2, 0, 2, 0, 2, 0, 2, 0} };
-        }
-
-        public void setNetMode(Boolean activate)
-        {
-            this.netMode = activate;
         }
 
         /* 
@@ -158,47 +170,72 @@ namespace Draughts.Domain
         /*
          * --- MÉTODOS DE LA LÓGICA DE JUEGO ---
          */
-        public void selectedBox(int row, int column)
+        public void selectedBox(int row, int column, Boolean thisUser)
         {
-            if (!this.finish && !this.netMode)
+            if (!this.finish)
             {
-                if (!selected)  // Si no ha sido seleccionada ninguna pieza
+                if (this.NetGame)
                 {
-                    if (calculateOptions(row, column))  // Se muestran las opciones para esa pieza
+                    if ((thisUser && this.turn == gAdmin.PlayerNumber) ||
+                        (!thisUser))
                     {
-                        this.rowSelected = row;
-                        this.columnSelected = column;
-                        selected = true;
+                        if (!selected) selecting(row, column);
+                        else moving(row, column, thisUser);
                     }
                 }
                 else
                 {
-                    int result = doPlay(row, column);
-                    selected = false;
-                    if (result > -1)   // Jugada válida
-                    {
-                        if (result != 0)    // Partida finalizada
-                        {
-                            this.finish = true;
-                            this.setTurn(result * 11); // 11 Gana jug1, 22 Gana jug2, 33 Empate
-                        }
-                        else
-                        {
-                            if (this.getTurn() == 1)
-                            {
-                                this.setTurn(2);
-                                if (this.pl2.Avatar == "cpu.png")   // Si el jug2 es la CPU
-                                {
-                                    this.cpuTime = true;
-                                    this.turnOfTheCPU();
-                                }
-                            }
-                            else if (this.getTurn() == 2) this.setTurn(1);
-                        }
-                    }
-                    else resetOptions();
+                    if (!selected) selecting(row, column);
+                    else moving(row, column, thisUser);
                 }
             }
+        }
+
+        private void selecting(int row, int column)
+        {
+            if (calculateOptions(row, column))  // Se muestran las opciones para esa pieza
+            {
+                this.rowSelected = row;
+                this.columnSelected = column;
+                selected = true;
+            }
+        }
+
+        private void moving(int row, int column, Boolean thisUser)
+        {
+            int result = doPlay(row, column);
+            selected = false;
+            if (result > -1)   // Jugada válida
+            {
+                // Si procede, se envía la jugada al jugador remoto.
+                if (this.NetGame)
+                {
+                    if (thisUser && gAdmin.PlayerNumber == this.turn)
+                    {
+                        string coordinates = "#&" + this.rowSelected + "&" + this.columnSelected + "&" + row + "&" + column;
+                        net.sendMsg(coordinates);
+                    }
+                }
+                if (result != 0)    // Partida finalizada
+                {
+                    this.finish = true;
+                    this.setTurn(result * 11); // 11 Gana jug1, 22 Gana jug2, 33 Empate
+                }
+                else
+                {
+                    if (this.getTurn() == 1)
+                    {
+                        this.setTurn(2);
+                        if (this.pl2.Avatar == "cpu.png")   // Si el jug2 es la CPU
+                        {
+                            this.cpuTime = true;
+                            this.turnOfTheCPU();
+                        }
+                    }
+                    else if (this.getTurn() == 2) this.setTurn(1);
+                }
+            }
+            else resetOptions();
         }
 
         // método que resetea las opciones para una ficha
@@ -1054,8 +1091,8 @@ namespace Draughts.Domain
                 loadTable(oldTable);
                 // Se realiza el movimiento
                 this.cpuTime = false;
-                selectedBox(bestMove.SrcRow, bestMove.SrcColumn);
-                selectedBox(bestMove.DstRow, bestMove.DstColumn);
+                selectedBox(bestMove.SrcRow, bestMove.SrcColumn, true);
+                selectedBox(bestMove.DstRow, bestMove.DstColumn, true);
             }
         }
 

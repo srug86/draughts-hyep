@@ -114,7 +114,5 @@ namespace Draughts.Presentation
             GameActions gameAdmin = new GameActions(init, p1, p2);
             this.Close();
         }
-
-
     }
 }

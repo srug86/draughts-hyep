@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Draughts.Domain;
+using Draughts.Communications;
 
 namespace Draughts.Presentation
 {
@@ -21,17 +22,19 @@ namespace Draughts.Presentation
     {
         private InitWin init;
         private Player pl1, pl2;
-        private GameActions gameAdmin;
+        private NetMode net = NetMode.Instance;
+        private GameActions gameActions;
         private Dictionary<int, string> colorBox;
         private Dictionary<int, string> msgTurn;
         private Image [,] table;
 
-        public GameWin(InitWin init, Subject subject, GameActions gameAdmin)
+        public GameWin(InitWin init, Subject subject, GameActions gameActions)
         {
-            this.gameAdmin = gameAdmin;
-            this.pl1 = gameAdmin.Pl1;
-            this.pl2 = gameAdmin.Pl2;
+            this.gameActions = gameActions;
+            this.pl1 = gameActions.Pl1;
+            this.pl2 = gameActions.Pl2;
             this.init = init;
+            net.Game = this;
             InitializeComponent();
             register(subject);
             textPl2.Text = pl1.Name;
@@ -118,164 +121,178 @@ namespace Draughts.Presentation
             this.Close();
         }
 
+        //Delegado para escribir en la ventana los mensajes recibidos
+        private delegate void ReceiveCoordinates(int srcR, int srcC, int dstR, int dstC);
+        public void delegateToRcvCoordinates(int srcR, int srcC, int dstR, int dstC)
+        {
+            ReceiveCoordinates aux = new ReceiveCoordinates(this.clickEnemy);
+            Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal, aux, srcR, srcC, dstR, dstC);
+        }
+
+        private void clickEnemy(int srcR, int srcC, int dstR, int dstC)
+        {
+            this.gameActions.selectedBox(srcR, srcC, false);
+            this.gameActions.selectedBox(dstR, dstC, false);
+        }
+
         private void Click_1x2(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(0, 1);
+            this.gameActions.selectedBox(0, 1, true);
         }
 
         private void Click_1x4(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(0, 3);
+            this.gameActions.selectedBox(0, 3, true);
         }
 
         private void Click_1x6(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(0, 5);
+            this.gameActions.selectedBox(0, 5, true);
         }
 
         private void Click_1x8(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(0, 7);
+            this.gameActions.selectedBox(0, 7, true);
         }
 
         private void Click_2x1(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(1, 0);
+            this.gameActions.selectedBox(1, 0, true);
         }
 
         private void Click_2x3(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(1, 2);
+            this.gameActions.selectedBox(1, 2, true);
         }
 
         private void Click_2x5(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(1, 4);
+            this.gameActions.selectedBox(1, 4, true);
         }
 
         private void Click_2x7(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(1, 6);
+            this.gameActions.selectedBox(1, 6, true);
         }
 
         private void Click_3x2(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(2, 1);
+            this.gameActions.selectedBox(2, 1, true);
         }
 
         private void Click_3x4(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(2, 3);
+            this.gameActions.selectedBox(2, 3, true);
         }
 
         private void Click_3x6(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(2, 5);
+            this.gameActions.selectedBox(2, 5, true);
         }
 
         private void Click_3x8(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(2, 7);
+            this.gameActions.selectedBox(2, 7, true);
         }
 
         private void Click_4x1(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(3, 0);
+            this.gameActions.selectedBox(3, 0, true);
         }
 
         private void Click_4x3(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(3, 2);
+            this.gameActions.selectedBox(3, 2, true);
         }
 
         private void Click_4x5(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(3, 4);
+            this.gameActions.selectedBox(3, 4, true);
         }
 
         private void Click_4x7(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(3, 6);
+            this.gameActions.selectedBox(3, 6, true);
         }
 
         private void Click_5x2(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(4, 1);
+            this.gameActions.selectedBox(4, 1, true);
         }
 
         private void Click_5x4(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(4, 3);
+            this.gameActions.selectedBox(4, 3, true);
         }
 
         private void Click_5x6(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(4, 5);
+            this.gameActions.selectedBox(4, 5, true);
         }
 
         private void Click_5x8(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(4, 7);
+            this.gameActions.selectedBox(4, 7, true);
         }
 
         private void Click_6x1(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(5, 0);
+            this.gameActions.selectedBox(5, 0, true);
         }
 
         private void Click_6x3(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(5, 2);
+            this.gameActions.selectedBox(5, 2, true);
         }
 
         private void Click_6x5(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(5, 4);
+            this.gameActions.selectedBox(5, 4, true);
         }
 
         private void Click_6x7(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(5, 6);
+            this.gameActions.selectedBox(5, 6, true);
         }
 
         private void Click_7x2(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(6, 1);
+            this.gameActions.selectedBox(6, 1, true);
         }
 
         private void Click_7x4(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(6, 3);
+            this.gameActions.selectedBox(6, 3, true);
         }
 
         private void Click_7x6(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(6, 5);
+            this.gameActions.selectedBox(6, 5, true);
         }
 
         private void Click_7x8(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(6, 7);
+            this.gameActions.selectedBox(6, 7, true);
         }
 
         private void Click_8x1(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(7, 0);
+            this.gameActions.selectedBox(7, 0, true);
         }
 
         private void Click_8x3(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(7, 2);
+            this.gameActions.selectedBox(7, 2, true);
         }
 
         private void Click_8x5(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(7, 4);
+            this.gameActions.selectedBox(7, 4, true);
         }
 
         private void Click_8x7(object sender, MouseButtonEventArgs e)
         {
-            this.gameAdmin.selectedBox(7, 6);
+            this.gameActions.selectedBox(7, 6, true);
         }
     }
 }
