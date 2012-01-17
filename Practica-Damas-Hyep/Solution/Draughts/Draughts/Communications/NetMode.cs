@@ -25,6 +25,13 @@ namespace Draughts.Communications
             get { return conn; }
             set { conn = value; }
         }
+        private GameWin game;
+
+        public GameWin Game
+        {
+            get { return game; }
+            set { game = value; }
+        }
         static readonly NetMode instance = new NetMode();
         private TcpListener tcpListener = null; //Socket a la espera de punto remoto
         private TcpClient tcp = null; //Socket de comunicación para el cliente
@@ -182,6 +189,12 @@ namespace Draughts.Communications
             else if (message.StartsWith("#$"))
             {
                 conn.delegateToBeginGame();
+            }
+            else if (message.StartsWith("#&"))
+            {
+                options = message.Split('&');
+                game.delegateToRcvCoordinates(Convert.ToInt32(options[1]), Convert.ToInt32(options[2]),
+                    Convert.ToInt32(options[3]), Convert.ToInt32(options[4]));
             }
         }
 

@@ -111,14 +111,16 @@ namespace Draughts.Presentation
         {
             string begin = "#$";
             net.sendMsg(begin);
+            GameActions gActions;
             if (gA.PlayerNumber == 1)
             {
-                GameActions gActions = new GameActions(this.init, gA.Pl, this.enemy);
+                gActions = new GameActions(this.init, gA.Pl, this.enemy);
             }
             else
             {
-                GameActions gActions = new GameActions(this.init, this.enemy, gA.Pl);
+                gActions = new GameActions(this.init, this.enemy, gA.Pl);
             }
+            gActions.NetGame = true;
             this.Close();
         }
 
@@ -169,14 +171,16 @@ namespace Draughts.Presentation
 
         public void openPerspective()
         {
+            GameActions gActions;
             if (gA.PlayerNumber == 1)
             {
-                GameActions gActions = new GameActions(this.init, gA.Pl, this.enemy);
+                gActions = new GameActions(this.init, gA.Pl, this.enemy);
             }
             else
             {
-                GameActions gActions = new GameActions(this.init, this.enemy, gA.Pl);
+                gActions = new GameActions(this.init, this.enemy, gA.Pl);
             }
+            gActions.NetGame = true;
             this.Close();
         }
     }
