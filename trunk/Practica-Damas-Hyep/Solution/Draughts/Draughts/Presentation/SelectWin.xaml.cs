@@ -72,6 +72,11 @@ namespace Draughts.Presentation
         private void btnNext1_Click(object sender, RoutedEventArgs e)
         {
             ruta1 = images.getNext(ind);
+            if (ruta1 == "cpu.png")
+            {
+                ind++;
+                ruta1 = images.getNext(ind);
+            }
             Imagej1.Source = loadImage(ruta1);
             ind++;
         }
@@ -79,6 +84,11 @@ namespace Draughts.Presentation
         private void btnPrev1_Click(object sender, RoutedEventArgs e)
         {
             ruta1 = images.getPrev(ind);
+            if (ruta1 == "cpu.png")
+            {
+                ind--;
+                ruta1 = images.getNext(ind);
+            }
             Imagej1.Source = loadImage(ruta1);
             ind--;
         }
