@@ -15,6 +15,7 @@ using System.Net.Sockets;
 using Draughts.Communications;
 using System.Threading;
 using System.IO;
+using Draughts.Domain;
 
 namespace Draughts.Presentation
 {
@@ -25,9 +26,12 @@ namespace Draughts.Presentation
     {
         InitWin init;
         NetMode net;
-        public ConnectWin(InitWin init)
+        private GameAdmin gA;
+
+        public ConnectWin(InitWin init, GameAdmin gA)
         {
             this.init = init;
+            this.gA = gA;
             net = new NetMode(this);
             InitializeComponent();
             textIp.Text = this.LocalIPAddress();
@@ -63,9 +67,20 @@ namespace Draughts.Presentation
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
+            this.txtPl1.Text = gA.Pl.Name;
+            this.imgAvPl1.Source = loadImage(gA.Pl.Avatar);
             String ip = LocalIPAddress();
             int port = int.Parse(this.textPort.Text);
             net.ModeServer(ip, port);
+        }
+
+        public BitmapImage loadImage(String path)
+        {
+            BitmapImage bi = new BitmapImage();
+            bi.BeginInit();
+            bi.UriSource = new Uri(path, UriKind.Relative);
+            bi.EndInit();
+            return bi;
         }
 
         private void btnJoin_Click(object sender, RoutedEventArgs e)
@@ -104,7 +119,5 @@ namespace Draughts.Presentation
             p.Inlines.Add(new Run(msg));
             this.fdoc.Blocks.Add(p);
         }
-
-
     }
 }
