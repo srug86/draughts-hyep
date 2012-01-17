@@ -119,6 +119,7 @@ namespace Draughts.Presentation
             {
                 GameActions gActions = new GameActions(this.init, this.enemy, gA.Pl);
             }
+            this.Close();
         }
 
         //Delegado para escribir en la ventana los mensajes recibidos
@@ -176,6 +177,7 @@ namespace Draughts.Presentation
             {
                 GameActions gActions = new GameActions(this.init, this.enemy, gA.Pl);
             }
+            this.Close();
         }
     }
 }
