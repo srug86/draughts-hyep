@@ -30,7 +30,7 @@ namespace Draughts
 
         private void btnAccept_Click(object sender, RoutedEventArgs e)
         {
-            if ((Texboxname.Text.Length == 0) || (Texboxpwd.Text.Length == 0))
+            if ((Texboxname.Text.Length == 0) || (Texboxpwd.Password.Length == 0))
             {
                 Textlogin.Text = "El usuario y/o la contraseña son vacios.";
                 Textlogin.Foreground = Brushes.Orange;
@@ -38,7 +38,7 @@ namespace Draughts
             else
             {
                 GameAdmin g = new GameAdmin(init);
-                bool b = g.loginPlayer(Texboxname.Text, Texboxpwd.Text);
+                bool b = g.loginPlayer(Texboxname.Text, Texboxpwd.Password);
                 if (b == true)
                 {
                     ConnectWin conect = new ConnectWin(init);
