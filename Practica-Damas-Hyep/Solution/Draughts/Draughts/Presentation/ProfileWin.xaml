@@ -1264,7 +1264,7 @@
 		</Grid>
     	<Grid Margin="8,8,8,8"/>
     	<UniformGrid Margin="20,8,20,8" Rows="1" Columns="2" Background="#FFDBD4D4" Opacity="0.9">
-    		<TextBox Width="Auto" Height="Auto" Text="Añadir usuario" TextWrapping="Wrap" VerticalAlignment="Center" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="56" FontWeight="Bold" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Background="{x:Null}">
+    		<TextBox Width="Auto" Height="Auto" Text="Añadir usuario" TextWrapping="Wrap" VerticalAlignment="Center" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="56" FontWeight="Bold" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Background="{x:Null}" Focusable="False">
     			<TextBox.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1274,7 +1274,7 @@
     				</TransformGroup>
     			</TextBox.RenderTransform>
     		</TextBox>
-    		<TextBox Width="Auto" Height="Auto" Text="Especifique un nombre y seleccione un avatar" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontFamily="Tempus Sans ITC" FontWeight="Normal" FontStyle="Normal" BorderThickness="0,0,0,0" Opacity="0.9" Name="Textprofile">
+    		<TextBox Width="Auto" Height="Auto" Text="Especifique un nombre y seleccione un avatar" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontFamily="Tempus Sans ITC" FontWeight="Normal" FontStyle="Normal" BorderThickness="0,0,0,0" Opacity="0.9" Name="Textprofile" Focusable="False">
     			<TextBox.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1317,15 +1317,15 @@
     			<OuterGlowBitmapEffect GlowColor="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" GlowSize="21" Noise="0.43" Opacity="0.935"/>
     		</Button.BitmapEffect>
     	</Button>
-    	<TextBox Margin="40.137,76.753,0,0" Text="Contraseña" TextWrapping="Wrap" FontFamily="Tempus Sans ITC" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderThickness="3,3,3,3" Opacity="0.9" VerticalAlignment="Top" Height="33.32" Grid.Row="1" HorizontalAlignment="Left" Width="349.027" Name="Tboxpwd">
-    		<TextBox.RenderTransform>
+    	<PasswordBox Margin="40.137,76.753,0,0" PasswordChar="*" Password="Contraseña" FontFamily="Tempus Sans ITC" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderThickness="3,3,3,3" Opacity="0.9" VerticalAlignment="Top" Height="33.32" Grid.Row="1" HorizontalAlignment="Left" Width="349.027" Name="Tboxpwd">
+    		<PasswordBox.RenderTransform>
     			<TransformGroup>
     				<ScaleTransform ScaleX="1" ScaleY="1"/>
     				<SkewTransform AngleX="0" AngleY="0"/>
     				<RotateTransform Angle="5"/>
     				<TranslateTransform X="0" Y="0"/>
     			</TransformGroup>
-    		</TextBox.RenderTransform>
-    	</TextBox>
+    		</PasswordBox.RenderTransform>
+    	</PasswordBox>
     </Grid>
 </Window>

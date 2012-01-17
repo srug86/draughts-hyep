@@ -985,7 +985,7 @@
 				</Rectangle.RenderTransform>
 			</Rectangle>
 			<UniformGrid Margin="8,8,8,8" Columns="2" Rows="1">
-				<TextBox RenderTransformOrigin="0.5,0.5" Background="{x:Null}" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto" Text="Jugar en red" TextWrapping="Wrap">
+				<TextBox RenderTransformOrigin="0.5,0.5" Background="{x:Null}" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto" Text="Jugar en red" TextWrapping="Wrap" Focusable="False">
 					<TextBox.RenderTransform>
 						<TransformGroup>
 							<ScaleTransform ScaleX="1.6" ScaleY="1.2"/>
@@ -995,7 +995,7 @@
 						</TransformGroup>
 					</TextBox.RenderTransform>
 				</TextBox>
-				<TextBox RenderTransformOrigin="0.5,0.5" Background="#FFF7F7F7" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto" Text="Especifique puerto, IP y jugador local" TextWrapping="Wrap">
+				<TextBox RenderTransformOrigin="0.5,0.5" Background="#FFF7F7F7" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto" Text="Especifique puerto, IP y jugador local" TextWrapping="Wrap" Focusable="False">
 					<TextBox.RenderTransform>
 						<TransformGroup>
 							<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1122,7 +1122,7 @@
 				<RowDefinition Height="0.15*"/>
 			</Grid.RowDefinitions>
 			<Rectangle Margin="8,8,8,8" Fill="#FFE8E4E4" Stroke="#FF000000" Grid.RowSpan="5" Opacity="0.9" StrokeThickness="0"/>
-			<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Text="Jugador 1" TextWrapping="Wrap" Background="{x:Null}">
+			<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Text="Jugador 1" TextWrapping="Wrap" Background="{x:Null}" Focusable="False">
 				<TextBox.RenderTransform>
 					<TransformGroup>
 						<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1132,7 +1132,7 @@
 					</TransformGroup>
 				</TextBox.RenderTransform>
 			</TextBox>
-			<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Grid.Row="4" Text="Jugador 2" TextWrapping="Wrap" Background="{x:Null}">
+			<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Grid.Row="4" Text="Jugador 2" TextWrapping="Wrap" Background="{x:Null}" Focusable="False">
 				<TextBox.RenderTransform>
 					<TransformGroup>
 						<ScaleTransform ScaleX="1" ScaleY="1"/>
