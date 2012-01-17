@@ -15,18 +15,36 @@ namespace Draughts.Communications
     /// <summary>
     /// Clase que permite conectar a dos jugadores (uno a uno) y así poder empezar una partida de damas.
     /// </summary>
-    class NetMode
+    public sealed class NetMode
     {
+        private ConnectWin conn;
+
+        public ConnectWin Conn
+        {
+            get { return conn; }
+            set { conn = value; }
+        }
+        static readonly NetMode instance = new NetMode();
         private TcpListener tcpListener = null; //Socket a la espera de punto remoto
         private TcpClient tcp = null; //Socket de comunicación para el cliente
         private byte[] dataToSend = null; //Datos a enviar
         private Thread serverThread = null; //Hilo para el servidor
         private Thread conectThread = null; //Hilo para la conexion al servidor
         private Thread clientThread = null; //Hilo para el cliente
-        private ConnectWin c;
-        public NetMode(ConnectWin c)
+        static NetMode()
         {
-            this.c = c;
+        }
+
+        NetMode()
+        {
+        }
+
+        public static NetMode Instance
+        {
+            get
+            {
+                return instance;
+            }
         }
 
         public void ModeServer(String ip_server, int port_server)
@@ -109,7 +127,7 @@ namespace Draughts.Communications
                             str = str.Append(ch);
                         }
                         //Pintamos el mensaje a través de un delegado.
-                        c.delegateToRcvMsgs(str.ToString());
+                        conn.delegateToRcvMsgs(str.ToString());
                     }
                 }
                 catch (IOException)
@@ -127,8 +145,6 @@ namespace Draughts.Communications
                 {
                     if (msg.Length != 0)
                     {
-                        //Escribir mensaje en la ventana local
-                        msg = ">> " + msg;
                         //Prepara mensaje para enviar como array de bytes
                         char[] charArray = msg.ToCharArray(0, msg.Length);
                         dataToSend = new byte[msg.Length];
@@ -179,7 +195,7 @@ namespace Draughts.Communications
                 string receivedMessage = shutMessage.ToString();
                 if (receivedMessage.Equals(shut))
                 {
-                    c.delegateToRcvMsgs("--Desconectado--");
+                    conn.delegateToRcvMsgs("--Desconectado--");
                     if (tcp != null)
                         tcp.GetStream().Close();
                     if (tcpListener != null)

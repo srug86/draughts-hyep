@@ -32,7 +32,8 @@ namespace Draughts.Presentation
         {
             this.init = init;
             this.gA = gA;
-            net = new NetMode(this);
+            net = NetMode.Instance;
+            net.Conn = this;
             InitializeComponent();
             textIp.Text = this.LocalIPAddress();
         }
@@ -93,7 +94,8 @@ namespace Draughts.Presentation
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-            net.sendMsg(textMsg.Text);
+            String message = ">>" + textMsg.Text;
+            net.sendMsg(message);
             Paragraph p = new Paragraph();
             p.Inlines.Add(new Run(textMsg.Text));
             fdoc.Blocks.Add(p);
