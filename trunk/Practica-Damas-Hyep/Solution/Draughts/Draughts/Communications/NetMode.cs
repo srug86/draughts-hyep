@@ -9,6 +9,8 @@ using System.Net;
 using System.IO;
 using System.Windows.Threading;
 using System.Windows.Documents;
+using Draughts.Domain;
+using System.Diagnostics;
 
 namespace Draughts.Communications
 {
@@ -18,7 +20,6 @@ namespace Draughts.Communications
     public sealed class NetMode
     {
         private ConnectWin conn;
-
         public ConnectWin Conn
         {
             get { return conn; }
@@ -31,6 +32,7 @@ namespace Draughts.Communications
         private Thread serverThread = null; //Hilo para el servidor
         private Thread conectThread = null; //Hilo para la conexion al servidor
         private Thread clientThread = null; //Hilo para el cliente
+        private GameAdmin gAdmin = GameAdmin.Instance;
         static NetMode()
         {
         }
@@ -56,8 +58,8 @@ namespace Draughts.Communications
                 // Instanciamos el canal TCP a la escucha.
                 tcpListener = new TcpListener(localEndPoint);
                 tcpListener.Start();
-                conectThread = new Thread(this.WaitListening);
-                conectThread.Start();
+                this.conectThread = new Thread(this.WaitListening);
+                this.conectThread.Start();
             }
         }
 
@@ -70,8 +72,8 @@ namespace Draughts.Communications
                 tcp.LingerState = lingerOption;
                 tcp.Connect(IPAddress.Parse(ip_server), port_server);
                 //Crear hilo para que esté atento a lo que le envían
-                clientThread = new Thread(this.InfiniteListening);
-                clientThread.Start();
+                this.clientThread = new Thread(this.InfiniteListening);
+                this.clientThread.Start();
             }
         }
 
@@ -86,8 +88,8 @@ namespace Draughts.Communications
                     try
                     {
                         tcp = tcpListener.AcceptTcpClient();
-                        serverThread = new Thread(this.InfiniteListening);
-                        serverThread.Start();
+                        this.serverThread = new Thread(this.InfiniteListening);
+                        this.serverThread.Start();
                     }
                     catch (Exception e)
                     {
@@ -100,6 +102,8 @@ namespace Draughts.Communications
 
         private void InfiniteListening()
         {
+            String initial = "#%"+ Convert.ToString(this.gAdmin.PlayerNumber) +"%"+ this.gAdmin.Pl.Name + "%" + this.gAdmin.Pl.Avatar;
+            sendMsg(initial);
             for (; ; )
             {
                 Thread.Sleep(100);
@@ -126,8 +130,16 @@ namespace Draughts.Communications
                             char ch = (char)msg[count];
                             str = str.Append(ch);
                         }
-                        //Pintamos el mensaje a través de un delegado.
-                        conn.delegateToRcvMsgs(str.ToString());
+                        String cad = str.ToString();
+                        if (cad.StartsWith("#"))
+                        {
+                            checkMessage(cad);
+                        }
+                        else
+                        {
+                            //Pintamos el mensaje a través de un delegado.
+                            conn.delegateToRcvMsgs(cad);
+                        }
                     }
                 }
                 catch (IOException)
@@ -158,7 +170,22 @@ namespace Draughts.Communications
                 }
             }
         }
-        private void FreeResources(object sender, System.ComponentModel.CancelEventArgs e)
+
+        private void checkMessage(String message)
+        {
+            String[] options;
+            if (message.StartsWith("#%"))
+            {
+                options = message.Split('%');
+                conn.delegateToRcvData(options[1], options[2], options[3]);
+            }
+            else if (message.StartsWith("#$"))
+            {
+                conn.delegateToBeginGame();
+            }
+        }
+
+        public void FreeResources()
         {
             if (tcp != null)
             {

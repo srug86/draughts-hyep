@@ -73,7 +73,7 @@ namespace Draughts.Presentation
             else
             {
                 p = new Player(Tboxuser.Text, Tboxpwd.Password, ruta);
-                GameAdmin g = new GameAdmin(init);
+                GameAdmin g = GameAdmin.Instance;
                 if (g.existPlayer(p.Name))
                 {
                     g.insertPlayer(p);

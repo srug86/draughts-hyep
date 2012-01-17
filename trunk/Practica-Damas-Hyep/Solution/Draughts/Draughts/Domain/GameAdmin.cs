@@ -13,23 +13,38 @@ namespace Draughts.Domain
     /// <summary>
     /// Implementa la gestión de jugadores de la base de datos.
     /// </summary>
-    public class GameAdmin
+    public sealed class GameAdmin
     {
-        InitWin init;
-        DBProxy db;
-
-        private Player pl;
+        static readonly GameAdmin instance = new GameAdmin();
+        private Player pl = new Player("", "", "");
         public Player Pl
         {
             get { return pl; }
             set { pl = value; }
         }
+        private int playerNumber = 0;
 
-        public GameAdmin(InitWin init)
+        public int PlayerNumber
         {
-            this.pl = new Player("", "", "");
-            this.init = init;
-            this.db = DBProxy.Instance;
+            get { return playerNumber; }
+            set { playerNumber = value; }
+        }
+        private DBProxy db = DBProxy.Instance;
+
+        static GameAdmin()
+        {   
+        }
+
+        GameAdmin()
+        {
+        }
+
+        public static GameAdmin Instance
+        {
+            get
+            {
+                return instance;
+            }
         }
 
         public void insertPlayer(Player p)

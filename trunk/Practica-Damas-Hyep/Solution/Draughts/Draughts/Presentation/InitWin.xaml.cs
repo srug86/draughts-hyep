@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace Draughts.Presentation
 {
@@ -26,6 +27,10 @@ namespace Draughts.Presentation
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
+            foreach (Process p in Process.GetProcesses())
+            {
+                if (p.ProcessName == "Draughts.vshost") p.Kill();
+            }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
