@@ -976,7 +976,7 @@ namespace Draughts.Domain
                 }
                 else
                 {
-                    doPlay(row, column);
+                    int result = doPlay(row, column);
                     selected = false;
                 }
             }
@@ -1009,36 +1009,44 @@ namespace Draughts.Domain
             int alpha = -9999;
             int beta = 9999;
             int bestValue = alpha;
-            Movement bestMove = (Movement) movements[0];
-            foreach (Movement movement in movements)
+            if (movements.Count == 0)
             {
-                loadTable(oldTable);    // Se carga la tabla original
-                cpuSelectedBox(movement.SrcRow, movement.SrcColumn);
-                cpuSelectedBox(movement.DstRow, movement.DstColumn);
-                int value = alphaBetaSearch(oldTable, saveTable(), anotherPlayer(this.turn), 1, alpha, beta);
-                movement.Value = value;
-                this.turn = 2;
-                if (value > bestValue)
+                this.finish = true;
+                this.setTurn(11);   // Si CPU no puede mover, gana jug1
+            }
+            else
+            {
+                Movement bestMove = (Movement)movements[0];
+                foreach (Movement movement in movements)
                 {
-                    bestValue = movement.Value;
-                    bestMove = movement;
-                    alpha = bestValue;
+                    loadTable(oldTable);    // Se carga la tabla original
+                    cpuSelectedBox(movement.SrcRow, movement.SrcColumn);
+                    cpuSelectedBox(movement.DstRow, movement.DstColumn);
+                    int value = alphaBetaSearch(oldTable, saveTable(), anotherPlayer(this.turn), 1, alpha, beta);
+                    movement.Value = value;
+                    this.turn = 2;
+                    if (value > bestValue)
+                    {
+                        bestValue = movement.Value;
+                        bestMove = movement;
+                        alpha = bestValue;
+                    }
                 }
+                // Si todos los movimientos tienen valor 0, el movimiento es aleatorio
+                Boolean equals = true;
+                foreach (Movement movement in movements)
+                    if (bestMove.Value != 0) equals = false;
+                if (equals)
+                {
+                    Random random = new Random();
+                    bestMove = (Movement)movements[random.Next(0, movements.Count)];
+                }
+                loadTable(oldTable);
+                // Se realiza el movimiento
+                this.cpuTime = false;
+                selectedBox(bestMove.SrcRow, bestMove.SrcColumn);
+                selectedBox(bestMove.DstRow, bestMove.DstColumn);
             }
-            // Si todos los movimientos tienen valor 0, el movimiento es aleatorio
-            Boolean equals = true;
-            foreach (Movement movement in movements)
-                if (bestMove.Value != 0) equals = false;
-            if (equals)
-            {
-                Random random = new Random();
-                bestMove = (Movement) movements[random.Next(0, movements.Count)];
-            }
-            loadTable(oldTable);
-            // Se realiza el movimiento
-            this.cpuTime = false;
-            selectedBox(bestMove.SrcRow, bestMove.SrcColumn);
-            selectedBox(bestMove.DstRow, bestMove.DstColumn);
         }
 
         // método de búsqueda minimax con poda alfa-beta
