@@ -25,13 +25,12 @@ namespace Draughts.Presentation
     public partial class RankingWin : Window
     {
         InitWin init;
-        GameAdmin ga;
+        GameAdmin ga = GameAdmin.Instance;
         ObservableCollection<PlayerRank> _RankCollection = new ObservableCollection<PlayerRank>();
 
         public RankingWin(InitWin init)
         {
             this.init = init;
-            ga = new GameAdmin(init);
             ArrayList l = ga.loadRanking();
             Player p = (Player)l[0];
             BitmapImage bi = new BitmapImage();

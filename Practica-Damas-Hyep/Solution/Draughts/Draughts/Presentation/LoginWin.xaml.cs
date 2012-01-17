@@ -41,7 +41,7 @@ namespace Draughts
             }
             else
             {
-                GameAdmin g = new GameAdmin(init);
+                GameAdmin g = GameAdmin.Instance;
                 bool b = g.loginPlayer(Texboxname.Text, Texboxpwd.Password);
                 if (b == true)
                 {

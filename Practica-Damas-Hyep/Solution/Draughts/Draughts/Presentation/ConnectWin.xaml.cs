@@ -27,6 +27,7 @@ namespace Draughts.Presentation
         InitWin init;
         NetMode net;
         private GameAdmin gA;
+        private Player enemy;
 
         public ConnectWin(InitWin init, GameAdmin gA)
         {
@@ -68,6 +69,7 @@ namespace Draughts.Presentation
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
+            gA.PlayerNumber = 1;
             this.txtPl1.Text = gA.Pl.Name;
             this.imgAvPl1.Source = loadImage(gA.Pl.Avatar);
             String ip = LocalIPAddress();
@@ -86,6 +88,9 @@ namespace Draughts.Presentation
 
         private void btnJoin_Click(object sender, RoutedEventArgs e)
         {
+            gA.PlayerNumber = 2;
+            this.txtPl2.Text = gA.Pl.Name;
+            this.imgAvPl2.Source = loadImage(gA.Pl.Avatar);
             String ips = this.textIp.Text;
             String ipc = LocalIPAddress();
             int port = int.Parse(this.textPort.Text);
@@ -104,7 +109,16 @@ namespace Draughts.Presentation
 
         private void btnBegin_Click(object sender, RoutedEventArgs e)
         {
-
+            string begin = "#$";
+            net.sendMsg(begin);
+            if (gA.PlayerNumber == 1)
+            {
+                GameActions gActions = new GameActions(this.init, gA.Pl, this.enemy);
+            }
+            else
+            {
+                GameActions gActions = new GameActions(this.init, this.enemy, gA.Pl);
+            }
         }
 
         //Delegado para escribir en la ventana los mensajes recibidos
@@ -120,6 +134,48 @@ namespace Draughts.Presentation
             Paragraph p = new Paragraph();
             p.Inlines.Add(new Run(msg));
             this.fdoc.Blocks.Add(p);
+        }
+        //Delegado para mostrar los datos del enemigo
+        private delegate void ReceiveEnemyData(string opt, string name, string path);
+        public void delegateToRcvData(string opt, string name, string path)
+        {
+            ReceiveEnemyData auxi = new ReceiveEnemyData(this.showEnemy);
+            Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal, auxi, opt, name, path);
+        }
+
+        public void showEnemy(string opt, string name, string path)
+        {
+            enemy = new Player(name, "", path);
+            if (opt.Equals("1"))
+            {
+                this.txtPl1.Text = name;
+                this.imgAvPl1.Source = loadImage(path);
+            }
+            else
+            {
+                this.txtPl2.Text = name;
+                this.imgAvPl2.Source = loadImage(path);
+            }
+        }
+
+        //Delegado para mostrar los datos del enemigo
+        private delegate void ReceiveGame();
+        public void delegateToBeginGame()
+        {
+            ReceiveGame au = new ReceiveGame(this.openPerspective);
+            Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal, au);
+        }
+
+        public void openPerspective()
+        {
+            if (gA.PlayerNumber == 1)
+            {
+                GameActions gActions = new GameActions(this.init, gA.Pl, this.enemy);
+            }
+            else
+            {
+                GameActions gActions = new GameActions(this.init, this.enemy, gA.Pl);
+            }
         }
     }
 }
