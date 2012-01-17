@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Draughts.Domain
 {
+    /// <summary>
+    /// Implementa las interfaces utilizadas por los observadores.
+    /// </summary>
     public interface Subject
     {
         void registerInterest(Observer obs);

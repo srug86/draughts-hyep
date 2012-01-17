@@ -8,6 +8,9 @@ using System.Collections;
 
 namespace Draughts.Domain
 {
+    /// <summary>
+    /// Implementa la lógica de una partida de Damas
+    /// </summary>
     public class GameActions : Subject
     {
         public List<Observer> observers = new List<Observer>();
@@ -58,6 +61,7 @@ namespace Draughts.Domain
         private Boolean selected;
         private Boolean move;
         private Boolean cpuTime;
+        private Boolean netMode;
         const int cpuDepth = 1;
 
         // --- MÉTODO CONSTRUCTOR ---
@@ -70,6 +74,7 @@ namespace Draughts.Domain
             this.selected = false;
             this.move = false;
             this.cpuTime = false;
+            this.netMode = false;
             GameWin game = new GameWin(init, this, this);
             game.Show();
             initTable();
@@ -87,6 +92,11 @@ namespace Draughts.Domain
             {2, 0, 2, 0, 2, 0, 2, 0},
             {0, 2, 0, 2, 0, 2, 0, 2},
             {2, 0, 2, 0, 2, 0, 2, 0} };
+        }
+
+        public void setNetMode(Boolean activate)
+        {
+            this.netMode = activate;
         }
 
         /* 
@@ -150,7 +160,7 @@ namespace Draughts.Domain
          */
         public void selectedBox(int row, int column)
         {
-            if (!finish)
+            if (!this.finish && !this.netMode)
             {
                 if (!selected)  // Si no ha sido seleccionada ninguna pieza
                 {
@@ -1023,8 +1033,8 @@ namespace Draughts.Domain
                     cpuSelectedBox(movement.SrcRow, movement.SrcColumn);
                     cpuSelectedBox(movement.DstRow, movement.DstColumn);
                     int value = alphaBetaSearch(oldTable, saveTable(), anotherPlayer(this.turn), 1, alpha, beta);
-                    movement.Value = value;
                     this.turn = 2;
+                    movement.Value = value;
                     if (value > bestValue)
                     {
                         bestValue = movement.Value;
@@ -1055,14 +1065,15 @@ namespace Draughts.Domain
             int result = checkTable();
             if (result != 0)
             {
-                if (result == anotherPlayer(player))
+                if (result == this.turn)
                     return 9999;
-                if (result == player)
+                if (result == anotherPlayer(this.turn))
                     return -9999;
                 if (result == 3)
                     return 0;
             }
-            if (depth >= cpuDepth) return utility(oldTable, newTable, anotherPlayer(player));
+            if (depth >= cpuDepth) return utility(oldTable, newTable, this.turn);
+            loadTable(newTable);
             this.turn = player;
             ArrayList movements = new ArrayList();
             for (int i = 0; i < 8; i++)
@@ -1081,6 +1092,7 @@ namespace Draughts.Domain
                         resetOptions();
                     }
                 }
+            if (movements.Count == 0) return 9999;
             // Se calcula el valor de cada movimiento            
             foreach (Movement movement in movements)
             {
@@ -1167,7 +1179,7 @@ namespace Draughts.Domain
                     }
                 }
             return (oldOtherChips - newOtherChips) * 200 + (oldOtherQueens - newOtherQueens) * 300
-                - (oldOwnChips - newOwnChips) * 20 - (oldOwnQueens - newOwnQueens) * 30;
+                - (oldOwnChips - newOwnChips) * 200 - (oldOwnQueens - newOwnQueens) * 300;
         }
 
         // método que devuelve el valor del tablero en un momento determinado
