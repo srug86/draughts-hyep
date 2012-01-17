@@ -99,10 +99,10 @@ namespace Draughts.Presentation
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-            String message = ">>" + textMsg.Text;
+            String message = gA.Pl.Name+ ":" + textMsg.Text;
             net.sendMsg(message);
             Paragraph p = new Paragraph();
-            p.Inlines.Add(new Run(textMsg.Text));
+            p.Inlines.Add(new Run(message));
             fdoc.Blocks.Add(p);
             textMsg.Text = "";
         }
@@ -159,6 +159,7 @@ namespace Draughts.Presentation
                 this.txtPl2.Text = name;
                 this.imgAvPl2.Source = loadImage(path);
             }
+            this.btnBegin.Visibility = Visibility.Visible;
         }
 
         //Delegado para mostrar los datos del enemigo

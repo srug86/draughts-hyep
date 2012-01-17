@@ -50,16 +50,16 @@ namespace Draughts.Domain
         public void insertPlayer(Player p)
         {
             string sentence = "INSERT INTO Players(name, pwd, avatar, wins, draws, loses) VALUES('" + p.Name + "','" + p.Pwd + "','" + p.Avatar + "'," + p.Wins + "," + p.Draws + "," + p.Loses + ")";
-            db.conectar();
+            db.connection();
             db.insert(sentence);
-            db.desconectar();
+            db.disconnection();
         }
 
         public bool loginPlayer(String n, String ps)
         {
             bool val = false;
             string sentence = "SELECT * FROM Players WHERE name = '" + n + "'";
-            db.conectar();
+            db.connection();
             MySqlDataReader read = db.select(sentence);
             if (read.Read())
             {
@@ -70,7 +70,7 @@ namespace Draughts.Domain
                 pl.Draws = read.GetInt32("draws");
                 pl.Loses = read.GetInt32("loses");
             }
-            db.desconectar();
+            db.disconnection();
             if (pl.Pwd.Equals(ps)) val = true;
             return val;
         }
@@ -79,10 +79,10 @@ namespace Draughts.Domain
         {
             bool var = false;
             string sentece = "SELECT name, pwd FROM Players WHERE name = '" + name + "'";
-            db.conectar();
+            db.connection();
             MySqlDataReader read = db.select(sentece);
             if ((read.Read()) == false) var = true;
-            db.desconectar();
+            db.disconnection();
             return var;
         }
 
@@ -90,7 +90,7 @@ namespace Draughts.Domain
         {
             ArrayList players = new ArrayList();
             string sentence = "SELECT * FROM Players ORDER BY wins DESC LIMIT 10 ";
-            db.conectar();
+            db.connection();
             MySqlDataReader read = db.select(sentence);
             while (read.Read())
             {
@@ -103,7 +103,7 @@ namespace Draughts.Domain
                 aux.Loses = read.GetInt32("loses");
                 players.Add(aux);
             }
-            db.desconectar();
+            db.disconnection();
             return players;
         }
     }
