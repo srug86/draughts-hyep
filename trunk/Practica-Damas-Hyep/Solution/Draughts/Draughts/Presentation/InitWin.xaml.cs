@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 namespace Draughts.Presentation
 {
     /// <summary>
-    /// Lógica de interacción para Window1.xaml
+    /// Lógica de interacción para InitWin.xaml
     /// </summary>
     public partial class InitWin : Window
     {

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Draughts.Domain
 {
+    /// <summary>
+    /// Define el tipo abstracto de datos 'Movement'.
+    /// </summary>
     class Movement
     {
         private int srcRow;

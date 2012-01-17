@@ -12,6 +12,10 @@ using Draughts.Domain;
 
 namespace Draughts
 {
+    /// <summary>
+    /// Lógica de interacción para LoginWin.xaml
+    /// Ventana de acceso para poder jugar en red.
+    /// </summary>
 	public partial class LoginWin
 	{
         InitWin init;
