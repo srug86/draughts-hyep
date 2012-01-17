@@ -10,7 +10,7 @@ namespace Draughts.Communications
     {
         static readonly DBProxy instance = new DBProxy();
         const string server = "208.11.220.249";
-        const string basedatos = "playershyep";
+        const string database = "playershyep";
         const string user = "pirri";
         const string password = "123456";
         MySqlConnection connect;
@@ -32,14 +32,14 @@ namespace Draughts.Communications
             }
         }
 
-        public void conectar()
+        public void connection()
         {
             connect = new MySqlConnection("Server=" + server + ";Uid=" + user +
-                ";database=" + basedatos + ";use procedure bodies=False; Pwd=" +
+                ";database=" + database + ";use procedure bodies=False; Pwd=" +
                 password);
             connect.Open();
         }
-        public void desconectar()
+        public void disconnection()
         {
             if (read != null) read.Close();
             connect.Close();
