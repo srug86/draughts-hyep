@@ -20,6 +20,7 @@ namespace Draughts.Presentation
     /// </summary>
     public partial class ProfileWin : Window
     {
+        public char PasswordChar { get; set; }
         InitWin init;
         Player p;
         String ruta;
@@ -64,14 +65,14 @@ namespace Draughts.Presentation
 
         private void btnAccept_Click(object sender, RoutedEventArgs e)
         {
-            if ((Tboxuser.Text.Length == 0) || (Tboxpwd.Text.Length == 0) || (ruta.Length == 0))
+            if ((Tboxuser.Text.Length == 0) || (Tboxpwd.Password.Length == 0) || (ruta.Length == 0))
             {
                 Textprofile.Text = "El usuario, contraseña y/o imagen no pueden ser vacios.";
                 Textprofile.Foreground = Brushes.Orange;
             }
             else
             {
-                p = new Player(Tboxuser.Text, Tboxpwd.Text, ruta);
+                p = new Player(Tboxuser.Text, Tboxpwd.Password, ruta);
                 GameAdmin g = new GameAdmin(init);
                 if (g.existPlayer(p.Name))
                 {

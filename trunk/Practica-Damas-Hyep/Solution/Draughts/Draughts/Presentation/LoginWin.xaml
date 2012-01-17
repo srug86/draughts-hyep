@@ -1118,7 +1118,7 @@
 							</Button.BitmapEffect>
 						</Button>
 					</UniformGrid>
-					<Label HorizontalAlignment="Left" Margin="43.203,97.586,0,0" VerticalAlignment="Top" Width="109" Height="33.971" Content="Usuario" FontFamily="Tempus Sans ITC" FontWeight="Bold" FontSize="20" RenderTransformOrigin="0.5,0.5">
+					<Label HorizontalAlignment="Left" Margin="43.203,97.586,0,0" VerticalAlignment="Top" Width="109" Height="33.971" Content="Usuario" FontFamily="Tempus Sans ITC" FontWeight="Bold" FontSize="20" RenderTransformOrigin="0.5,0.5" Focusable="False">
 						<Label.RenderTransform>
 							<TransformGroup>
 								<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1138,7 +1138,7 @@
 							</TransformGroup>
 						</TextBox.RenderTransform>
 					</TextBox>
-					<Label HorizontalAlignment="Left" Margin="58,0,0,108.08" VerticalAlignment="Bottom" Width="109" Height="33.971" Content="Contraseña" RenderTransformOrigin="0.5,0.5" FontSize="20" FontFamily="Tempus Sans ITC" FontWeight="Bold">
+					<Label HorizontalAlignment="Left" Margin="58,0,0,108.08" VerticalAlignment="Bottom" Width="109" Height="33.971" Content="Contraseña" RenderTransformOrigin="0.5,0.5" FontSize="20" FontFamily="Tempus Sans ITC" FontWeight="Bold" Focusable="False">
 						<Label.RenderTransform>
 							<TransformGroup>
 								<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1148,21 +1148,21 @@
 							</TransformGroup>
 						</Label.RenderTransform>
 					</Label>
-					<TextBox Margin="63.917,0,78.23,82.218" VerticalAlignment="Bottom" Height="31" Text="" TextWrapping="Wrap" Width="Auto" RenderTransformOrigin="0.5,0.5" FontSize="20" FontFamily="Tempus Sans ITC" FontWeight="Bold" Name="Texboxpwd">
-						<TextBox.RenderTransform>
+					<PasswordBox Margin="63.917,0,78.23,82.218" VerticalAlignment="Bottom" PasswordChar="*" Height="31" Width="Auto" RenderTransformOrigin="0.5,0.5" FontSize="20" FontFamily="Tempus Sans ITC" FontWeight="Bold" Name="Texboxpwd">
+						<PasswordBox.RenderTransform>
 							<TransformGroup>
 								<ScaleTransform ScaleX="1" ScaleY="1"/>
 								<SkewTransform AngleX="0" AngleY="0"/>
 								<RotateTransform Angle="-8.294"/>
 								<TranslateTransform X="0" Y="0"/>
 							</TransformGroup>
-						</TextBox.RenderTransform>
-					</TextBox>
+						</PasswordBox.RenderTransform>
+					</PasswordBox>
 				</Grid>
 			</Grid>
 			<Grid Margin="8,8,8,8"/>
 			<UniformGrid Margin="20,8,20,0" Rows="1" Columns="2" Background="#FFDBD4D4" Opacity="0.9">
-				<TextBox Width="Auto" Height="Auto" Text="Identificación" TextWrapping="Wrap" VerticalAlignment="Center" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="56" FontWeight="Bold" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Background="{x:Null}">
+				<TextBox Width="Auto" Height="Auto" Text="Identificación" TextWrapping="Wrap" VerticalAlignment="Center" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="56" FontWeight="Bold" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Background="{x:Null}" Focusable="False">
 					<TextBox.RenderTransform>
 						<TransformGroup>
 							<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1172,7 +1172,7 @@
 						</TransformGroup>
 					</TextBox.RenderTransform>
 				</TextBox>
-				<TextBox Width="Auto" Height="Auto" Text="Auntentifiquese para poder jugar en red." TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontFamily="Tempus Sans ITC" FontWeight="Normal" FontStyle="Normal" BorderThickness="0,0,0,0" Opacity="0.9" Name="Textlogin">
+				<TextBox Width="Auto" Height="Auto" Text="Auntentifiquese para poder jugar en red." TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontFamily="Tempus Sans ITC" FontWeight="Normal" FontStyle="Normal" BorderThickness="0,0,0,0" Opacity="0.9" Name="Textlogin" Focusable="False">
 					<TextBox.RenderTransform>
 						<TransformGroup>
 							<ScaleTransform ScaleX="1" ScaleY="1"/>
