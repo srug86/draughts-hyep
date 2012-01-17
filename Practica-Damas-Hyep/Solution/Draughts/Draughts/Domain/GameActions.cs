@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Draughts.Presentation;
+using System.Threading;
+using System.Collections;
 
 namespace Draughts.Domain
 {
@@ -37,7 +39,7 @@ namespace Draughts.Domain
             this.row = row;
             this.column = column;
             this.state = state;
-            tableValuesHaveChanged();
+            if (!this.cpuTime) tableValuesHaveChanged();
         }
 
         private int turn;
@@ -55,7 +57,10 @@ namespace Draughts.Domain
         private Boolean finish;
         private Boolean selected;
         private Boolean move;
+        private Boolean cpuTime;
+        const int cpuDepth = 1;
 
+        // --- MÉTODO CONSTRUCTOR ---
         public GameActions(InitWin init, Player pl1, Player pl2)
         {
             this.pl1 = pl1;
@@ -64,61 +69,13 @@ namespace Draughts.Domain
             this.finish = false;
             this.selected = false;
             this.move = false;
+            this.cpuTime = false;
             GameWin game = new GameWin(init, this, this);
             game.Show();
             initTable();
         }
 
-        // implementación de la interfaz
-        public void registerInterest(Observer obs)
-        {
-            // Agrega un objeto Observer a la colección
-            observers.Add(obs);
-        }
-
-        // método que recorre la colección de Observers llamando a los notify() de cada Observer
-        private void switchBox()
-        {
-            for (int i = 0; i < observers.Count; i++)
-            {
-                Observer obs = (Observer)observers[i];
-                obs.notify(this.row, this.column, this.state);
-            }
-        }
-
-        private void switchTurn()
-        {
-            for (int i = 0; i < observers.Count; i++)
-            {
-                Observer obs = (Observer)observers[i];
-                obs.notify(this.turn);
-            }
-        }
-
-        private void tableValuesHaveChanged()
-        {
-            //Ejecutamos el método creado anteriormente mediante el delegado para notificar a 
-            //todos los observadores del cambio sucedido en el comboBox
-            DelegateOfTheBox oSwitchBox = new DelegateOfTheBox();
-            DelegateOfTheBox.BoxDelegate oBoxDelegate = new DelegateOfTheBox.BoxDelegate(switchBox);
-            oSwitchBox.switchBox += oBoxDelegate;
-            oSwitchBox.changeContentsBox = state;
-
-            oSwitchBox.switchBox -= oBoxDelegate;
-        }
-
-        private void turnHasChanged()
-        {
-            //Ejecutamos el método creado anteriormente mediante el delegado para notificar a 
-            //todos los observadores del cambio sucedido en el comboBox
-            DelegateOfTheTurn oChangeTurn = new DelegateOfTheTurn();
-            DelegateOfTheTurn.TurnDelegate oTurnDelegate = new DelegateOfTheTurn.TurnDelegate(switchTurn);
-            oChangeTurn.switchTurn += oTurnDelegate;
-            oChangeTurn.changeContentsTurn = state;
-
-            oChangeTurn.switchTurn -= oTurnDelegate;
-        }
-
+        // método que inicializa el contenido de las casillas del tablero
         private void initTable()
         {
             this.table = new int[8, 8] {
@@ -132,13 +89,72 @@ namespace Draughts.Domain
             {2, 0, 2, 0, 2, 0, 2, 0} };
         }
 
+        /* 
+         * --- MÉTODOS DEL OBSERVADOR ---
+         */
+        // implementación de la interfaz
+        public void registerInterest(Observer obs)
+        {
+            // Agrega un objeto Observer a la colección
+            observers.Add(obs);
+        }
+
+        // método que recorre la colección de Observers para avisar de un cambio en una casilla
+        private void switchBox()
+        {
+            for (int i = 0; i < observers.Count; i++)
+            {
+                Observer obs = (Observer)observers[i];
+                obs.notify(this.row, this.column, this.state);
+            }
+        }
+
+        // método que recorre la colección de Observers para avisar de un cambio de turno
+        private void switchTurn()
+        {
+            for (int i = 0; i < observers.Count; i++)
+            {
+                Observer obs = (Observer)observers[i];
+                obs.notify(this.turn);
+            }
+        }
+
+        // método que crea el delegado del observador de las casillas del tablero
+        private void tableValuesHaveChanged()
+        {
+            //Ejecutamos el método creado anteriormente mediante el delegado para notificar a 
+            //todos los observadores del cambio sucedido en el comboBox
+            DelegateOfTheBox oSwitchBox = new DelegateOfTheBox();
+            DelegateOfTheBox.BoxDelegate oBoxDelegate = new DelegateOfTheBox.BoxDelegate(switchBox);
+            oSwitchBox.switchBox += oBoxDelegate;
+            oSwitchBox.changeContentsBox = state;
+
+            oSwitchBox.switchBox -= oBoxDelegate;
+        }
+
+        // método que crea el delegado del observador de los cambios de turno
+        private void turnHasChanged()
+        {
+            // Se ejecuta el método creado anteriormente mediante el delegado para notificar a 
+            // todos los observadores del cambio sucedido en el comboBox
+            DelegateOfTheTurn oChangeTurn = new DelegateOfTheTurn();
+            DelegateOfTheTurn.TurnDelegate oTurnDelegate = new DelegateOfTheTurn.TurnDelegate(switchTurn);
+            oChangeTurn.switchTurn += oTurnDelegate;
+            oChangeTurn.changeContentsTurn = state;
+
+            oChangeTurn.switchTurn -= oTurnDelegate;
+        }
+
+        /*
+         * --- MÉTODOS DE LA LÓGICA DE JUEGO ---
+         */
         public void selectedBox(int row, int column)
         {
             if (!finish)
             {
-                if (!selected)
+                if (!selected)  // Si no ha sido seleccionada ninguna pieza
                 {
-                    if (calculateOptions(row, column))
+                    if (calculateOptions(row, column))  // Se muestran las opciones para esa pieza
                     {
                         this.rowSelected = row;
                         this.columnSelected = column;
@@ -158,8 +174,16 @@ namespace Draughts.Domain
                         }
                         else
                         {
-                            if (this.getTurn() == 1) this.setTurn(2);
-                            else this.setTurn(1);
+                            if (this.getTurn() == 1)
+                            {
+                                this.setTurn(2);
+                                if (this.pl2.Avatar == "cpu.png")   // Si el jug2 es la CPU
+                                {
+                                    this.cpuTime = true;
+                                    this.turnOfTheCPU();
+                                }
+                            }
+                            else if (this.getTurn() == 2) this.setTurn(1);
                         }
                     }
                     else resetOptions();
@@ -167,6 +191,21 @@ namespace Draughts.Domain
             }
         }
 
+        // método que resetea las opciones para una ficha
+        private void resetOptions()
+        {
+            for (int i = 0; i < 8; i++)
+                for (int j = 0; j < 8; j++)
+                {
+                    if (this.getTable(i, j) >= 11111) this.setTable(i, j, 0);
+                    else if (this.getTable(i, j) == 111) this.setTable(i, j, 1);
+                    else if (this.getTable(i, j) == 1111) this.setTable(i, j, 11);
+                    else if (this.getTable(i, j) == 2 * 111) this.setTable(i, j, 2);
+                    else if (this.getTable(i, j) == 2 * 1111) this.setTable(i, j, 22);
+                }
+        }
+
+        // método que realiza el movimiento de una ficha
         public int doPlay(int row, int column)
         {
             int result = -1;
@@ -205,6 +244,7 @@ namespace Draughts.Domain
             return result;
         }
 
+        // método que comprueba si hay ganador
         private int checkTable()
         {
             int result = 0;
@@ -225,6 +265,7 @@ namespace Draughts.Domain
             return result;
         }
 
+        // método que calcula las opciones de movimiento de una ficha
         private Boolean calculateOptions(int row, int column)
         {
             if (this.getTable(row, column) == this.turn)   // Ficha normal
@@ -244,14 +285,17 @@ namespace Draughts.Domain
             else return false;
         }
 
+        // método que define los movimientos posibles de una ficha normal
         private void chipOptions(int row, int column, Boolean eating)
         {
-            if (this.turn == 1)
+            if (this.turn == 1) // Opciones para las fichas del jug1
             {
                 if (column - 1 >= 0 && row + 1 < 8)
                 {
                     if (this.getTable(row + 1, column - 1) == 0 && !eating)
+                    {
                         this.setTable(row + 1, column - 1, this.turn * 11111);
+                    }
                     else if (this.getTable(row + 1, column - 1) == 2 * 1 ||
                         this.getTable(row + 1, column - 1) == 2 * 11)
                     {
@@ -291,7 +335,7 @@ namespace Draughts.Domain
                     }
                 }
             }
-            else if (this.turn == 2)
+            else if (this.turn == 2)    // Opciones para las fichas del jug2
             {
                 if (column - 1 >= 0 && row - 1 >= 0)
                 {
@@ -338,6 +382,7 @@ namespace Draughts.Domain
             }
         }
 
+        // método que define los movimientos posibles de una ficha reina
         private void queenOptions(int row, int column, int enemy, Boolean eating, int src)
         {
             for (int dir = 0; dir < 4; dir++)
@@ -488,12 +533,12 @@ namespace Draughts.Domain
             }
         }
 
+        // método que calcula la trayectoria que sigue una pieza desde una casilla origen hasta una casilla destino
         private Boolean movingPiece(int rowSrc, int columnSrc, int rowDst, int columnDst, int dir)
         {
-            for (
-                int i = dir; i <= 4 && !move; i++)
+            for (int i = dir; i <= 4 && !move; i++)
             {
-                switch(i)
+                switch (i)
                 {
                     case 0:
                         if (rowSrc + 1 < 8 && columnSrc - 1 >= 0)
@@ -502,7 +547,10 @@ namespace Draughts.Domain
                             {
                                 case 0:
                                     break;
-                                case 1: case 11: case 2: case 22:
+                                case 1:
+                                case 11:
+                                case 2:
+                                case 22:
                                     if (rowSrc + 1 == rowDst && columnSrc - 1 == columnDst)
                                     {
                                         this.move = true;
@@ -512,27 +560,25 @@ namespace Draughts.Domain
                                 case 111:
                                     this.table[rowSrc + 1, columnSrc - 1] = 6;
                                     if (!movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst);
                                     break;
                                 case 1111:
                                     this.table[rowSrc + 1, columnSrc - 1] = 7;
                                     if (!movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst);
                                     break;
                                 case 222:
                                     this.table[rowSrc + 1, columnSrc - 1] = 8;
                                     if (!movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst);
                                     break;
                                 case 2222:
                                     this.table[rowSrc + 1, columnSrc - 1] = 9;
                                     if (!movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst);
                                     break;
-                                case 11111: case 111111: case 22222: case 222222:
+                                case 11111:
+                                case 111111:
+                                case 22222:
+                                case 222222:
                                     this.table[rowSrc + 1, columnSrc - 1] = 5;
                                     if (!movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc + 1, columnSrc - 1, rowDst, columnDst);
                                     break;
                                 default: break;
                             }
@@ -545,7 +591,10 @@ namespace Draughts.Domain
                             {
                                 case 0:
                                     break;
-                                case 1: case 11: case 2: case 22:
+                                case 1:
+                                case 11:
+                                case 2:
+                                case 22:
                                     if (rowSrc + 1 == rowDst && columnSrc + 1 == columnDst)
                                     {
                                         this.move = true;
@@ -555,27 +604,25 @@ namespace Draughts.Domain
                                 case 111:
                                     this.table[rowSrc + 1, columnSrc + 1] = 6;
                                     if (!movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst);
                                     break;
                                 case 1111:
                                     this.table[rowSrc + 1, columnSrc + 1] = 7;
                                     if (!movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst);
                                     break;
                                 case 222:
                                     this.table[rowSrc + 1, columnSrc + 1] = 8;
                                     if (!movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst);
                                     break;
                                 case 2222:
                                     this.table[rowSrc + 1, columnSrc + 1] = 9;
                                     if (!movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst);
                                     break;
-                                case 11111: case 111111: case 22222: case 222222:
+                                case 11111:
+                                case 111111:
+                                case 22222:
+                                case 222222:
                                     this.table[rowSrc + 1, columnSrc + 1] = 5;
                                     if (!movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc + 1, columnSrc + 1, rowDst, columnDst);
                                     break;
                                 default: break;
                             }
@@ -584,12 +631,15 @@ namespace Draughts.Domain
                     case 2:
                         if (rowSrc - 1 >= 0 && columnSrc - 1 >= 0)
                         {
-                            
+
                             switch (this.getTable(rowSrc - 1, columnSrc - 1))
                             {
                                 case 0:
                                     break;
-                                case 1: case 11: case 2: case 22:
+                                case 1:
+                                case 11:
+                                case 2:
+                                case 22:
                                     if (rowSrc - 1 == rowDst && columnSrc - 1 == columnDst)
                                     {
                                         this.move = true;
@@ -599,27 +649,25 @@ namespace Draughts.Domain
                                 case 111:
                                     this.table[rowSrc - 1, columnSrc - 1] = 6;
                                     if (!movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst);
                                     break;
                                 case 1111:
                                     this.table[rowSrc - 1, columnSrc - 1] = 7;
                                     if (!movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst);
                                     break;
                                 case 222:
                                     this.table[rowSrc - 1, columnSrc - 1] = 8;
                                     if (!movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst);
                                     break;
                                 case 2222:
                                     this.table[rowSrc - 1, columnSrc - 1] = 9;
                                     if (!movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst);
                                     break;
-                                case 11111: case 111111: case 22222: case 222222:
+                                case 11111:
+                                case 111111:
+                                case 22222:
+                                case 222222:
                                     this.table[rowSrc - 1, columnSrc - 1] = 5;
                                     if (!movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc - 1, columnSrc - 1, rowDst, columnDst);
                                     break;
                                 default: break;
                             }
@@ -632,7 +680,10 @@ namespace Draughts.Domain
                             {
                                 case 0:
                                     break;
-                                case 1: case 11: case 2: case 22:
+                                case 1:
+                                case 11:
+                                case 2:
+                                case 22:
                                     if (rowSrc - 1 == rowDst && columnSrc + 1 == columnDst)
                                     {
                                         this.move = true;
@@ -642,27 +693,25 @@ namespace Draughts.Domain
                                 case 111:
                                     this.table[rowSrc - 1, columnSrc + 1] = 6;
                                     if (!movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst);
                                     break;
                                 case 1111:
                                     this.table[rowSrc - 1, columnSrc + 1] = 7;
                                     if (!movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst);
                                     break;
                                 case 222:
                                     this.table[rowSrc - 1, columnSrc + 1] = 8;
                                     if (!movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst);
                                     break;
                                 case 2222:
                                     this.table[rowSrc - 1, columnSrc + 1] = 9;
                                     if (!movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst);
                                     break;
-                                case 11111: case 111111: case 22222: case 222222:
+                                case 11111:
+                                case 111111:
+                                case 22222:
+                                case 222222:
                                     this.table[rowSrc - 1, columnSrc + 1] = 5;
                                     if (!movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst, 0)) i = 5;
-                                    //movingPiece(rowSrc - 1, columnSrc + 1, rowDst, columnDst);
                                     break;
                                 default: break;
                             }
@@ -678,6 +727,43 @@ namespace Draughts.Domain
             return move;
         }
 
+        // método que confirma el movimiento de una pieza
+        private void confirmMove()
+        {
+            for (int i = 0; i < 8; i++)
+                for (int j = 0; j < 8; j++)
+                {
+                    int content = this.getTable(i, j);
+                    if (content == 5 || content == 6 || content == 7 || content == 8 || content == 9)
+                        this.setTable(i, j, 0);
+                }
+        }
+
+        // método que anula el movimiento de una pieza
+        private void resetMove()
+        {
+            for (int i = 0; i < 8; i++)
+                for (int j = 0; j < 8; j++)
+                {
+                    switch (this.getTable(i, j))
+                    {
+                        case 5:
+                            int piece = this.getTable(this.rowSelected, this.columnSelected);
+                            if (piece == 111) this.table[i, j] = 11111;
+                            else if (piece == 1111) this.table[i, j] = 111111;
+                            else if (piece == 222) this.table[i, j] = 22222;
+                            else if (piece == 2222) this.table[i, j] = 222222;
+                            break;
+                        case 6: this.table[i, j] = 111; break;
+                        case 7: this.table[i, j] = 1111; break;
+                        case 8: this.table[i, j] = 222; break;
+                        case 9: this.table[i, j] = 2222; break;
+                        default: break;
+                    }
+                }
+        }
+
+        // método que calcula la trayectoria de una ficha reina mientras come
         private Boolean queenWhoEatsOptions(int row, int column, int enemy, int dir)
         {
             int j = 0;
@@ -839,53 +925,7 @@ namespace Draughts.Domain
             return move;
         }
 
-        private void resetOptions()
-        {
-            for (int i = 0; i < 8; i++)
-                for (int j = 0; j < 8; j++)
-                {
-                    if (this.getTable(i, j) >= 11111) this.setTable(i, j, 0);
-                    else if (this.getTable(i, j) == 111) this.setTable(i, j, 1);
-                    else if (this.getTable(i, j) == 1111) this.setTable(i, j, 11);
-                    else if (this.getTable(i, j) == 2 * 111) this.setTable(i, j, 2);
-                    else if (this.getTable(i, j) == 2 * 1111) this.setTable(i, j, 22);
-                }
-        }
-
-        private void confirmMove()
-        {
-            for (int i = 0; i < 8; i++)
-                for (int j = 0; j < 8; j++)
-                {
-                    int content = this.getTable(i, j);
-                    if (content == 5 || content == 6 || content == 7 || content == 8 || content == 9)
-                        this.setTable(i, j, 0);
-                }
-        }
-
-        private void resetMove()
-        {
-            for (int i = 0; i < 8; i++)
-                for (int j = 0; j < 8; j++)
-                {
-                    switch (this.getTable(i, j))
-                    {
-                        case 5:
-                            int piece = this.getTable(this.rowSelected, this.columnSelected);
-                            if (piece == 111) this.table[i, j] = 11111;
-                            else if (piece == 1111) this.table[i, j] = 111111;
-                            else if (piece == 222) this.table[i, j] = 22222;
-                            else if (piece == 2222) this.table[i, j] = 222222;
-                            break;
-                        case 6: this.table[i, j] = 111; break;
-                        case 7: this.table[i, j] = 1111; break;
-                        case 8: this.table[i, j] = 222; break;
-                        case 9: this.table[i, j] = 2222; break;
-                        default: break;
-                    }
-                }
-        }
-
+        // método que confirma el movimiento de una reina
         private void confirmQueenOptions()
         {
             for (int i = 0; i < 8; i++)
@@ -905,7 +945,8 @@ namespace Draughts.Domain
                     }
                 }
         }
-        
+
+        // método que anula el movimiento de una reina
         private void resetQueenOptions()
         {
             for (int i = 0; i < 8; i++)
@@ -914,6 +955,236 @@ namespace Draughts.Domain
                     if (this.getTable(i, j) == 5)
                         this.table[i, j] = 0;
                 }
+        }
+
+        /*
+         * --- MÉTODOS DE LA IA DEL JUGADOR CPU ---
+         */
+        // método que genera cada posible jugada de la CPU
+        private void cpuSelectedBox(int row, int column)
+        {
+            if (!finish)
+            {
+                if (!selected)
+                {
+                    if (calculateOptions(row, column))
+                    {
+                        this.rowSelected = row;
+                        this.columnSelected = column;
+                        selected = true;
+                    }
+                }
+                else
+                {
+                    doPlay(row, column);
+                    selected = false;
+                }
+            }
+        }
+
+        // método que gestiona el turno de juego del jugador CPU
+        private void turnOfTheCPU()
+        {
+            // Se calculan todas las opciones posibles
+            ArrayList movements = new ArrayList();
+            for (int i = 0; i < 8; i++)
+                for (int j = 0; j < 8; j++)
+                {
+                    if (this.getTable(i, j) == this.turn * 1 || this.getTable(i, j) == this.turn * 11)
+                    {
+                        calculateOptions(i, j);
+                        for (int k = 0; k < 8; k++)
+                            for (int l = 0; l < 8; l++)
+                            {
+                                if (this.getTable(k, l) == this.turn * 11111 ||
+                                    this.getTable(k, l) == this.turn * 111111)
+                                    movements.Add(new Movement(i, j, k, l));
+                            }
+                        resetOptions();
+                    }
+                }
+            // Se guarda la situación actual del tablero
+            int [,] oldTable = saveTable();
+            // Y se calcula el valor de cada movimiento
+            int alpha = -9999;
+            int beta = 9999;
+            int bestValue = alpha;
+            Movement bestMove = (Movement) movements[0];
+            foreach (Movement movement in movements)
+            {
+                loadTable(oldTable);    // Se carga la tabla original
+                cpuSelectedBox(movement.SrcRow, movement.SrcColumn);
+                cpuSelectedBox(movement.DstRow, movement.DstColumn);
+                int value = alphaBetaSearch(oldTable, saveTable(), anotherPlayer(this.turn), 1, alpha, beta);
+                movement.Value = value;
+                this.turn = 2;
+                if (value > bestValue)
+                {
+                    bestValue = movement.Value;
+                    bestMove = movement;
+                    alpha = bestValue;
+                }
+            }
+            // Si todos los movimientos tienen valor 0, el movimiento es aleatorio
+            Boolean equals = true;
+            foreach (Movement movement in movements)
+                if (bestMove.Value != 0) equals = false;
+            if (equals)
+            {
+                Random random = new Random();
+                bestMove = (Movement) movements[random.Next(0, movements.Count)];
+            }
+            loadTable(oldTable);
+            // Se realiza el movimiento
+            this.cpuTime = false;
+            selectedBox(bestMove.SrcRow, bestMove.SrcColumn);
+            selectedBox(bestMove.DstRow, bestMove.DstColumn);
+        }
+
+        // método de búsqueda minimax con poda alfa-beta
+        private int alphaBetaSearch(int [ , ] oldTable, int [ , ] newTable, int player, int depth, int alpha, int beta)
+        {
+            int result = checkTable();
+            if (result != 0)
+            {
+                if (result == anotherPlayer(player))
+                    return 9999;
+                if (result == player)
+                    return -9999;
+                if (result == 3)
+                    return 0;
+            }
+            if (depth >= cpuDepth) return utility(oldTable, newTable, anotherPlayer(player));
+            this.turn = player;
+            ArrayList movements = new ArrayList();
+            for (int i = 0; i < 8; i++)
+                for (int j = 0; j < 8; j++)
+                {
+                    if (this.getTable(i, j) == player * 1 || this.getTable(i, j) == player * 11)
+                    {
+                        calculateOptions(i, j);
+                        for (int k = 0; k < 8; k++)
+                            for (int l = 0; l < 8; l++)
+                            {
+                                if (this.getTable(k, l) == player * 11111 ||
+                                    this.getTable(k, l) == player * 111111)
+                                    movements.Add(new Movement(i, j, k, l));
+                            }
+                        resetOptions();
+                    }
+                }
+            // Se calcula el valor de cada movimiento            
+            foreach (Movement movement in movements)
+            {
+                loadTable(newTable);    // Se carga la tabla original
+                cpuSelectedBox(movement.SrcRow, movement.SrcColumn);
+                cpuSelectedBox(movement.DstRow, movement.DstColumn);
+                int value = alphaBetaSearch(newTable, saveTable(), anotherPlayer(player), depth + 1, alpha, beta);
+                if ((depth % 2) == 0)   // es capa par, osea MAX
+                {
+                    alpha = max(alpha, value);
+                    if (alpha >= beta) return alpha;
+                }
+                else
+                {
+                    beta = min(beta, value);
+                    if (beta <= alpha) return beta;
+                }
+            }
+            if ((depth % 2) == 0) return alpha; // es capa par, osea MAX
+            else return beta;   // es capa impar, osea MIN
+        }
+
+        // método que devuelve el valor de la variable mayor
+        private int max(int v1, int v2)
+        {
+            if (v1 > v2) return v1;
+            else return v2;
+        }
+
+        // método que devuelve el valor de la variable menor
+        private int min(int v1, int v2)
+        {
+            if (v1 < v2) return v1;
+            else return v2;
+        }
+
+        // método que define la utilidad de una jugada
+        private int utility(int [ , ] oldTable, int [ , ] newTable, int player)
+        {
+            int oldOwnChips = 0, oldOwnQueens = 0, oldOtherChips = 0, oldOtherQueens = 0;
+            int newOwnChips = 0, newOwnQueens = 0, newOtherChips = 0, newOtherQueens = 0;
+            for (int i = 0; i < 8; i++)
+                for (int j = 0; j < 8; j++)
+                {
+                    switch (oldTable[i, j])
+                    {
+                        case 1:
+                            if (player == 1) oldOwnChips++;
+                            else oldOtherChips++;
+                            break;
+                        case 2:
+                            if (player == 2) oldOwnChips++;
+                            else oldOtherChips++;
+                            break;
+                        case 11:
+                            if (player == 1) oldOwnQueens++;
+                            else oldOtherQueens++;
+                            break;
+                        case 22:
+                            if (player == 2) oldOwnQueens++;
+                            else oldOtherQueens++;
+                            break;
+                        default: break;
+                    }
+                    switch (newTable[i , j])
+                    {
+                        case 1:
+                            if (player == 1) newOwnChips++;
+                            else newOtherChips++;
+                            break;
+                        case 2:
+                            if (player == 2) newOwnChips++;
+                            else newOtherChips++;
+                            break;
+                        case 11:
+                            if (player == 1) newOwnQueens++;
+                            else newOtherQueens++;
+                            break;
+                        case 22:
+                            if (player == 2) newOwnQueens++;
+                            else newOtherQueens++;
+                            break;
+                        default: break;
+                    }
+                }
+            return (oldOtherChips - newOtherChips) * 200 + (oldOtherQueens - newOtherQueens) * 300
+                - (oldOwnChips - newOwnChips) * 20 - (oldOwnQueens - newOwnQueens) * 30;
+        }
+
+        // método que devuelve el valor del tablero en un momento determinado
+        private int [ , ] saveTable()
+        {
+            int [ , ] table = new int[8, 8];
+            for (int i = 0; i < 8; i++)
+                for (int j = 0; j < 8; j++)
+                    table[i, j] = this.getTable(i, j);
+            return table;
+        }
+
+        // método que carga en el tablero el valor de un tablero auxiliar
+        private void loadTable(int [ , ] table)
+        {
+            for (int i = 0; i < 8; i++)
+                for (int j = 0; j < 8; j++)
+                    this.setTable(i, j, table[i, j]);
+        }
+
+        // método que devuelve el jugador oponente a uno dado
+        private int anotherPlayer(int player)
+        {
+            if (player == 1) return 2;
+            else return 1;
         }
     }
 }
