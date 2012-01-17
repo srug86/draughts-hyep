@@ -45,7 +45,7 @@ namespace Draughts
                 bool b = g.loginPlayer(Texboxname.Text, Texboxpwd.Password);
                 if (b == true)
                 {
-                    ConnectWin conect = new ConnectWin(init);
+                    ConnectWin conect = new ConnectWin(init, g);
                     conect.Show();
                     this.Visibility = Visibility.Hidden;
                 }

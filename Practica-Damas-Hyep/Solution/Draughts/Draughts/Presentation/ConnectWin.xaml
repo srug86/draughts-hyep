@@ -1122,7 +1122,7 @@
 				<RowDefinition Height="0.15*"/>
 			</Grid.RowDefinitions>
 			<Rectangle Margin="8,8,8,8" Fill="#FFE8E4E4" Stroke="#FF000000" Grid.RowSpan="5" Opacity="0.9" StrokeThickness="0"/>
-			<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Text="Jugador 1" TextWrapping="Wrap" Background="{x:Null}" Focusable="False">
+			<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Text="Jugador 1" TextWrapping="Wrap" Background="{x:Null}" Focusable="False" Name="txtPl1">
 				<TextBox.RenderTransform>
 					<TransformGroup>
 						<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1132,7 +1132,7 @@
 					</TransformGroup>
 				</TextBox.RenderTransform>
 			</TextBox>
-			<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Grid.Row="4" Text="Jugador 2" TextWrapping="Wrap" Background="{x:Null}" Focusable="False">
+			<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Grid.Row="4" Text="Jugador 2" TextWrapping="Wrap" Background="{x:Null}" Focusable="False" Name="txtPl2">
 				<TextBox.RenderTransform>
 					<TransformGroup>
 						<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1142,7 +1142,7 @@
 					</TransformGroup>
 				</TextBox.RenderTransform>
 			</TextBox>
-			<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="1" Source="unknow.jpg">
+			<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="1" Source="unknow.jpg" Name="imgAvPl1">
 				<Image.RenderTransform>
 					<TransformGroup>
 						<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1152,7 +1152,7 @@
 					</TransformGroup>
 				</Image.RenderTransform>
 			</Image>
-			<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="3" Source="unknow.jpg">
+			<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="3" Source="unknow.jpg" Name="imgAvPl2">
 				<Image.RenderTransform>
 					<TransformGroup>
 						<ScaleTransform ScaleX="1" ScaleY="1"/>

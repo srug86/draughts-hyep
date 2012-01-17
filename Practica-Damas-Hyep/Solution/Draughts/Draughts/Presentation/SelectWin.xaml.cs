@@ -112,8 +112,6 @@ namespace Draughts.Presentation
             p1 = new Player(TextboxJ1.Text, "", ruta1);
             p2 = new Player(TextboxJ2.Text, "", ruta2);
             GameActions gameAdmin = new GameActions(init, p1, p2);
-            //GameWin game = new GameWin(init, p1, p2);
-            //game.Show();
             this.Close();
         }
 

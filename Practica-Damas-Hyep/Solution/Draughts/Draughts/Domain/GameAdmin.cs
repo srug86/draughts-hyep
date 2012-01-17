@@ -27,6 +27,7 @@ namespace Draughts.Domain
 
         public GameAdmin(InitWin init)
         {
+            this.pl = new Player("", "", "");
             this.init = init;
             this.db = DBProxy.Instance;
         }
@@ -42,16 +43,20 @@ namespace Draughts.Domain
         public bool loginPlayer(String n, String ps)
         {
             bool val = false;
-            string pw = "";
-            string sentence = "SELECT name, pwd FROM Players WHERE name = '" + n + "'";
+            string sentence = "SELECT * FROM Players WHERE name = '" + n + "'";
             db.conectar();
             MySqlDataReader read = db.select(sentence);
             if (read.Read())
             {
-                pw = read.GetString("pwd");
+                pl.Name = read.GetString("name");
+                pl.Pwd = read.GetString("pwd");
+                pl.Avatar = read.GetString("avatar");
+                pl.Wins = read.GetInt32("wins");
+                pl.Draws = read.GetInt32("draws");
+                pl.Loses = read.GetInt32("loses");
             }
             db.desconectar();
-            if (pw.Equals(ps)) val = true;
+            if (pl.Pwd.Equals(ps)) val = true;
             return val;
         }
 
