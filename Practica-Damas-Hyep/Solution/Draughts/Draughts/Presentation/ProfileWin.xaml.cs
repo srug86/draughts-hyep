@@ -45,15 +45,15 @@ namespace Draughts.Presentation
             this.Close();
         }
 
-        private void Image0_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("Anand(IND).jpg"); }
-        private void Image1_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("Fischer(USA).jpg"); }
-        private void Image2_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("Karpov(URRS).jpg"); }
-        private void Image3_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("Kasimdzhanov(UZB).jpg"); }
-        private void Image4_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("Kasparov(RUS).jpg"); }
-        private void Image5_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("Kramnik(RUS).jpg"); }
-        private void Image6_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("Ponomariov(UCR).jpg"); }
-        private void Image7_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("Spassky(URRS).jpg"); }
-        private void Image8_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("Topalov(BUL).jpg"); }
+        private void Image0_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("/img/Anand(IND).jpg"); }
+        private void Image1_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("/img/Fischer(USA).jpg"); }
+        private void Image2_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("/img/Karpov(URRS).jpg"); }
+        private void Image3_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("/img/Kasimdzhanov(UZB).jpg"); }
+        private void Image4_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("/img/Kasparov(RUS).jpg"); }
+        private void Image5_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("/img/Kramnik(RUS).jpg"); }
+        private void Image6_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("/img/Ponomariov(UCR).jpg"); }
+        private void Image7_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("/img/Spassky(URRS).jpg"); }
+        private void Image8_MouseUp(object sender, MouseButtonEventArgs e) { loadImage("/img/Topalov(BUL).jpg"); }
 
         private void loadImage(string path)
         {

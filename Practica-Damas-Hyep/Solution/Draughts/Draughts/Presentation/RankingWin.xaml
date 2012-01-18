@@ -1118,7 +1118,7 @@
     	</Button>
     	<Grid HorizontalAlignment="Right" Margin="0,133.9,20,130" Width="226" Background="{x:Null}" Opacity="1">
     		<Rectangle Fill="#FFDBD4D4" Stroke="#FF000000" Opacity="0.9"/>
-    		<Image Margin="8,50,8,55" Source="unknow.jpg" Stretch="Fill" Name="imgWin" />
+    		<Image Margin="8,50,8,55" Source="/Draughts;component/img/unknow.jpg" Stretch="Fill" Name="imgWin" />
     		<Label Margin="8,0,8,8" VerticalAlignment="Bottom" Height="Auto" Content="Jugador" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" FontStyle="Normal" HorizontalAlignment="Center" Name="textWin" Focusable="False" />
     		<Label Margin="16,9.1,17,0" VerticalAlignment="Top" Height="Auto" Content="Mejor jugador" FontFamily="Tempus Sans ITC" FontSize="20" FontWeight="Bold" Foreground="#FF081F06" HorizontalAlignment="Center" Focusable="False" />
     	</Grid>

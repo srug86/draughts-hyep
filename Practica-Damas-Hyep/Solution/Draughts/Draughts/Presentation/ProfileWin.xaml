@@ -1080,7 +1080,7 @@
     					</TransformGroup>
     				</Rectangle.RenderTransform>
     			</Rectangle>
-    			<Image Margin="8,8,8,8" Source="unknow.jpg" RenderTransformOrigin="0.5,0.5" Name="imgProfile">
+    			<Image Margin="8,8,8,8" Source="/Draughts;component/img/unknow.jpg" RenderTransformOrigin="0.5,0.5" Name="imgProfile">
     				<Image.RenderTransform>
     					<TransformGroup>
     						<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1159,7 +1159,7 @@
     						<TranslateTransform X="0" Y="0"/>
     					</TransformGroup>
     				</UniformGrid.RenderTransform>
-    				<Image OpacityMask="{x:Null}" RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" Source="Anand(IND).jpg" MouseUp="Image0_MouseUp">
+    				<Image OpacityMask="{x:Null}" RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" Source="/Draughts;component/img/Anand(IND).jpg" MouseUp="Image0_MouseUp">
     					<Image.RenderTransform>
     						<TransformGroup>
     							<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1169,7 +1169,7 @@
     						</TransformGroup>
     					</Image.RenderTransform>
     				</Image>
-    				<Image RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" Source="Fischer(USA).jpg" MouseUp="Image1_MouseUp">
+    				<Image RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" Source="/Draughts;component/img/Fischer(USA).jpg" MouseUp="Image1_MouseUp">
     					<Image.RenderTransform>
     						<TransformGroup>
     							<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1179,7 +1179,7 @@
     						</TransformGroup>
     					</Image.RenderTransform>
     				</Image>
-    				<Image RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" Source="Karpov(URRS).jpg" MouseUp="Image2_MouseUp">
+    				<Image RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" Source="/Draughts;component/img/Karpov(URRS).jpg" MouseUp="Image2_MouseUp">
     					<Image.RenderTransform>
     						<TransformGroup>
     							<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1189,7 +1189,7 @@
     						</TransformGroup>
     					</Image.RenderTransform>
     				</Image>
-    				<Image RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" Source="Kasimdzhanov(UZB).jpg" MouseUp="Image3_MouseUp">
+    				<Image RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" Source="/Draughts;component/img/Kasimdzhanov(UZB).jpg" MouseUp="Image3_MouseUp">
     					<Image.RenderTransform>
     						<TransformGroup>
     							<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1199,7 +1199,7 @@
     						</TransformGroup>
     					</Image.RenderTransform>
     				</Image>
-    				<Image RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" Source="Kasparov(RUS).jpg" MouseUp="Image4_MouseUp">
+    				<Image RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" Source="/Draughts;component/img/Kasparov(RUS).jpg" MouseUp="Image4_MouseUp">
     					<Image.RenderTransform>
     						<TransformGroup>
     							<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1209,7 +1209,7 @@
     						</TransformGroup>
     					</Image.RenderTransform>
     				</Image>
-    				<Image RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" Source="Kramnik(RUS).jpg" MouseUp="Image5_MouseUp">
+    				<Image RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" Source="/Draughts;component/img/Kramnik(RUS).jpg" MouseUp="Image5_MouseUp">
     					<Image.RenderTransform>
     						<TransformGroup>
     							<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1219,7 +1219,7 @@
     						</TransformGroup>
     					</Image.RenderTransform>
     				</Image>
-    				<Image RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" Source="Ponomariov(UCR).jpg" MouseUp="Image6_MouseUp">
+    				<Image RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" Source="/Draughts;component/img/Ponomariov(UCR).jpg" MouseUp="Image6_MouseUp">
     					<Image.RenderTransform>
     						<TransformGroup>
     							<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1229,7 +1229,7 @@
     						</TransformGroup>
     					</Image.RenderTransform>
     				</Image>
-    				<Image RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" Source="Spassky(URRS).jpg" MouseUp="Image7_MouseUp">
+    				<Image RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" Source="/Draughts;component/img/Spassky(URRS).jpg" MouseUp="Image7_MouseUp">
     					<Image.RenderTransform>
     						<TransformGroup>
     							<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1239,7 +1239,7 @@
     						</TransformGroup>
     					</Image.RenderTransform>
     				</Image>
-    				<Image RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" Source="Topalov(BUL).jpg" MouseUp="Image8_MouseUp">
+    				<Image RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" Source="/Draughts;component/img/Topalov(BUL).jpg" MouseUp="Image8_MouseUp">
     					<Image.RenderTransform>
     						<TransformGroup>
     							<ScaleTransform ScaleX="1" ScaleY="1"/>

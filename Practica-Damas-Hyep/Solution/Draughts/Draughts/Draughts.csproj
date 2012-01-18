@@ -61,17 +61,6 @@
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
-    <Resource Include="Presentation\Anand%28IND%29.jpg" />
-    <Resource Include="Presentation\Fischer%28USA%29.jpg" />
-    <Resource Include="Presentation\Karpov%28URRS%29.jpg" />
-    <Resource Include="Presentation\Kasimdzhanov%28UZB%29.jpg" />
-    <Resource Include="Presentation\Kasparov%28RUS%29.jpg" />
-    <Resource Include="Presentation\Khalifman%28RUS%29.jpg" />
-    <Resource Include="Presentation\Kramnik%28RUS%29.jpg" />
-    <Resource Include="Presentation\Ponomariov%28UCR%29.jpg" />
-    <Resource Include="Presentation\Spassky%28URRS%29.jpg" />
-    <Resource Include="Presentation\Topalov%28BUL%29.jpg" />
-    <Resource Include="Presentation\unknow.jpg" />
     <Page Include="Presentation\LoginWin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -124,7 +113,6 @@
     <Compile Include="Domain\Interface.cs" />
     <Compile Include="Domain\Movement.cs" />
     <Compile Include="Domain\Player.cs" />
-    <Compile Include="Main\Draughts.cs" />
     <Compile Include="Presentation\ConnectWin.xaml.cs">
       <DependentUpon>ConnectWin.xaml</DependentUpon>
     </Compile>
@@ -170,25 +158,77 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Presentation\cpu.png" />
+    <Resource Include="img\Anand%28IND%29.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Presentation\box.jpg" />
-    <Resource Include="Presentation\empty.jpg" />
-    <Resource Include="Presentation\move.jpg" />
-    <Resource Include="Presentation\onRed.jpg" />
-    <Resource Include="Presentation\onRedQ.jpg" />
-    <Resource Include="Presentation\onWhite.jpg" />
-    <Resource Include="Presentation\onWhiteQ.jpg" />
-    <Resource Include="Presentation\red.jpg" />
-    <Resource Include="Presentation\redQ.jpg" />
-    <Resource Include="Presentation\white.jpg" />
-    <Resource Include="Presentation\whiteQ.jpg" />
+    <Resource Include="img\cpu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Fischer%28USA%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Karpov%28URRS%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Kasimdzhanov%28UZB%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Kasparov%28RUS%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Khalifman%28RUS%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Kramnik%28RUS%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Ponomariov%28UCR%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Spassky%28URRS%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Topalov%28BUL%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\unknow.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\box.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\empty.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\move.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\onRed.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\onRedQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\onWhite.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\onWhiteQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\red.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\redQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\white.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\whiteQ.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
     <Folder Include="Fonts\" />
-    <Folder Include="img\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

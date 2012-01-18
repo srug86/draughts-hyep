@@ -71,19 +71,19 @@ namespace Draughts.Presentation
             subject.registerInterest(this);
             // Crea el Dictionary
             colorBox = new Dictionary<int, string>();
-            colorBox.Add(0, "empty.jpg");       // Casilla vacía
-            colorBox.Add(1, "red.jpg");         // Ficha roja
-            colorBox.Add(2, "white.jpg");       // Ficha blanca
-            colorBox.Add(11, "redQ.jpg");       // Reina roja
-            colorBox.Add(22, "whiteQ.jpg");     // Reina blanca
-            colorBox.Add(111, "onRed.jpg");     // Ficha roja señalada
-            colorBox.Add(222, "onWhite.jpg");   // Ficha blanca señalada
-            colorBox.Add(1111, "onRedQ.jpg");   // Reina roja señalada
-            colorBox.Add(2222, "onWhiteQ.jpg"); // Reina blanca señalada
-            colorBox.Add(11111, "move.jpg");    // Posible movimiento ficha roja
-            colorBox.Add(22222, "move.jpg");    // Posible movimiento ficha blanca
-            colorBox.Add(111111, "move.jpg");   // Posible movimiento reina roja
-            colorBox.Add(222222, "move.jpg");   // Posible movimeinto reina blanca
+            colorBox.Add(0, "/img/empty.jpg");       // Casilla vacía
+            colorBox.Add(1, "/img/red.jpg");         // Ficha roja
+            colorBox.Add(2, "/img/white.jpg");       // Ficha blanca
+            colorBox.Add(11, "/img/redQ.jpg");       // Reina roja
+            colorBox.Add(22, "/img/whiteQ.jpg");     // Reina blanca
+            colorBox.Add(111, "/img/onRed.jpg");     // Ficha roja señalada
+            colorBox.Add(222, "/img/onWhite.jpg");   // Ficha blanca señalada
+            colorBox.Add(1111, "/img/onRedQ.jpg");   // Reina roja señalada
+            colorBox.Add(2222, "/img/onWhiteQ.jpg"); // Reina blanca señalada
+            colorBox.Add(11111, "/img/move.jpg");    // Posible movimiento ficha roja
+            colorBox.Add(22222, "/img/move.jpg");    // Posible movimiento ficha blanca
+            colorBox.Add(111111, "/img/move.jpg");   // Posible movimiento reina roja
+            colorBox.Add(222222, "/img/move.jpg");   // Posible movimeinto reina blanca
             msgTurn = new Dictionary<int, string>();
             msgTurn.Add(1, "Juegan rojas");
             msgTurn.Add(2, "Juegan blancas");
