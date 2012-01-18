@@ -335,101 +335,201 @@ namespace Draughts.Presentation
             this.gameActions.selectedBox(2, 7, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 4x1.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_4x1(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(3, 0, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 4x3.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_4x3(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(3, 2, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 4x5.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_4x5(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(3, 4, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 4x7.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_4x7(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(3, 6, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 5x2.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_5x2(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(4, 1, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 5x4.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_5x4(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(4, 3, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 5x6.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_5x6(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(4, 5, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 5x8.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_5x8(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(4, 7, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 6x1.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_6x1(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(5, 0, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 6x3.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_6x3(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(5, 2, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 6x5.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_6x5(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(5, 4, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 6x7.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_6x7(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(5, 6, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 7x2.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_7x2(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(6, 1, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 7x4.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_7x4(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(6, 3, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 7x6.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_7x6(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(6, 5, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 7x8.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_7x8(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(6, 7, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 8X1.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_8x1(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(7, 0, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 8x3.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_8x3(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(7, 2, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 8x5.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_8x5(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(7, 4, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 8x7.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_8x7(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(7, 6, true);
