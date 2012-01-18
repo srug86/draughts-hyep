@@ -12,13 +12,13 @@ using Draughts.Domain;
 using System.Reflection;
 using System.Diagnostics;
 
-namespace Draughts
+namespace Draughts.Presentation
 {
     /// <summary>
     /// Lógica de interacción para LoginWin.xaml
     /// Ventana de acceso para poder jugar en red.
     /// </summary>
-	public partial class LoginWin
+	public partial class LoginWin: Window
 	{
         /// <summary>
         /// Ventana inicial.
