@@ -10,33 +10,72 @@ using Draughts.Communications;
 namespace Draughts.Domain
 {
     /// <summary>
-    /// Implementa la lógica de una partida de Damas
+    /// Implementa la lógica de juego de una partida de Damas.
     /// </summary>
     public class GameActions : Subject
     {
+        /// <summary>
+        /// Lista de observadores para ver los cambios en la interfaz.
+        /// </summary>
         public List<Observer> observers = new List<Observer>();
+        /// <summary>
+        /// Atributos de fila, columna y estado de la casilla.
+        /// </summary>
         private int row, column, state;
+        /// <summary>
+        /// Fila y columna seleccionada.
+        /// </summary>
         private int rowSelected, columnSelected;
 
+        /// <summary>
+        /// Jugadores de la partida.
+        /// </summary>
         private Player pl1, pl2;
+        /// <summary>
+        /// Devuelve o modifica el jugador 1.
+        /// </summary>
+        /// <value>
+        /// Player.
+        /// </value>
         public Player Pl1
         {
             get { return pl1; }
             set { pl1 = value; }
         }
 
+        /// <summary>
+        /// Devuelve o modifica el jugador 2.
+        /// </summary>
+        /// <value>
+        /// Player.
+        /// </value>
         public Player Pl2
         {
             get { return pl2; }
             set { pl2 = value; }
         }
 
+        /// <summary>
+        /// Tablero de juego.
+        /// </summary>
         private int[,] table;
 
+        /// <summary>
+        /// Devuelve el contenido de una casilla.
+        /// </summary>
+        /// <param name="row">Fila.</param>
+        /// <param name="column">Columna.</param>
+        /// <returns>Contenido de la casilla.</returns>
         public int getTable(int row, int column)
         {
             return this.table[row, column];
         }
+        /// <summary>
+        /// Modifica el contenido de una casilla.
+        /// </summary>
+        /// <param name="row">Fila.</param>
+        /// <param name="column">Columna.</param>
+        /// <param name="state">Estado.</param>
         public void setTable(int row, int column, int state)
         {
             this.table[row, column] = state;
@@ -46,29 +85,64 @@ namespace Draughts.Domain
             if (!this.cpuTime) tableValuesHaveChanged();
         }
 
+        /// <summary>
+        /// Turno de juego.
+        /// </summary>
         private int turn;
 
+        /// <summary>
+        /// Devuelve el turno.
+        /// </summary>
+        /// <returns>Turno.</returns>
         public int getTurn()
         {
             return this.turn;
         }
+        /// <summary>
+        /// Modifica el turno de juego.
+        /// </summary>
+        /// <param name="t">Turno.</param>
         public void setTurn(int t)
         {
             this.turn = t;
             turnHasChanged();
         }
 
+        /// <summary>
+        /// Final de la partida.
+        /// </summary>
         private Boolean finish;
+        /// <summary>
+        /// Casilla seleccionada.
+        /// </summary>
         private Boolean selected;
+        /// <summary>
+        /// Movimiento de una ficha.
+        /// </summary>
         private Boolean move;
+        /// <summary>
+        /// Juegas contra la CPU.
+        /// </summary>
         private Boolean cpuTime;
+        /// <summary>
+        /// Jugar en red.
+        /// </summary>
         private Boolean netGame;
 
+        /// <summary>
+        /// Devuelve o modifica el valor de netGame.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [net game]; otherwise, <c>false</c>.
+        /// </value>
         public Boolean NetGame
         {
             get { return netGame; }
             set { netGame = value; }
         }
+        /// <summary>
+        /// Devuelve o modifica el valor 
+        /// </summary>
         private Boolean enemyMode;
 
         public Boolean EnemyMode
