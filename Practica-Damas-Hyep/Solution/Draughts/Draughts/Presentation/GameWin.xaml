@@ -1040,7 +1040,7 @@
     			<RowDefinition Height="0.15*"/>
     		</Grid.RowDefinitions>
     		<Rectangle Margin="8,23.8,8,20.3" Fill="#FFE8E4E4" Stroke="#FF000000" Grid.RowSpan="5" Opacity="0.9" StrokeThickness="0" Grid.Row="1"/>
-    		<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" Grid.Row="1" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Text="Jugador 1" TextWrapping="Wrap" Background="{x:Null}" Name="textPl1" Focusable="False" Foreground="#FFB0926C">
+    		<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" Grid.Row="1" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Text="Jugador 2" TextWrapping="Wrap" Background="{x:Null}" Name="textPl2" Focusable="False" Foreground="#FFB0926C">
     			<TextBox.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1050,7 +1050,7 @@
     				</TransformGroup>
     			</TextBox.RenderTransform>
     		</TextBox>
-    		<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Grid.Row="5" Text="Jugador 2" TextWrapping="Wrap" Background="{x:Null}" Name="textPl2" Focusable="False" Foreground="DarkRed">
+    		<TextBox RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,0" FontFamily="Tempus Sans ITC" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Center" Grid.Row="5" Text="Jugador 1" TextWrapping="Wrap" Background="{x:Null}" Name="textPl1" Focusable="False" Foreground="DarkRed">
     			<TextBox.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1060,7 +1060,7 @@
     				</TransformGroup>
     			</TextBox.RenderTransform>
     		</TextBox>
-    		<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="2" Source="unknow.jpg" Name="imgPl1">
+    		<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="2" Source="unknow.jpg" Name="imgPl2">
     			<Image.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1070,7 +1070,7 @@
     				</TransformGroup>
     			</Image.RenderTransform>
     		</Image>
-    		<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="4" Source="unknow.jpg" Name="imgPl2">
+    		<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="4" Source="unknow.jpg" Name="imgPl1">
     			<Image.RenderTransform>
     				<TransformGroup>
     					<ScaleTransform ScaleX="1" ScaleY="1"/>

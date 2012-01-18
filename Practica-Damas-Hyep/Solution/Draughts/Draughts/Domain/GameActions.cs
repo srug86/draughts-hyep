@@ -220,6 +220,13 @@ namespace Draughts.Domain
                 {
                     this.finish = true;
                     this.setTurn(result * 11); // 11 Gana jug1, 22 Gana jug2, 33 Empate
+                    if (this.NetGame)
+                    {
+                        if (result == 33) gAdmin.Pl.Draws++;
+                        else if (result == gAdmin.PlayerNumber) gAdmin.Pl.Wins++;
+                        else gAdmin.Pl.Loses++;
+                        gAdmin.updatePlayer();
+                    }
                 }
                 else
                 {

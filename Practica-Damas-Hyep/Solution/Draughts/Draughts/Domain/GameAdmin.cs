@@ -86,6 +86,15 @@ namespace Draughts.Domain
             return var;
         }
 
+        public void updatePlayer()
+        {
+            string sentence = "UPDATE Players SET wins = '" + pl.Wins + "', draws = '" +
+                pl.Draws + "', loses = '" + pl.Loses + "' WHERE name = '" + pl.Name + "'";
+            db.conectar();
+            db.insert(sentence);
+            db.desconectar();
+        }
+
         public ArrayList loadRanking()
         {
             ArrayList players = new ArrayList();
