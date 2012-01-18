@@ -11,7 +11,7 @@ namespace Draughts.Domain
     public interface Subject
     {
         /// <summary>
-        /// Espera las notificaciones.
+        /// Espera notifiaciones del observador.
         /// </summary>
         /// <param name="obs">Observador.</param>
         void registerInterest(Observer obs);
@@ -23,14 +23,14 @@ namespace Draughts.Domain
     public interface Observer
     {
         /// <summary>
-        /// Notifica la casilla cambiada.
+        /// Modifica el contenido de la casilla al recibir una notificación.
         /// </summary>
         /// <param name="row">Fila.</param>
         /// <param name="column">Columna.</param>
         /// <param name="state">Estado.</param>
         void notify(int row, int column, int state);
         /// <summary>
-        /// Notifica el cambio de turno.
+        /// Modifica el turno al recibir una notificación.
         /// </summary>
         /// <param name="turn">Turno.</param>
         void notify(int turn);

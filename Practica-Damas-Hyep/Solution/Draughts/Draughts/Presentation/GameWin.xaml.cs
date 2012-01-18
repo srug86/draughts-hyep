@@ -16,18 +16,46 @@ using Draughts.Communications;
 namespace Draughts.Presentation
 {
     /// <summary>
-    /// Lógica de interacción para GameWin.xaml
+    /// Lógica de interacción para GameWin.xaml.
+    /// Ventana de juego para una partida de damas.
     /// </summary>
     public partial class GameWin : Window, Observer
     {
+        /// <summary>
+        /// Ventana inicial.
+        /// </summary>
         private InitWin init;
+        /// <summary>
+        /// Jugadores de la partida.
+        /// </summary>
         private Player pl1, pl2;
+        /// <summary>
+        /// Instancia de NetMode.
+        /// </summary>
         private NetMode net = NetMode.Instance;
+        /// <summary>
+        /// Objeto de tipo GameActions.
+        /// </summary>
         private GameActions gameActions;
+        /// <summary>
+        /// Diccionario para el contenido de las casillas.
+        /// </summary>
         private Dictionary<int, string> colorBox;
+        /// <summary>
+        /// Diccionario para el mensaje del turno.
+        /// </summary>
         private Dictionary<int, string> msgTurn;
+        /// <summary>
+        /// Tablero de juego.
+        /// </summary>
         private Image [,] table;
 
+        /// <summary>
+        /// Constructor de la clase <see cref="GameWin"/>.
+        /// </summary>
+        /// <param name="init">InitWin.</param>
+        /// <param name="subject">Observable.</param>
+        /// <param name="gameActions">GameActions.</param>
         public GameWin(InitWin init, Subject subject, GameActions gameActions)
         {
             this.gameActions = gameActions;
@@ -44,6 +72,11 @@ namespace Draughts.Presentation
             initTable();
         }
 
+        /// <summary>
+        /// Cargar una imagen.
+        /// </summary>
+        /// <param name="path">Ruta.</param>
+        /// <returns>Imagen.</returns>
         private BitmapImage loadImage(String path)
         {
             BitmapImage bi = new BitmapImage();
@@ -53,6 +86,9 @@ namespace Draughts.Presentation
             return bi;
         }
 
+        /// <summary>
+        /// Inicializar el tablero de juego.
+        /// </summary>
         private void initTable()
         {
             this.table = new Image[8, 8] {
@@ -66,6 +102,10 @@ namespace Draughts.Presentation
             {img8x1, img8x2, img8x3, img8x4, img8x5, img8x6, img8x7, img8x8}};
         }
 
+        /// <summary>
+        /// Espera notifiaciones del observador.
+        /// </summary>
+        /// <param name="subject">Observable.</param>
         private void register(Subject subject)
         {
             subject.registerInterest(this);
@@ -92,7 +132,12 @@ namespace Draughts.Presentation
             msgTurn.Add(33, "¡¡Hay tablas!!");
         }
 
-        // Modifica el contenido de la casilla al recibir una notificación
+        /// <summary>
+        /// Modifica el contenido de la casilla al recibir una notificación.
+        /// </summary>
+        /// <param name="row">Fila.</param>
+        /// <param name="column">Columna.</param>
+        /// <param name="state">Estado.</param>
         public void notify(int row, int column, int state)
         {
             BitmapImage bi = new BitmapImage();
@@ -102,6 +147,10 @@ namespace Draughts.Presentation
             this.table[row,column].Source = bi;
         }
 
+        /// <summary>
+        /// Modifica el turno al recibir una notificación.
+        /// </summary>
+        /// <param name="turn">Turno.</param>
         public void notify(int turn)
         {
             this.lblMessage.Content = (String)msgTurn[turn];
@@ -121,81 +170,166 @@ namespace Draughts.Presentation
             }
         }
 
+        /// <summary>
+        /// Manejador para el botón Exit.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             this.init.Visibility = Visibility.Visible;
             this.Close();
         }
 
-        //Delegado para escribir en la ventana los mensajes recibidos
+        /// <summary>
+        /// Delegado para modificar la ventana de juego.
+        /// </summary>
+        /// <param name="srcR">Fila origen.</param>
+        /// <param name="srcC">Columna origen.</param>
+        /// <param name="dstR">Fila destino.</param>
+        /// <param name="dstC">Columna destino.</param>
         private delegate void ReceiveCoordinates(int srcR, int srcC, int dstR, int dstC);
+        /// <summary>
+        /// Método para el delegado.
+        /// </summary>
+        /// <param name="srcR">Fila origen.</param>
+        /// <param name="srcC">Columna origen.</param>
+        /// <param name="dstR">Fila destino.</param>
+        /// <param name="dstC">Columna destino.</param>
         public void delegateToRcvCoordinates(int srcR, int srcC, int dstR, int dstC)
         {
             ReceiveCoordinates aux = new ReceiveCoordinates(this.clickEnemy);
             Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal, aux, srcR, srcC, dstR, dstC);
         }
 
+        /// <summary>
+        /// Mostrar los cambios en la ventana de juego.
+        /// </summary>
+        /// <param name="srcR">Fila origen.</param>
+        /// <param name="srcC">Columna origen.</param>
+        /// <param name="dstR">Fila destino.</param>
+        /// <param name="dstC">Columna destino.</param>
         private void clickEnemy(int srcR, int srcC, int dstR, int dstC)
         {
             this.gameActions.selectedBox(srcR, srcC, false);
             this.gameActions.selectedBox(dstR, dstC, false);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 1x2.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_1x2(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(0, 1, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 1x4.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_1x4(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(0, 3, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 1x6.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_1x6(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(0, 5, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 1x8.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_1x8(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(0, 7, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 2x1.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_2x1(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(1, 0, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 2x3.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_2x3(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(1, 2, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 2x5.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_2x5(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(1, 4, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 2x7.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_2x7(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(1, 6, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 3x2.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_3x2(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(2, 1, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 3x4.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_3x4(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(2, 3, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 3x6.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_3x6(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(2, 5, true);
         }
 
+        /// <summary>
+        /// Manejador para el botón casilla 3x8.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.Input.MouseButtonEventArgs"/> instance containing the event data.</param>
         private void Click_3x8(object sender, MouseButtonEventArgs e)
         {
             this.gameActions.selectedBox(2, 7, true);

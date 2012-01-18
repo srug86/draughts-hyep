@@ -20,20 +20,36 @@ namespace Draughts
     /// </summary>
 	public partial class LoginWin
 	{
+        /// <summary>
+        /// Ventana inicial.
+        /// </summary>
         InitWin init;
+        /// <summary>
+        /// Constructor de la clase <see cref="LoginWin"/>.
+        /// </summary>
+        /// <param name="init">The init.</param>
 		public LoginWin(InitWin init)
 		{
             this.init = init;
 			InitializeComponent();
-			// Insert code required on object creation below this point.
 		}
 
+        /// <summary>
+        /// Manejador para el botón Exit.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             init.Visibility = Visibility.Visible;
             this.Close();
         }
 
+        /// <summary>
+        /// Manejador para el botón Aceptar.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnAccept_Click(object sender, RoutedEventArgs e)
         {
             if ((Texboxname.Text.Length == 0) || (Texboxpwd.Password.Length == 0))
@@ -59,12 +75,22 @@ namespace Draughts
             }
         }
 
+        /// <summary>
+        /// Manejador para el botón Cancelar.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {   
             init.Visibility = Visibility.Visible;
             this.Close();
         }
 
+        /// <summary>
+        /// Manejador para el botón Ayuda.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnAbout_Click(object sender, RoutedEventArgs e)
         {
             var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
