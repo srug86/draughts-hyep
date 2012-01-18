@@ -9,9 +9,11 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Data;
 using Draughts.Domain;
+using System.IO;
+using System.Reflection;
+using System.Diagnostics;
 
 namespace Draughts.Presentation
 {
@@ -113,6 +115,14 @@ namespace Draughts.Presentation
             p2 = new Player(TextboxJ2.Text, "", ruta2);
             GameActions gameAdmin = new GameActions(init, p1, p2);
             this.Close();
+        }
+
+        private void btnAbout_Click(object sender, RoutedEventArgs e)
+        {
+            var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            directory = Path.Combine(directory, "../../Resources");
+            var file = Path.Combine(directory, "Documentation.chm");
+            Process.Start(file); 
         }
     }
 }
