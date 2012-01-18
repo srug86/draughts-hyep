@@ -34,18 +34,18 @@ namespace Draughts.Presentation
             ind = 0;
             ind2 = 0;
             images = new BoundedQueue<String>(10);
-            images.enqueue("Anand(IND).jpg");
-            images.enqueue("Fischer(USA).jpg");
-            images.enqueue("Karpov(URRS).jpg");
-            images.enqueue("Kasimdzhanov(UZB).jpg");
-            images.enqueue("Kasparov(RUS).jpg");
-            images.enqueue("Kramnik(RUS).jpg");
-            images.enqueue("Ponomariov(UCR).jpg");
-            images.enqueue("Spassky(URRS).jpg");
-            images.enqueue("Topalov(BUL).jpg");
-            images.enqueue("cpu.png");
-            ruta1 = "Anand(IND).jpg";
-            ruta2 = "cpu.png";
+            images.enqueue("/img/Anand(IND).jpg");
+            images.enqueue("/img/Fischer(USA).jpg");
+            images.enqueue("/img/Karpov(URRS).jpg");
+            images.enqueue("/img/Kasimdzhanov(UZB).jpg");
+            images.enqueue("/img/Kasparov(RUS).jpg");
+            images.enqueue("/img/Kramnik(RUS).jpg");
+            images.enqueue("/img/Ponomariov(UCR).jpg");
+            images.enqueue("/img/Spassky(URRS).jpg");
+            images.enqueue("/img/Topalov(BUL).jpg");
+            images.enqueue("/img/cpu.png");
+            ruta1 = "/img/Anand(IND).jpg";
+            ruta2 = "/img/cpu.png";
             Imagej1.Source = loadImage(ruta1);
             Imagej2.Source = loadImage(ruta2);
         }
@@ -74,7 +74,7 @@ namespace Draughts.Presentation
         private void btnNext1_Click(object sender, RoutedEventArgs e)
         {
             ruta1 = images.getNext(ind);
-            if (ruta1 == "cpu.png")
+            if (ruta1 == "/img/cpu.png")
             {
                 ind++;
                 ruta1 = images.getNext(ind);
@@ -86,7 +86,7 @@ namespace Draughts.Presentation
         private void btnPrev1_Click(object sender, RoutedEventArgs e)
         {
             ruta1 = images.getPrev(ind);
-            if (ruta1 == "cpu.png")
+            if (ruta1 == "/img/cpu.png")
             {
                 ind--;
                 ruta1 = images.getNext(ind);

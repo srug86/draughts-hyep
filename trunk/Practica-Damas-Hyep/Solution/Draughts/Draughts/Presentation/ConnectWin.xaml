@@ -1142,7 +1142,7 @@
 					</TransformGroup>
 				</TextBox.RenderTransform>
 			</TextBox>
-			<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="1" Source="unknow.jpg" Name="imgAvPl1">
+			<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="1" Source="/Draughts;component/img/unknow.jpg" Name="imgAvPl1">
 				<Image.RenderTransform>
 					<TransformGroup>
 						<ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -1152,7 +1152,7 @@
 					</TransformGroup>
 				</Image.RenderTransform>
 			</Image>
-			<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="3" Source="unknow.jpg" Name="imgAvPl2">
+			<Image RenderTransformOrigin="0.5,0.5" Margin="8,8,8,8" Grid.Row="3" Source="/Draughts;component/img/unknow.jpg" Name="imgAvPl2">
 				<Image.RenderTransform>
 					<TransformGroup>
 						<ScaleTransform ScaleX="1" ScaleY="1"/>
