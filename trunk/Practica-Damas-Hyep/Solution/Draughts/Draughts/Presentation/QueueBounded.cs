@@ -5,19 +5,40 @@ using System.Text;
 using System.IO;
 namespace Draughts.Presentation
 {
+    /// <summary>
+    /// Clase que implementa una cola circular.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     class BoundedQueue<T>
     {
+        /// <summary>
+        /// Cola de tipo T.
+        /// </summary>
         T[] que;
-        int head;       // remove from head
-        int tail;       // insert at tail
+        /// <summary>
+        /// Principio de la cola.
+        /// </summary>
+        int head;       
+        /// <summary>
+        /// Final de la cola.
+        /// </summary>
+        int tail;     
 
+        /// <summary>
+        /// Constructor de la cola circular <see cref="BoundedQueue&lt;T&gt;"/>.
+        /// </summary>
+        /// <param name="quesize">Tamaño.</param>
         public BoundedQueue(int quesize)
         {
             head = tail = -1;
             que = new T[quesize];
         }
 
-        public void enqueue(T elem)  // if next index to tail == head => Q is FULL
+        /// <summary>
+        /// Método para mete elementos en la cola.
+        /// </summary>
+        /// <param name="elem">Elemento de tipo T.</param>
+        public void enqueue(T elem)
         {
             int newIndex = nextIndex(tail);
             if (newIndex == head)
@@ -28,8 +49,11 @@ namespace Draughts.Presentation
                 head = 0;
         }
 
-        public T dequeue()  // After removing from head, if that was the only element in Q
-        // Mark Q to be empty by setting head and tail to -1
+        /// <summary>
+        /// Eliminar de la cola.
+        /// </summary>
+        /// <returns>Tipo T</returns>
+        public T dequeue()
         {
             if (head == -1)
                 Console.Write("Cola vacía.");
@@ -46,16 +70,31 @@ namespace Draughts.Presentation
             return elem;
         }
 
+        /// <summary>
+        /// Siguiente indice de la cola.
+        /// </summary>
+        /// <param name="index">Índice.</param>
+        /// <returns>Índice</returns>
         public int nextIndex(int index)
         {
             return (index + 1) % que.Length;
         }
+        /// <summary>
+        /// Siguiente elemento de la cola.
+        /// </summary>
+        /// <param name="n">Índice.</param>
+        /// <returns>Tipo T.</returns>
         public T getNext(int n)
         {
             int i = (n + 1) % que.Length;
             return que[i];
         }
 
+        /// <summary>
+        /// Elemento anterior de la cola.
+        /// </summary>
+        /// <param name="m">Índice.</param>
+        /// <returns>Tipo T.</returns>
         public T getPrev(int m)
         {
             if (m <= 0) m = m + 10;

@@ -19,14 +19,34 @@ namespace Draughts.Presentation
 {
     /// <summary>
     /// Lógica de interacción para SelectWin.xaml
+    /// Ventana que permite al usuario elegir jugadores (incluida la cpu) para una partida normal.
     /// </summary>
     public partial class SelectWin : Window
     {
+        /// <summary>
+        /// Jugadores de la partida.
+        /// </summary>
         Player p1, p2;
+        /// <summary>
+        /// Ventana inicial.
+        /// </summary>
         InitWin init;
+        /// <summary>
+        /// Cola circular con las rutas de las imágenes.
+        /// </summary>
         BoundedQueue<String> images;
+        /// <summary>
+        /// Índices para la cola circular.
+        /// </summary>
         int ind, ind2;
+        /// <summary>
+        /// Rutas para las imágenes de la ventana.
+        /// </summary>
         String ruta1, ruta2;
+        /// <summary>
+        /// Constructor de la clase <see cref="SelectWin"/>.
+        /// </summary>
+        /// <param name="init">InitWin.</param>
         public SelectWin(InitWin init)
         {
             this.init = init;
@@ -50,6 +70,11 @@ namespace Draughts.Presentation
             Imagej2.Source = loadImage(ruta2);
         }
 
+        /// <summary>
+        /// Cargar una imagen.
+        /// </summary>
+        /// <param name="path">Ruta.</param>
+        /// <returns>Imagen</returns>
         public BitmapImage loadImage(String path)
         {
             BitmapImage bi = new BitmapImage();
@@ -59,18 +84,33 @@ namespace Draughts.Presentation
             return bi;
         }
 
+        /// <summary>
+        /// Manejador para el botón Atrás.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             init.Visibility = Visibility.Visible;
             this.Close();
         }
 
+        /// <summary>
+        /// Manejador para el botón Exit.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             init.Visibility = Visibility.Visible;
             this.Close();
         }
 
+        /// <summary>
+        /// Manejador para el botón siguiente del jugador1.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnNext1_Click(object sender, RoutedEventArgs e)
         {
             ruta1 = images.getNext(ind);
@@ -83,6 +123,11 @@ namespace Draughts.Presentation
             ind++;
         }
 
+        /// <summary>
+        /// Manejador para el boton anterior del jugador1.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnPrev1_Click(object sender, RoutedEventArgs e)
         {
             ruta1 = images.getPrev(ind);
@@ -95,6 +140,11 @@ namespace Draughts.Presentation
             ind--;
         }
 
+        /// <summary>
+        /// Manejador para el botón siguiente del jugador2.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnPrev2_Click(object sender, RoutedEventArgs e)
         {
             ruta2 = images.getPrev(ind2);
@@ -102,6 +152,11 @@ namespace Draughts.Presentation
             ind2--;
         }
 
+        /// <summary>
+        /// Manejador para el botón anterior del jugador2.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnNext2_Click(object sender, RoutedEventArgs e)
         {
             ruta2 = images.getNext(ind2);
@@ -109,6 +164,11 @@ namespace Draughts.Presentation
             ind2++;
         }
 
+        /// <summary>
+        /// Manejador para el botón Empezar.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnBegin_Click(object sender, RoutedEventArgs e)
         {
             p1 = new Player(TextboxJ1.Text, "", ruta1);
@@ -117,6 +177,11 @@ namespace Draughts.Presentation
             this.Close();
         }
 
+        /// <summary>
+        /// Manejador para el botón Ayuda.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnAbout_Click(object sender, RoutedEventArgs e)
         {
             var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);

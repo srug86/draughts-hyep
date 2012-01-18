@@ -23,13 +23,27 @@ namespace Draughts.Presentation
 {
     /// <summary>
     /// Lógica de interacción para RankingWin.xaml
+    /// Ventana que muestra el mejor jugador y el ranking con los 10 mejores jugadores.
     /// </summary>
     public partial class RankingWin : Window
     {
+        /// <summary>
+        /// Ventana inicial.
+        /// </summary>
         InitWin init;
+        /// <summary>
+        /// Instancia de GameAdmin.
+        /// </summary>
         GameAdmin ga = GameAdmin.Instance;
+        /// <summary>
+        /// Colección observable para los jugadores del ranking.
+        /// </summary>
         ObservableCollection<PlayerRank> _RankCollection = new ObservableCollection<PlayerRank>();
 
+        /// <summary>
+        /// Constructor de la clase <see cref="RankingWin"/>.
+        /// </summary>
+        /// <param name="init">InitWin.</param>
         public RankingWin(InitWin init)
         {
             this.init = init;
@@ -45,6 +59,11 @@ namespace Draughts.Presentation
             this.imgWin.Source = bi;
         }
 
+        /// <summary>
+        /// Mostrar el ranking actual.
+        /// </summary>
+        /// <param name="_RankCollection">Colección ranking.</param>
+        /// <param name="li">Lista players.</param>
         private void showRanking(ObservableCollection<PlayerRank> _RankCollection,ArrayList li)
         {
             Player aux = new Player("", "", "");
@@ -65,20 +84,38 @@ namespace Draughts.Presentation
             }
         }
 
+        /// <summary>
+        /// Manejador para el botón Exit.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             init.Visibility = Visibility.Visible;
             this.Close();
         }
 
+        /// <summary>
+        /// Manejador para el botón Atrás.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             init.Visibility = Visibility.Visible;
             this.Close();
         }
+        /// <summary>
+        /// Devuelve la collección que contiene el ranking.
+        /// </summary>
         public ObservableCollection<PlayerRank> RankCollection
         { get { return _RankCollection; } }
 
+        /// <summary>
+        /// Manejador para el botón Ayuda.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnAbout_Click(object sender, RoutedEventArgs e)
         {
             var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
@@ -88,12 +125,45 @@ namespace Draughts.Presentation
         }
     }
 
+    /// <summary>
+    /// Clase que usa la colección observable para los jugadores del ranking.
+    /// </summary>
     public class PlayerRank
     {
+        /// <summary>
+        /// Devuelve o modifica la posición del jugador.
+        /// </summary>
+        /// <value>
+        /// Posición.
+        /// </value>
         public string Pos { get; set; }
+        /// <summary>
+        /// Devuelve o modifica el nombre del jugador.
+        /// </summary>
+        /// <value>
+        /// Nombre.
+        /// </value>
         public string Usuario { get; set; }
+        /// <summary>
+        /// Devuelve o modifica el número de partidas ganadas.
+        /// </summary>
+        /// <value>
+        /// Partidas ganadas.
+        /// </value>
         public string G { get; set; }
+        /// <summary>
+        /// Devuelve o modifica el número de partidas empatadas.
+        /// </summary>
+        /// <value>
+        /// Partidas empatadas.
+        /// </value>
         public string E { get; set; }
+        /// <summary>
+        /// Devuelve o modifica el número de partidas perdidas.
+        /// </summary>
+        /// <value>
+        /// Partidas perdidas.
+        /// </value>
         public string P { get; set; }
     }
 }

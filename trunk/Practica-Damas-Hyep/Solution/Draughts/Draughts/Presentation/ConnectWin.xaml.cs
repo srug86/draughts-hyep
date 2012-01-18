@@ -22,14 +22,32 @@ namespace Draughts.Presentation
 {
     /// <summary>
     /// Lógica de interacción para ConnectWin.xaml
+    /// Ventana que permite a un jugador unirse a otro y jugar una partida.
     /// </summary>
     public partial class ConnectWin : Window
     {
+        /// <summary>
+        /// Ventana inicial.
+        /// </summary>
         InitWin init;
+        /// <summary>
+        /// Instancia de NetMode.
+        /// </summary>
         NetMode net;
+        /// <summary>
+        /// Instanacia de GameAdmin.
+        /// </summary>
         private GameAdmin gA;
+        /// <summary>
+        /// Jugador enemigo.
+        /// </summary>
         private Player enemy;
 
+        /// <summary>
+        /// Constructor de la clase <see cref="ConnectWin"/>.
+        /// </summary>
+        /// <param name="init">InitWin.</param>
+        /// <param name="gA">GameAdmin.</param>
         public ConnectWin(InitWin init, GameAdmin gA)
         {
             this.init = init;
@@ -40,18 +58,32 @@ namespace Draughts.Presentation
             textIp.Text = this.LocalIPAddress();
         }
 
+        /// <summary>
+        /// Manejador para el botón Atrás.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             init.Visibility = Visibility.Visible;
             this.Close();
         }
 
+        /// <summary>
+        /// Manejador para el botón Exit.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             init.Visibility = Visibility.Visible;
             this.Close();
         }
 
+        /// <summary>
+        /// Devuelve tu dirección IP.
+        /// </summary>
+        /// <returns>Dirección IP.</returns>
         public string LocalIPAddress()
         {
             IPHostEntry host;
@@ -68,6 +100,11 @@ namespace Draughts.Presentation
             return localIP;
         }
 
+        /// <summary>
+        /// Manejador para el botón Crear partida.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             gA.PlayerNumber = 1;
@@ -78,6 +115,11 @@ namespace Draughts.Presentation
             net.ModeServer(ip, port);
         }
 
+        /// <summary>
+        /// Carga una imagen.
+        /// </summary>
+        /// <param name="path">Ruta.</param>
+        /// <returns>Imagen.</returns>
         public BitmapImage loadImage(String path)
         {
             BitmapImage bi = new BitmapImage();
@@ -87,6 +129,11 @@ namespace Draughts.Presentation
             return bi;
         }
 
+        /// <summary>
+        /// Manejador para el botón Unirse a una partida.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnJoin_Click(object sender, RoutedEventArgs e)
         {
             gA.PlayerNumber = 2;
@@ -98,6 +145,11 @@ namespace Draughts.Presentation
             net.ModeClient(ips, ipc, port);
         }
 
+        /// <summary>
+        /// Manejador para el botón Enviar.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
             String message = gA.Pl.Name+ ":" + textMsg.Text;
@@ -108,6 +160,11 @@ namespace Draughts.Presentation
             textMsg.Text = "";
         }
 
+        /// <summary>
+        /// Manejador para el botón Empezar.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnBegin_Click(object sender, RoutedEventArgs e)
         {
             string begin = "#$";
@@ -125,28 +182,57 @@ namespace Draughts.Presentation
             this.Close();
         }
 
-        //Delegado para escribir en la ventana los mensajes recibidos
+        /// <summary>
+        /// Delegado para escribir en la ventana los mensajes recibidos.
+        /// </summary>
+        /// <param name="msg">Mensaje.</param>
         private delegate void ReceiveMessagesFrom(string msg);
+        /// <summary>
+        /// Método para el delegado.
+        /// </summary>
+        /// <param name="msg">Mensaje.</param>
         public void delegateToRcvMsgs(string msg)
         {
             ReceiveMessagesFrom aux = new ReceiveMessagesFrom(this.writeMessage);
             Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal, aux, msg);
         }
 
+        /// <summary>
+        /// Escribir el mensaje en la ventana.
+        /// </summary>
+        /// <param name="msg">Mensaje.</param>
         public void writeMessage(String msg)
         {
             Paragraph p = new Paragraph();
             p.Inlines.Add(new Run(msg));
             this.fdoc.Blocks.Add(p);
         }
-        //Delegado para mostrar los datos del enemigo
+        
+        /// <summary>
+        /// Delegado para mostrar los datos del enemigo.
+        /// </summary>
+        /// <param name="opt">Opción.</param>
+        /// <param name="name">Nombre.</param>
+        /// <param name="path">Ruta imagen.</param>
         private delegate void ReceiveEnemyData(string opt, string name, string path);
+        /// <summary>
+        /// Método para el delegado.
+        /// </summary>
+        /// <param name="opt">Opción.</param>
+        /// <param name="name">Nombre.</param>
+        /// <param name="path">Ruta imagen.</param>
         public void delegateToRcvData(string opt, string name, string path)
         {
             ReceiveEnemyData auxi = new ReceiveEnemyData(this.showEnemy);
             Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal, auxi, opt, name, path);
         }
 
+        /// <summary>
+        /// Mostrar al enemigo en la ventana.
+        /// </summary>
+        /// <param name="opt">Opción.</param>
+        /// <param name="name">Nombre.</param>
+        /// <param name="path">Ruta imagen.</param>
         public void showEnemy(string opt, string name, string path)
         {
             enemy = new Player(name, "", path);
@@ -163,14 +249,22 @@ namespace Draughts.Presentation
             this.btnBegin.Visibility = Visibility.Visible;
         }
 
-        //Delegado para mostrar los datos del enemigo
+        /// <summary>
+        /// Delegado para recibir el juego
+        /// </summary>
         private delegate void ReceiveGame();
+        /// <summary>
+        /// Método para el delegado.
+        /// </summary>
         public void delegateToBeginGame()
         {
             ReceiveGame au = new ReceiveGame(this.openPerspective);
             Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal, au);
         }
 
+        /// <summary>
+        /// Abrir la ventana de juego.
+        /// </summary>
         public void openPerspective()
         {
             GameActions gActions;
@@ -186,6 +280,11 @@ namespace Draughts.Presentation
             this.Close();
         }
 
+        /// <summary>
+        /// Manejador para el botón Ayuda.
+        /// </summary>
+        /// <param name="sender">Event.</param>
+        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnAbout_Click(object sender, RoutedEventArgs e)
         {
             var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
