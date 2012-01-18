@@ -59,12 +59,5 @@ namespace Draughts.Properties {
                 resourceCulture = value;
             }
         }
-        
-        internal static byte[] Documentation {
-            get {
-                object obj = ResourceManager.GetObject("Documentation", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }
