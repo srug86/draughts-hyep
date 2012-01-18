@@ -351,7 +351,7 @@ namespace Draughts.Domain
                     if (this.getTurn() == 1)
                     {
                         this.setTurn(2);
-                        if (this.pl2.Avatar == "cpu.png")   // Si el jug2 es la CPU
+                        if (this.pl2.Avatar == "/img/cpu.png")   // Si el jug2 es la CPU
                         {
                             this.cpuTime = true;
                             this.turnOfTheCPU();
