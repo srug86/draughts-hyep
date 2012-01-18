@@ -9,13 +9,14 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Net;
 using System.Net.Sockets;
 using Draughts.Communications;
 using System.Threading;
 using System.IO;
 using Draughts.Domain;
+using System.Reflection;
+using System.Diagnostics;
 
 namespace Draughts.Presentation
 {
@@ -183,6 +184,14 @@ namespace Draughts.Presentation
             }
             gActions.NetGame = true;
             this.Close();
+        }
+
+        private void btnAbout_Click(object sender, RoutedEventArgs e)
+        {
+            var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            directory = Path.Combine(directory, "../../Resources");
+            var file = Path.Combine(directory, "Documentation.chm");
+            Process.Start(file); 
         }
     }
 }

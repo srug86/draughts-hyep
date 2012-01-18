@@ -9,8 +9,9 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Diagnostics;
+using System.IO;
+using System.Reflection;
 
 namespace Draughts.Presentation
 {
@@ -59,6 +60,14 @@ namespace Draughts.Presentation
             RankingWin select = new RankingWin(this);
             select.Show();
             this.Visibility = Visibility.Hidden;
+        }
+
+        private void btnAbout_Click(object sender, RoutedEventArgs e)
+        {
+            var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            directory = Path.Combine(directory, "../../Resources");
+            var file = Path.Combine(directory, "Documentation.chm");
+            Process.Start(file); 
         }
     }
 }

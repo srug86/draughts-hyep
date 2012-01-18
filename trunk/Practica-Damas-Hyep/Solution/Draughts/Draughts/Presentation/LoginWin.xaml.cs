@@ -9,6 +9,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using Draughts.Presentation;
 using Draughts.Domain;
+using System.Reflection;
+using System.Diagnostics;
 
 namespace Draughts
 {
@@ -61,6 +63,14 @@ namespace Draughts
         {   
             init.Visibility = Visibility.Visible;
             this.Close();
+        }
+
+        private void btnAbout_Click(object sender, RoutedEventArgs e)
+        {
+            var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            directory = Path.Combine(directory, "../../Resources");
+            var file = Path.Combine(directory, "Documentation.chm");
+            Process.Start(file); 
         }
 	}
 }

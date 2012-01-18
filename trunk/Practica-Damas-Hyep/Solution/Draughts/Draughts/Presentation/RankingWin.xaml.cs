@@ -9,13 +9,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Data;
 using Draughts.Domain;
 using Draughts.Communications;
 using System.Collections.ObjectModel;
 using System.Collections;
+using System.IO;
+using System.Reflection;
+using System.Diagnostics;
 
 namespace Draughts.Presentation
 {
@@ -76,6 +78,14 @@ namespace Draughts.Presentation
         }
         public ObservableCollection<PlayerRank> RankCollection
         { get { return _RankCollection; } }
+
+        private void btnAbout_Click(object sender, RoutedEventArgs e)
+        {
+            var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            directory = Path.Combine(directory, "../../Resources");
+            var file = Path.Combine(directory, "Documentation.chm");
+            Process.Start(file);
+        }
     }
 
     public class PlayerRank
