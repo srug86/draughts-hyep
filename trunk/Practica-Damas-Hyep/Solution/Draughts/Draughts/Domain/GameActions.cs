@@ -313,10 +313,38 @@ namespace Draughts.Domain
                         case 22: wQ++; break;
                         default: break;
                     }
-            if ((rP > 0 || rQ > 0) && wP == 0 && wQ == 0) result = 1;
-            else if ((wP > 0 || wQ > 0) && rP == 0 && rQ == 0) result = 2;
-            else if (rP == 0 && wP == 0 && rQ == 1 && wQ == 1) result = 3;
+            if ((rP > 0 || rQ > 0) && wP == 0 && wQ == 0) result = 1;   // Ganan rojas
+            else if ((wP > 0 || wQ > 0) && rP == 0 && rQ == 0) result = 2;  // Ganan blancas
+            else if (rP == 0 && wP == 0 && rQ == 1 && wQ == 1) result = 3;  // Tablas
+            else if (strangled()) result = this.turn; // Si el contrario está ahogado pierde
             return result;
+        }
+
+        private Boolean strangled()
+        {
+            this.turn = anotherPlayer(this.turn);
+            // Se calculan todas las opciones posibles
+            ArrayList movements = new ArrayList();
+            for (int i = 0; i < 8; i++)
+                for (int j = 0; j < 8; j++)
+                {
+                    if (this.getTable(i, j) == this.turn * 1 || this.getTable(i, j) == this.turn * 11)
+                    {
+                        calculateOptions(i, j);
+                        for (int k = 0; k < 8; k++)
+                            for (int l = 0; l < 8; l++)
+                            {
+                                if (this.getTable(k, l) == this.turn * 11111 ||
+                                    this.getTable(k, l) == this.turn * 111111)
+                                    movements.Add(new Movement(i, j, k, l));
+                            }
+                        resetOptions();
+                    }
+                }
+            this.turn = anotherPlayer(this.turn);
+            if (movements.Count == 0)
+                return true;
+            else return false;
         }
 
         // método que calcula las opciones de movimiento de una ficha

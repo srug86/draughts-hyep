@@ -90,9 +90,9 @@ namespace Draughts.Domain
         {
             string sentence = "UPDATE Players SET wins = '" + pl.Wins + "', draws = '" +
                 pl.Draws + "', loses = '" + pl.Loses + "' WHERE name = '" + pl.Name + "'";
-            db.conectar();
+            db.connection();
             db.insert(sentence);
-            db.desconectar();
+            db.disconnection();
         }
 
         public ArrayList loadRanking()
