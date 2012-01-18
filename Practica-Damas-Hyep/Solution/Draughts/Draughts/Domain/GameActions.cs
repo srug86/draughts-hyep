@@ -141,20 +141,39 @@ namespace Draughts.Domain
             set { netGame = value; }
         }
         /// <summary>
-        /// Devuelve o modifica el valor 
+        /// Saber si eres el enemigo o no.
         /// </summary>
         private Boolean enemyMode;
 
+        /// <summary>
+        /// Devuelve o modifica el valor de enemyMode.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [enemy mode]; otherwise, <c>false</c>.
+        /// </value>
         public Boolean EnemyMode
         {
             get { return enemyMode; }
             set { enemyMode = value; }
         }
+        /// <summary>
+        /// Profundidad de procesamiento de la CPU.
+        /// </summary>
         const int cpuDepth = 1;
+        /// <summary>
+        /// Instancia de tipo GameAdmin.
+        /// </summary>
         private GameAdmin gAdmin = GameAdmin.Instance;
+        /// <summary>
+        /// Instancia de tipo NetMode.
+        /// </summary>
         private NetMode net = NetMode.Instance;
-
-        // --- MÉTODO CONSTRUCTOR ---
+        /// <summary>
+        /// Constructor de la clase <see cref="GameActions"/>.
+        /// </summary>
+        /// <param name="init">InitWin.</param>
+        /// <param name="pl1">Player1.</param>
+        /// <param name="pl2">Player2.</param>
         public GameActions(InitWin init, Player pl1, Player pl2)
         {
             this.pl1 = pl1;
