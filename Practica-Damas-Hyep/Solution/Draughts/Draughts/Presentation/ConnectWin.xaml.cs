@@ -92,10 +92,7 @@ namespace Draughts.Presentation
             foreach (IPAddress ip in host.AddressList)
             {
                 if (ip.AddressFamily.ToString() == "InterNetwork")
-                {
-                    if (ip.ToString().Substring(0, 3) != "192")
-                        localIP = ip.ToString();
-                }
+                    localIP = ip.ToString();
             }
             return localIP;
         }
