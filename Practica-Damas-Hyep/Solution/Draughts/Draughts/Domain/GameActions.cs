@@ -190,7 +190,10 @@ namespace Draughts.Domain
             initTable();
         }
 
-        // método que inicializa el contenido de las casillas del tablero
+        
+        /// <summary>
+        /// Método que inicializa el contenido de las casillas del tablero.
+        /// </summary>
         private void initTable()
         {
             this.table = new int[8, 8] {
@@ -204,17 +207,19 @@ namespace Draughts.Domain
             {2, 0, 2, 0, 2, 0, 2, 0} };
         }
 
-        /* 
-         * --- MÉTODOS DEL OBSERVADOR ---
-         */
-        // implementación de la interfaz
+        /// <summary>
+        /// Espera las notificaciones.
+        /// </summary>
+        /// <param name="obs">Observador.</param>
         public void registerInterest(Observer obs)
         {
             // Agrega un objeto Observer a la colección
             observers.Add(obs);
         }
 
-        // método que recorre la colección de Observers para avisar de un cambio en una casilla
+        /// <summary>
+        /// Método que recorre la colección de Observers para avisar de un cambio en una casilla.
+        /// </summary>
         private void switchBox()
         {
             for (int i = 0; i < observers.Count; i++)
@@ -224,7 +229,9 @@ namespace Draughts.Domain
             }
         }
 
-        // método que recorre la colección de Observers para avisar de un cambio de turno
+        /// <summary>
+        /// Método que recorre la colección de Observers para avisar de un cambio de turno.
+        /// </summary>
         private void switchTurn()
         {
             for (int i = 0; i < observers.Count; i++)
@@ -234,7 +241,9 @@ namespace Draughts.Domain
             }
         }
 
-        // método que crea el delegado del observador de las casillas del tablero
+        /// <summary>
+        /// Método que crea el delegado del observador de las casillas del tablero.
+        /// </summary>
         private void tableValuesHaveChanged()
         {
             //Ejecutamos el método creado anteriormente mediante el delegado para notificar a 
@@ -247,7 +256,9 @@ namespace Draughts.Domain
             oSwitchBox.switchBox -= oBoxDelegate;
         }
 
-        // método que crea el delegado del observador de los cambios de turno
+        /// <summary>
+        /// Método que crea el delegado del observador de los cambios de turno.
+        /// </summary>
         private void turnHasChanged()
         {
             // Se ejecuta el método creado anteriormente mediante el delegado para notificar a 
@@ -260,9 +271,12 @@ namespace Draughts.Domain
             oChangeTurn.switchTurn -= oTurnDelegate;
         }
 
-        /*
-         * --- MÉTODOS DE LA LÓGICA DE JUEGO ---
-         */
+        /// <summary>
+        /// Método para seleccionar la casilla.
+        /// </summary>
+        /// <param name="row">Fila.</param>
+        /// <param name="column">Columna.</param>
+        /// <param name="thisUser">if set to <c>true</c> [this user].</param>
         public void selectedBox(int row, int column, Boolean thisUser)
         {
             if (!this.finish)
@@ -284,6 +298,11 @@ namespace Draughts.Domain
             }
         }
 
+        /// <summary>
+        /// Método para mostrar las opciones posibles de movimiento.
+        /// </summary>
+        /// <param name="row">Fila.</param>
+        /// <param name="column">Columna.</param>
         private void selecting(int row, int column)
         {
             if (calculateOptions(row, column))  // Se muestran las opciones para esa pieza
@@ -294,6 +313,12 @@ namespace Draughts.Domain
             }
         }
 
+        /// <summary>
+        /// Método para ver si es posible mover una ficha.
+        /// </summary>
+        /// <param name="row">Fila.</param>
+        /// <param name="column">Columna.</param>
+        /// <param name="thisUser">if set to <c>true</c> [this user].</param>
         private void moving(int row, int column, Boolean thisUser)
         {
             int result = doPlay(row, column);
@@ -338,7 +363,9 @@ namespace Draughts.Domain
             else resetOptions();
         }
 
-        // método que resetea las opciones para una ficha
+        /// <summary>
+        /// Método que resetea las opciones para una ficha.
+        /// </summary>
         private void resetOptions()
         {
             for (int i = 0; i < 8; i++)
@@ -352,7 +379,12 @@ namespace Draughts.Domain
                 }
         }
 
-        // método que realiza el movimiento de una ficha
+        /// <summary>
+        /// Método que realiza el movimiento de una ficha.
+        /// </summary>
+        /// <param name="row">Fila.</param>
+        /// <param name="column">Columna.</param>
+        /// <returns>Jugada</returns>
         public int doPlay(int row, int column)
         {
             int result = -1;
@@ -391,7 +423,10 @@ namespace Draughts.Domain
             return result;
         }
 
-        // método que comprueba si hay ganador
+        /// <summary>
+        /// Método que comprueba si hay ganador.
+        /// </summary>
+        /// <returns></returns>
         private int checkTable()
         {
             int result = 0;
@@ -413,6 +448,10 @@ namespace Draughts.Domain
             return result;
         }
 
+        /// <summary>
+        /// Método que comprueba si el contrario no puede mover.
+        /// </summary>
+        /// <returns>Verdadero o falso.</returns>
         private Boolean strangled()
         {
             this.turn = anotherPlayer(this.turn);
@@ -440,7 +479,12 @@ namespace Draughts.Domain
             else return false;
         }
 
-        // método que calcula las opciones de movimiento de una ficha
+        /// <summary>
+        /// Método que calcula las opciones de movimiento de una ficha.
+        /// </summary>
+        /// <param name="row">Fila.</param>
+        /// <param name="column">Columna.</param>
+        /// <returns>Verdadero o falso.</returns>
         private Boolean calculateOptions(int row, int column)
         {
             if (this.getTable(row, column) == this.turn)   // Ficha normal
@@ -460,7 +504,12 @@ namespace Draughts.Domain
             else return false;
         }
 
-        // método que define los movimientos posibles de una ficha normal
+        /// <summary>
+        /// Método que define los movimientos posibles de una ficha normal.
+        /// </summary>
+        /// <param name="row">Fila.</param>
+        /// <param name="column">Columna.</param>
+        /// <param name="eating">if set to <c>true</c> [eating].</param>
         private void chipOptions(int row, int column, Boolean eating)
         {
             if (this.turn == 1) // Opciones para las fichas del jug1
@@ -557,7 +606,14 @@ namespace Draughts.Domain
             }
         }
 
-        // método que define los movimientos posibles de una ficha reina
+        /// <summary>
+        /// Método que define los movimientos posibles de una ficha reina.
+        /// </summary>
+        /// <param name="row">Fila.</param>
+        /// <param name="column">Columna.</param>
+        /// <param name="enemy">Contrario.</param>
+        /// <param name="eating">if set to <c>true</c> [eating].</param>
+        /// <param name="src">Dirección origen.</param>
         private void queenOptions(int row, int column, int enemy, Boolean eating, int src)
         {
             for (int dir = 0; dir < 4; dir++)
@@ -708,7 +764,15 @@ namespace Draughts.Domain
             }
         }
 
-        // método que calcula la trayectoria que sigue una pieza desde una casilla origen hasta una casilla destino
+        /// <summary>
+        /// Método que calcula la trayectoria que sigue una pieza desde una casilla origen hasta una casilla destino.
+        /// </summary>
+        /// <param name="rowSrc">Fila origen.</param>
+        /// <param name="columnSrc">Columna origen.</param>
+        /// <param name="rowDst">Fila destino.</param>
+        /// <param name="columnDst">Columna destino.</param>
+        /// <param name="dir">Dirección.</param>
+        /// <returns>Verdadero o falso.</returns>
         private Boolean movingPiece(int rowSrc, int columnSrc, int rowDst, int columnDst, int dir)
         {
             for (int i = dir; i <= 4 && !move; i++)
@@ -902,7 +966,9 @@ namespace Draughts.Domain
             return move;
         }
 
-        // método que confirma el movimiento de una pieza
+        /// <summary>
+        /// Método que confirma el movimiento de una pieza.
+        /// </summary>
         private void confirmMove()
         {
             for (int i = 0; i < 8; i++)
@@ -914,7 +980,9 @@ namespace Draughts.Domain
                 }
         }
 
-        // método que anula el movimiento de una pieza
+        /// <summary>
+        /// Método que anula el movimiento de una pieza.
+        /// </summary>
         private void resetMove()
         {
             for (int i = 0; i < 8; i++)
@@ -938,7 +1006,14 @@ namespace Draughts.Domain
                 }
         }
 
-        // método que calcula la trayectoria de una ficha reina mientras come
+        /// <summary>
+        /// Método que calcula la trayectoria de una ficha reina mientras come.
+        /// </summary>
+        /// <param name="row">Fila.</param>
+        /// <param name="column">Columna.</param>
+        /// <param name="enemy">Contrario.</param>
+        /// <param name="dir">Direción.</param>
+        /// <returns>Verdadero o falso.</returns>
         private Boolean queenWhoEatsOptions(int row, int column, int enemy, int dir)
         {
             int j = 0;
@@ -1100,7 +1175,9 @@ namespace Draughts.Domain
             return move;
         }
 
-        // método que confirma el movimiento de una reina
+        /// <summary>
+        /// Método que confirma el movimiento de una reina.
+        /// </summary>
         private void confirmQueenOptions()
         {
             for (int i = 0; i < 8; i++)
@@ -1121,7 +1198,9 @@ namespace Draughts.Domain
                 }
         }
 
-        // método que anula el movimiento de una reina
+        /// <summary>
+        /// Método que anula el movimiento de una reina.
+        /// </summary>
         private void resetQueenOptions()
         {
             for (int i = 0; i < 8; i++)
@@ -1132,10 +1211,11 @@ namespace Draughts.Domain
                 }
         }
 
-        /*
-         * --- MÉTODOS DE LA IA DEL JUGADOR CPU ---
-         */
-        // método que genera cada posible jugada de la CPU
+        /// <summary>
+        /// Método que genera cada posible jugada de la CPU.
+        /// </summary>
+        /// <param name="row">Fila.</param>
+        /// <param name="column">Columna.</param>
         private void cpuSelectedBox(int row, int column)
         {
             if (!finish)
@@ -1157,7 +1237,9 @@ namespace Draughts.Domain
             }
         }
 
-        // método que gestiona el turno de juego del jugador CPU
+        /// <summary>
+        /// Método que gestiona el turno de juego del jugador CPU.
+        /// </summary>
         private void turnOfTheCPU()
         {
             // Se calculan todas las opciones posibles
@@ -1224,7 +1306,16 @@ namespace Draughts.Domain
             }
         }
 
-        // método de búsqueda minimax con poda alfa-beta
+        /// <summary>
+        /// Método de búsqueda minimax con poda alfa-beta.
+        /// </summary>
+        /// <param name="oldTable">Antiguo tablero.</param>
+        /// <param name="newTable">Nuevo tablero.</param>
+        /// <param name="player">Jugador.</param>
+        /// <param name="depth">Profundidad.</param>
+        /// <param name="alpha">Alpha.</param>
+        /// <param name="beta">Beta.</param>
+        /// <returns>Valor búsqueda.</returns>
         private int alphaBetaSearch(int [ , ] oldTable, int [ , ] newTable, int player, int depth, int alpha, int beta)
         {
             int result = checkTable();
@@ -1280,21 +1371,37 @@ namespace Draughts.Domain
             else return beta;   // es capa impar, osea MIN
         }
 
-        // método que devuelve el valor de la variable mayor
+        /// <summary>
+        /// Método que devuelve el valor de la variable mayor.
+        /// </summary>
+        /// <param name="v1">Valor1.</param>
+        /// <param name="v2">Valor2.</param>
+        /// <returns>Valor1 o Valor2</returns>
         private int max(int v1, int v2)
         {
             if (v1 > v2) return v1;
             else return v2;
         }
 
-        // método que devuelve el valor de la variable menor
+        /// <summary>
+        /// Método que devuelve el valor de la variable menor.
+        /// </summary>
+        /// <param name="v1">Valor1.</param>
+        /// <param name="v2">Valor2.</param>
+        /// <returns>Valor1 o Valor2</returns>
         private int min(int v1, int v2)
         {
             if (v1 < v2) return v1;
             else return v2;
         }
 
-        // método que define la utilidad de una jugada
+        /// <summary>
+        /// Método que define la utilidad de una jugada.
+        /// </summary>
+        /// <param name="oldTable">Antiguo tablero.</param>
+        /// <param name="newTable">Nuevo tablero.</param>
+        /// <param name="player">Jugador.</param>
+        /// <returns>Utilidad.</returns>
         private int utility(int [ , ] oldTable, int [ , ] newTable, int player)
         {
             int oldOwnChips = 0, oldOwnQueens = 0, oldOtherChips = 0, oldOtherQueens = 0;
@@ -1347,7 +1454,10 @@ namespace Draughts.Domain
                 - (oldOwnChips - newOwnChips) * 200 - (oldOwnQueens - newOwnQueens) * 300;
         }
 
-        // método que devuelve el valor del tablero en un momento determinado
+        /// <summary>
+        /// Método que devuelve el valor del tablero en un momento determinado.
+        /// </summary>
+        /// <returns>Valor tablero.</returns>
         private int [ , ] saveTable()
         {
             int [ , ] table = new int[8, 8];
@@ -1357,7 +1467,10 @@ namespace Draughts.Domain
             return table;
         }
 
-        // método que carga en el tablero el valor de un tablero auxiliar
+        /// <summary>
+        /// Método que carga en el tablero el valor de un tablero auxiliar.
+        /// </summary>
+        /// <param name="table">Tablero.</param>
         private void loadTable(int [ , ] table)
         {
             for (int i = 0; i < 8; i++)
@@ -1365,7 +1478,11 @@ namespace Draughts.Domain
                     this.setTable(i, j, table[i, j]);
         }
 
-        // método que devuelve el jugador oponente a uno dado
+        /// <summary>
+        /// Método que devuelve el jugador oponente a uno dado.
+        /// </summary>
+        /// <param name="player">Jugador.</param>
+        /// <returns>Oponente.</returns>
         private int anotherPlayer(int player)
         {
             if (player == 1) return 2;
