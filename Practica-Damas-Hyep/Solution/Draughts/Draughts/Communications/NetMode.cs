@@ -86,6 +86,7 @@ namespace Draughts.Communications
         /// <summary>
         /// Inicializa la clase <see cref="NetMode"/>.
         /// </summary>
+        private bool disc = false;
         static NetMode()
         {
         }
@@ -158,6 +159,7 @@ namespace Draughts.Communications
                     try
                     {
                         tcp = tcpListener.AcceptTcpClient();
+                        disc = false;
                         this.serverThread = new Thread(this.InfiniteListening);
                         this.serverThread.Start();
                         follow = true;
@@ -177,7 +179,7 @@ namespace Draughts.Communications
         {
             String initial = "#%"+ Convert.ToString(this.gAdmin.PlayerNumber) +"%"+ this.gAdmin.Pl.Name + "%" + this.gAdmin.Pl.Avatar;
             sendMsg(initial);
-            for (; ; )
+            while(!disc)
             {
                 Thread.Sleep(100);
                 byte[] msg = new Byte[Constants.maxNoOfBytes];
@@ -279,10 +281,6 @@ namespace Draughts.Communications
                 if (tcp.Connected)
                 {
                     this.sendOff();
-                    if (tcp != null) tcp.GetStream().Close();
-                    if (tcpListener != null) tcpListener.Stop();
-                    if (tcp != null) tcp.Close();
-                    tcp = null;
                 }
             }
         }
@@ -323,6 +321,7 @@ namespace Draughts.Communications
                         tcpListener.Stop();
                     if (tcp != null)
                         tcp.Close();
+                    if (!disc) disc = true;
                     exit = true;
                 }
             }
