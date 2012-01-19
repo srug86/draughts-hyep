@@ -150,4 +150,60 @@ del proyecto, pero faltaba por implementar la mayor parte de la funcionalidad
 necesaria para poder llevar a cabo una partida, tanto local como en red.
 
 \section{Cambios realizados}
+\subsection{Ventana de creación de jugadores}
+En principio, los distintos perfiles de usuario iban a registrarse sólamente
+en la máquina local y no teníamos previsto que tuviesen que introducir
+contraseña para poder jugar con un determinado perfil. Después, consideramos
+que estos perfiles podían crearse para poder jugar en red, por lo que
+consideramos que estos usuarios deberían registrarse en una base de datos
+distribuida, mediante un nombre (como identificador), un avatar y una
+contraseña. Por ello, añadimos un campo contraseña a esta ventana.
+
+\subsection{Ventana de selección de jugadores para partida local}
+Se le han añadido dos campos para poder introducir los nombres de los
+jugadores, puesto que esos jugadores locales se crearán sólo para esa partida.
+Entre los avatares del jugador 2 se encuentra el de la CPU. Es decir, sólo
+se permite que el jugador CPU sea uno (y además, no puede ser el jugador 1).
+
+\subsection{Ventana de selección de jugadores para partida en red}
+En primer lugar, para acceder a esta ventana, ya no se puede acceder
+directamente pulsando a la opción ``Partida en red''. Se ha introducido una
+ventana intermedia (\emph{LoginWin}), para que el jugador tenga que haberse
+registrado previamente en la base de datos antes de acceder a una partida
+en red. Esto se hace para poder actualizar sus estadísticas (partidas ganadas,
+empatadas y perdidas) una vez haya concluido la partida.
+
+\subsection{Base de datos}
+Cuando se desarrolló el prototipo, no se tenía muy claro qué cosas iban a
+registrarse en la base de datos. Además, tampoco se tenía muy claro si esta
+base de datos iba a ser local a un jugador, local a cada jugador o
+distribuida.
+
+Finalmente, las decisiones fueron las siguientes:
+\begin{itemize}
+\item La base de datos es distribuida y se ha creado a través del sitio
+\url{freemysql.net}. Este sitio suministra un espacio en el que puedes crear
+varias tablas de forma gratuita. Las tablas creadas se encuentran en la
+dirección \url{http://208.11.220.249/}. Para acceder hay que introducir como
+usuario \emph{pirri} y como contraseña \emph{123456}.
+\item La base de datos se llama \emph{playershyep} y sólo almacena una tabla
+(\emph{Players}). Esta tabla tiene los siguientes campos:
+\begin{itemize}
+\item \textbf{name}: Nombre del usuario (clave principal).
+\item \textbf{pwd}: Contraseña.
+\item \textbf{avatar}: Nombre de la imagen que utiliza como avatar.
+\item \textbf{wins}: Número de partidas ganadas.
+\item \textbf{draws}: Número de partidas terminadas en tablas.
+\item \textbf{loses}: Número de partidas perdidas.
+\end{itemize}
+\end{itemize}
+
+A la base de datos se accede en estos cuatro casos:
+\begin{itemize}
+\item Para añadir un nuevo usuario.
+\item Antes de jugar una partida en red (como \emph{login}).
+\item Después de jugar una partida en red (para actualizar las estadísticas
+de ese jugador).
+\item Para recuperar el ranking de jugadores.
+\end{itemize}
 
