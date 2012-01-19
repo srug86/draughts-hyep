@@ -134,7 +134,7 @@ namespace Draughts.Presentation
             if (ruta1 == "/img/cpu.png")
             {
                 ind--;
-                ruta1 = images.getNext(ind);
+                ruta1 = images.getPrev(ind);
             }
             Imagej1.Source = loadImage(ruta1);
             ind--;
