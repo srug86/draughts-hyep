@@ -148,7 +148,8 @@ namespace Draughts.Communications
         /// </summary>
         private void WaitListening()
         {
-            for (; ; )
+            bool follow = false;
+            while (follow == false)
             {
                 Thread.Sleep(100);
                 // Si existe alguna petición se acepta y se crea un objeto con la conexión
@@ -159,6 +160,7 @@ namespace Draughts.Communications
                         tcp = tcpListener.AcceptTcpClient();
                         this.serverThread = new Thread(this.InfiniteListening);
                         this.serverThread.Start();
+                        follow = true;
                     }
                     catch (Exception e)
                     {
@@ -287,7 +289,7 @@ namespace Draughts.Communications
         /// <summary>
         /// Enviar mensaje de desconexión.
         /// </summary>
-        private void sendOff()
+        public void sendOff()
         {
             dataToSend = new byte[] { (byte)'s', (byte)'h', (byte)'u', (byte)'t', (byte)'d', (byte)'o', (byte)'w', (byte)'n' };
             tcp.GetStream().Write(dataToSend, 0, dataToSend.Length);

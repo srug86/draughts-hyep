@@ -56,6 +56,7 @@ namespace Draughts.Presentation
             net.Conn = this;
             InitializeComponent();
             textIp.Text = this.LocalIPAddress();
+            btnSend.Visibility = Visibility.Hidden;
         }
 
         /// <summary>
@@ -76,6 +77,7 @@ namespace Draughts.Presentation
         /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
+            net.FreeResources();
             init.Visibility = Visibility.Visible;
             this.Close();
         }
@@ -200,6 +202,22 @@ namespace Draughts.Presentation
         /// <param name="msg">Mensaje.</param>
         public void writeMessage(String msg)
         {
+            if (msg == "--Desconectado--")
+            {
+                msg = "El jugador " + enemy.Name + " se ha desconectado";
+                btnBegin.Visibility = Visibility.Hidden;
+                btnSend.Visibility = Visibility.Hidden;
+                if (gA.PlayerNumber == 1)
+                {
+                    this.txtPl2.Text = "Jugador 2";
+                    this.imgAvPl2.Source = loadImage("/img/unknow.jpg");
+                }
+                else
+                {
+                    this.txtPl1.Text = "Jugador 1";
+                    this.imgAvPl1.Source = loadImage("/img/unknow.jpg");
+                }
+            }
             Paragraph p = new Paragraph();
             p.Inlines.Add(new Run(msg));
             this.fdoc.Blocks.Add(p);
@@ -244,6 +262,7 @@ namespace Draughts.Presentation
                 this.imgAvPl2.Source = loadImage(path);
             }
             this.btnBegin.Visibility = Visibility.Visible;
+            this.btnSend.Visibility = Visibility.Visible;
         }
 
         /// <summary>

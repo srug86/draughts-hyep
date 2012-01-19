@@ -87,6 +87,7 @@ namespace Draughts.Presentation
         /// <returns>Tipo T.</returns>
         public T getNext(int n)
         {
+            if (n <= 0) n = n + 10;
             int i = (n + 1) % que.Length;
             return que[i];
         }
