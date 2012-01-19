@@ -39,17 +39,90 @@ Con esta herramienta se elaboró el diagrama de clases de la aplicación y los
 principales diagramas de secuencia.
 
 \subsection{Diagramas de clases}
-\imagen{Classes.pdf}{12}{Diagrama de clases}{img:Classes}
+La figura \ref{img:Classes}, muestra un esquema general de los paquetes y
+las clases que componen la implementación de la aplicación.
 
-\imagen{Presentation.pdf}{12}{Clases del paquete \emph{Presentation}}
+\begin{sidewaysfigure}
+\imagen{Classes.pdf}{20}{Diagrama de clases}{img:Classes}
+\end{sidewaysfigure}
+
+La figura \ref{img:Presentation}, muestra en detalle las clases que componen el
+paquete \emph{presentation}. Estas clases implementan las interfaces gráficas
+de la aplicación.
+
+\imagen{Presentation.pdf}{13}{Clases del paquete \emph{Presentation}}
 {img:Presentation}
+
+La figura \ref{img:Domain}, muestra en detalle las clases que componen el
+paquete \emph{presentation}. Estas clases implementan la parte lógica de la
+aplicación.
 
 \imagen{Domain.pdf}{12}{Clases del paquete \emph{Domain}}{img:Domain}
 
-\imagen{Communications.pdf}{12}{Clases del paquete \emph{Communications}}
+La figura \ref{img:Communications}, muestra en detalle las clases que componen
+el paquete \emph{presentation}. Estas clases implementan la parte de
+comunicaciones entre la aplicación, la base de datos distribuida y otros
+jugadores de la red.
+
+\imagen{Communications.pdf}{10}{Clases del paquete \emph{Communications}}
 {img:Communications}
 
 \subsection{Diagramas de secuencia}
+La figura \ref{img:AddUser} muestra el diagrama de secuencia del caso de uso
+\emph{añadir un usuario a la base de datos}. El usuario especifica su nombre,
+contraseña y avatar y se la envía a la base de datos distribuida.
+
+\begin{sidewaysfigure}
+\imagen{AddUser.pdf}{20}{Diagrama de secuencia de \emph{añadir un usuario a
+la base de datos}}{img:AddUser}
+\end{sidewaysfigure}
+
+La figura \ref{img:LocalMode} muestra el diagrama de secuencia del caso de uso
+\emph{iniciar una partida local contra la CPU}. El usuario selecciona
+un nombre y un avatar para el jugador humano y un nombre y el avatar de la CPU
+para el jugador virtual.
+
+\imagen{LocalMode.pdf}{13}{Diagrama de secuencia de \emph{iniciar una partida
+local contra la CPU}}{img:LocalMode}
+
+La figura \ref{img:LocalPlay} muestra el diagrama de secuencia del caso de uso
+\emph{realizar jugada en una partida local contra la CPU}. El jugador humano 
+realiza el movimiento de una ficha y la CPU le responde con otra jugada.
+
+\begin{sidewaysfigure}
+\imagen{LocalPlay.pdf}{20}{Diagrama de secuencia de \emph{realizar jugada en
+una partida local contra la CPU}}{img:LocalPlay}
+\end{sidewaysfigure}
+
+La figura \ref{img:Login} muestra el diagrama de secuencia del caso de uso
+\emph{autentificarse para jugar en red}. El usuario introduce su nombre y
+contraseña, se accede a la base de datos para comprobar que existe dicho
+usuario y se comprueba si las contraseñas coinciden.
+
+\begin{sidewaysfigure}
+\imagen{Login.pdf}{20}{Diagrama de secuencia de \emph{autentificarse para
+jugar en red}}{img:Login}
+\end{sidewaysfigure}
+
+La figura \ref{img:NetMode} muestra el diagrama de secuencia del caso de uso
+\emph{iniciar una partida en red}. El usuario crea una partida y espera a que
+otro jugador se una a ella. Cuando esto sucede, el usuario puede pulsar el
+botón ``Empezar'' para comenzar la partida en red.
+
+\begin{sidewaysfigure}
+\imagen{NetMode.pdf}{20}{Diagrama de secuencia de \emph{iniciar una partida
+en red}}{img:NetMode}
+\end{sidewaysfigure}
+
+La figura \ref{img:NetPlay} muestra el diagrama de secuencia del caso de uso
+\emph{realizar jugada en una partida en red}. El usuario realiza el movimiento
+de una ficha y se lo envía mediante la conexión TCP al oponente. Ambos
+actualizan sus tableros.
+
+\begin{sidewaysfigure}
+\imagen{NetPlay.pdf}{20}{Diagrama de secuencia de \emph{realizar jugada en
+una partida en red}}{img:NetPlay}
+\end{sidewaysfigure}
 
 %\section{Cambios realizados}
 
