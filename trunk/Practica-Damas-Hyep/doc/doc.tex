@@ -1,0 +1,69 @@
+% Clase
+\documentclass[11pt,a4paper,spanish,twoside]{report}
+
+% Órdenes auxiliares
+\input{inc/includes.tex}
+
+%Para las secciones y las subseciones
+\makeatletter
+\renewcommand{\section}{
+  \@startsection{section}{1}{0mm}{\baselineskip}
+  {2.5mm}{\Large\bf}
+}
+\renewcommand{\subsection}{
+  \@startsection{subsection}{2}{0mm}{2mm}
+  {4.0mm}{\bf}
+}
+\renewcommand{\subsubsection}{
+  \@startsection{subsubsection}{3}{0mm}{2mm}
+  {0.1mm}{\normalsize\bf\emph}
+}
+\makeatother
+
+% Encabezado y pie de página
+\encabezado
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\usepackage{rotating}
+
+\begin{document}
+
+% Silabación extra
+\input{inc/hyphenations.tex}
+
+% Portada
+\portada{Herramientas y entornos de programación}
+{Desarrollo de una aplicación utilizando \emph{\textbf{c\#}} y
+ \emph{\textbf{.net}}}
+{Juego de damas}
+{Sergio de la Rubia García-Carpintero \\Juan Miguel Torres Triviño}
+{Grupo 5 - 19 de Enero de 2012}
+
+% Licencia
+\licencia{Sergio de la Rubia García-Carpintero, Juan Miguel Torres Triviño}
+
+% Índices
+\tableofcontents
+% \listoffigures
+% \listoftables
+
+%% INICIO DEL DOCUMENTO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Introducción}
+\input{introduction.tex}
+
+\chapter{FASE 1: Definición de requisitos}
+\input{phase1.tex}
+
+\chapter{FASE 2: Diseño estructural y funcional}
+\input{phase2.tex}
+
+\chapter{FASE 3: Prototipos}
+\input{phase3.tex}
+
+\chapter{Manual de usuario}
+\input{manual.tex}
+
+\end{document}
