@@ -1,0 +1,209 @@
+\section{Herramientas utilizadas}
+Para desarrollar los prototipos de la aplicación y la aplicación en sí, se han
+utilizado las dos herramientas que se han venido utilizando en las sesiones
+prácticas de la asignatura: \emph{MS Visual Studio} y
+\emph{MS Expression Blend}.
+
+\subsection{\emph{Microsoft Visual Studio 2008}}
+Es el \emph{IDE} utilizado en esta asignatura para desarrollar aplicaciones
+\emph{WPF} (\emph{Windows Presentation Foundation}) en \emph{Visual C\#}.
+Tiene las siguientes características:
+\begin{itemize}
+\item Tiene licencia propietaria y es soportado por las plataformas
+\emph{Windows}.
+\item Además de \emph{Visual C\#}, soporta otros lenguajes de programación
+tales como \emph{Visual C++}, \emph{Visual J\#}, \emph{ASP.NET} y
+\emph{Visual Basic .NET}, entre otros.
+\item Permite desarrollar aplicaciones, sitios y aplicaciones web, así como
+servicios web en cualquier entorno que soporte la plataforma \emph{.NET}. Así
+se pueden crear aplicaciones que se intercomuniquen entre estaciones de
+trabajo, páginas web y dispositivos móviles.
+\item Permite la creación de soluciones multiplataforma adaptadas para
+funcionar con las diferentes versiones de \emph{.NET Framework}: 2.0
+(incluido con \emph{Visual Studio 2005}), 3.0 (incluido en
+\emph{Windows Vista}) y 3.5 (incluido con \emph{Visual Studio 2008}).
+\end{itemize}
+
+Con esta aplicación se ha generado la solución \emph{Draughts.sln} y a partir
+de ahí, se han ido incorporando los paquetes y las clases que forman parte del
+proyecto.
+
+Además, para facilitar el desarrollo colaborativo de la aplicación, se ha
+utilizado un complemento llamado \emph{\textbf{AnkhSVN}} (\emph{Subversion
+Support for Visual Studio}), que permite mantener un control de versiones de
+los códigos fuente del proyecto. Así, todos los miembros del grupo tendrán a su 
+disposición siempre la última versión del código fuente del proyecto y podrán 
+compartir con los demás los cambios que van realizando.
+
+\subsection{\emph{Microsoft Expression Blend 2}}
+Es una herramienta de diseño que facilita la implementación de interfaces
+gráficas de usuario definidas en \emph{XAML} y \emph{Silverlight}.
+
+Tiene las siguientes características:
+\begin{itemize}
+\item Permite trabajar de forma sincronizada con proyectos de \emph{Visual
+Studio 2008}.
+\item Ofrece un amplio abanico de posibilidades para el fácil desarrollo de 
+interfaces gráficas originales e innovadoras.
+\item Permite generar animaciones con los elementos de la interfaz.
+\end{itemize}
+
+Con esta aplicación se han generado las interfaces gráficas de usuario de la 
+aplicación. Su potencia descriptiva ha permitido desarrollar unas interfaces
+con un diseño innovador y de una forma más fácil y más rápida que si hubiera
+tenido que hacerse de forma manual o mediante las herramientas que proporciona
+el propio \emph{Visual Studio} para tal efecto.
+
+\section{Prototipo}
+Haciendo uso de las herramientas nombradas anteriormente se ha procedido al
+desarrollo de la aplicación. El 12 de diciembre de 2011 el estado del prototipo
+de la aplicación desarrollado hasta entonces era el siguiente:
+
+\subsection{Interfaz gráfica de usuario}
+La interfaz gráfica estaba prácticamente terminada. Estas eran las ventanas
+que se habían desarrollado:
+
+\subsubsection{Ventana de inicio}
+La ventana de inicio muestra cuatro opciones (ver figura \ref{img:proInit}):
+\begin{itemize}
+\item \textbf{Añadir usuario}: Sirve para abrir la ventana de creación de
+jugadores.
+\item \textbf{Iniciar partida}: Que nos lleva a la ventana de selección de
+jugadores para disputar una partida local.
+\item \textbf{Jugar en red}: Que abre la ventana de conexión, para concretar
+una partida en red con otro jugador.
+\item \textbf{Ranking}: Muestra el ranking con los mejores jugadores
+registrados en el sistema.
+\end{itemize}
+Además, pulsando ``?'', en esta o en cualquiera de las otras ventana, se puede 
+acceder a la ayuda de la aplicación.
+
+\imagen{proInitWin.png}{10}{Ventana de inicio del prototipo de la aplicación.}
+{img:proInit}
+
+\subsubsection{Ventana de creación de jugadores}
+La ventana de creación de jugadores (figura \ref{img:proProfile}) permite al
+usuario crear nuevos perfiles de jugadores. Para ello, debe especificar el
+nombre del jugador y seleccionar un avatar de entre los nueve avatares
+disponibles. El jugador se creará pulsando el botón ``Aceptar''.
+
+\imagen{proProfileWin.png}{10}{Ventana de creación de jugadores del prototipo
+de la aplicación.}{img:proProfile}
+
+\subsubsection{Ventana que muestra el ranking}
+La ventana de ranking (figura \ref{img:proRanking}) muestra una lista con los
+10 mejores jugadores registrados en el sistema. Para elaborar este ranking se
+tienen en cuenta las partidas ganadas, empatadas y perdidas de cada jugador. 
+Además, en la parte derecha aparecen el nombre y el avatar del mejor jugador 
+actual.
+
+\imagen{proRankingWin.png}{10}{Ventana de ranking de jugadores del prototipo
+de la aplicación.}{img:proRanking}
+
+\subsubsection{Ventana de selección de jugadores para partida local}
+Antes de iniciar una partida local, el usuario determinará cuáles son los 
+jugadores que tomarán parte en ella, pudiendo elegir entre los jugadores 
+registrados y la máquina. Para hacerlo, hará uso de las flechas de izquierda o 
+derecha. El jugador de la izquierda jugará con las fichas rojas (inicia la 
+partida) y el de la izquierda con las fichas blancas. Para comenzar la
+partida, el usuario deberá seleccionar ``Empezar''.
+
+La figura \ref{img:proSelect} muestra el aspecto de esta ventana.
+
+\imagen{proSelectWin.png}{10}{Ventana de selección de jugadores para partida
+local.}{img:proSelect}
+
+\subsubsection{Ventana de selección de jugadores para partida en red}
+A través de esta ventana \ref{img:proConnect} uno de los usuarios se encargará
+de crear una partida (especificando un puerto, su dirección IP, su jugador y
+dándole al botón ``Crear partida'') y otro (desde su máquina) se encargará de 
+unirse a esta (especificando el mismo puerto e IP que el primero, un jugador y 
+dándole al botón ``Unirme a partida''). Cuando la conexión entre ambos sea 
+efectiva, el avatar y el nombre del otro se harán visibles y se permitirá
+chatear. Para comenzar la partida, ambos deberán pulsar el botón de
+``Empezar''.
+
+\imagen{proConnectWin.png}{10}{Ventana de selección de jugadores para partida
+en red.}{img:proConnect}
+
+\subsubsection{Ventana de juego}
+La ventana de juego, tanto para juegos en red como para juegos locales, tiene
+un aspecto similar al de la figura \ref{img:proGame}.
+
+\imagen{proGameWin.png}{10}{Ventana de juego del prototipo de la aplicación.}
+{img:proGame}
+
+La parte izquierda muestra el tablero de juego. Al pulsar sobre una de las piezas 
+(cuando tenemos el turno) se iluminan las casillas a las que podemos saltar.
+
+En la parte derecha, se muestran los nombres y avatares de los jugadores que 
+participan; y una pequeña frase que indica a quién pertenece el turno de juego o 
+quién es el ganador.
+
+\subsection{Lógica de la aplicación}
+La lógica de la aplicación implementada hasta la fecha estaba en su fase
+inicial. Sólamente estaba implementada la funcionalidad que permitía
+navegar entre unas ventanas y otras.
+
+Por otro lado, el resto de clases del proyecto están añadidas a la solución
+del proyecto, pero faltaba por implementar la mayor parte de la funcionalidad 
+necesaria para poder llevar a cabo una partida, tanto local como en red.
+
+\section{Cambios realizados}
+\subsection{Ventana de creación de jugadores}
+En principio, los distintos perfiles de usuario iban a registrarse sólamente
+en la máquina local y no teníamos previsto que tuviesen que introducir
+contraseña para poder jugar con un determinado perfil. Después, consideramos
+que estos perfiles podían crearse para poder jugar en red, por lo que
+consideramos que estos usuarios deberían registrarse en una base de datos
+distribuida, mediante un nombre (como identificador), un avatar y una
+contraseña. Por ello, añadimos un campo contraseña a esta ventana.
+
+\subsection{Ventana de selección de jugadores para partida local}
+Se le han añadido dos campos para poder introducir los nombres de los
+jugadores, puesto que esos jugadores locales se crearán sólo para esa partida.
+Entre los avatares del jugador 2 se encuentra el de la CPU. Es decir, sólo
+se permite que el jugador CPU sea uno (y además, no puede ser el jugador 1).
+
+\subsection{Ventana de selección de jugadores para partida en red}
+En primer lugar, para acceder a esta ventana, ya no se puede acceder
+directamente pulsando a la opción ``Partida en red''. Se ha introducido una
+ventana intermedia (\emph{LoginWin}), para que el jugador tenga que haberse
+registrado previamente en la base de datos antes de acceder a una partida
+en red. Esto se hace para poder actualizar sus estadísticas (partidas ganadas,
+empatadas y perdidas) una vez haya concluido la partida.
+
+\subsection{Base de datos}
+Cuando se desarrolló el prototipo, no se tenía muy claro qué cosas iban a
+registrarse en la base de datos. Además, tampoco se tenía muy claro si esta
+base de datos iba a ser local a un jugador, local a cada jugador o
+distribuida.
+
+Finalmente, las decisiones fueron las siguientes:
+\begin{itemize}
+\item La base de datos es distribuida y se ha creado a través del sitio
+\url{freemysql.net}. Este sitio suministra un espacio en el que puedes crear
+varias tablas de forma gratuita. Las tablas creadas se encuentran en la
+dirección \url{http://208.11.220.249/}. Para acceder hay que introducir como
+usuario \emph{pirri} y como contraseña \emph{123456}.
+\item La base de datos se llama \emph{playershyep} y sólo almacena una tabla
+(\emph{Players}). Esta tabla tiene los siguientes campos:
+\begin{itemize}
+\item \textbf{name}: Nombre del usuario (clave principal).
+\item \textbf{pwd}: Contraseña.
+\item \textbf{avatar}: Nombre de la imagen que utiliza como avatar.
+\item \textbf{wins}: Número de partidas ganadas.
+\item \textbf{draws}: Número de partidas terminadas en tablas.
+\item \textbf{loses}: Número de partidas perdidas.
+\end{itemize}
+\end{itemize}
+
+A la base de datos se accede en estos cuatro casos:
+\begin{itemize}
+\item Para añadir un nuevo usuario.
+\item Antes de jugar una partida en red (como \emph{login}).
+\item Después de jugar una partida en red (para actualizar las estadísticas
+de ese jugador).
+\item Para recuperar el ranking de jugadores.
+\end{itemize}
+
