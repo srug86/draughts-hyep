@@ -1,0 +1,1 @@
+Proyecto en el que se pretende elaborar un juego de damas utilizando .net
